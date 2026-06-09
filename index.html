@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<!-- Workshop Landing Page – MERCY TECH | Clawbot AI Automation -->
+<html lang="vi">
+<head>
+    <meta charset="utf-8"/>
+    <link href="https://cdn.prod.website-files.com" rel="preconnect" crossorigin="anonymous"/>
+    <title>Workshop AI Automation – Đăng Bài Hàng Loạt &amp; Auto-Reply Đa Kênh | MERCY TECH</title>
+    <meta content="Học cách thiết kế &amp; deploy trợ lý AI đăng video hàng loạt lên TikTok/Fanpage Reels và tự động trả lời comment điều hướng về Zalo. Vận hành 24/7 trên VPS riêng với chi phí gần bằng 0." name="description"/>
+    <meta content="Workshop AI Automation – Đăng Bài Hàng Loạt &amp; Auto-Reply Đa Kênh | MERCY TECH" property="og:title"/>
+    <meta content="Học cách thiết kế &amp; deploy trợ lý AI đăng video hàng loạt lên TikTok/Fanpage Reels và tự động trả lời comment điều hướng về Zalo. Vận hành 24/7 trên VPS riêng với chi phí gần bằng 0." property="og:description"/>
+    <meta property="og:type" content="website"/>
+    <meta content="summary_large_image" name="twitter:card"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <link href="https://cdn.prod.website-files.com/697b0cca42eeacffeeedc2c6/css/wecommitai.webflow.shared.43003ceac.css" rel="stylesheet" type="text/css" integrity="sha384-QwA86sEb9jGVEwbwN1KvB/nFvhtkO0ik/2yvi4EEr/12uj2ja0ngoqyqqPIaZvvY" crossorigin="anonymous"/>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        WebFont.load({ google: { families: ["Outfit:300,regular,500,600,700,800,900","Inter:300,regular,500,600,700"] } });
+    </script>
+    <style>
+        html.w-mod-js:not(.w-mod-ix3) :is(.heading-45-medium-80:has(.heading-45-medium-80)) { visibility: hidden !important; }
+        a:-webkit-any-link { text-decoration: unset; }
+        /* Tab switching */
+        .tab-content-active { display: block !important; }
+        .tab-content-hidden { display: none !important; }
+        .w-tab-link.w--current { background-color: #ffffff !important; color: #07070a !important; }
+        .w-tab-link.w--current img.logo-image-block { filter: invert(1) !important; }
+        /* Masonry grid */
+        .mansonry-wrapper {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+        .mansonry-wrapper._2-col-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .masonry-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+        .masonry-image.masonry-mobile-wide:first-child {
+            grid-column: span 2;
+            height: 320px;
+        }
+        /* Demo terminal card */
+        .demo-terminal {
+            background: #0d1117;
+            border: 1px solid rgba(99,102,241,0.2);
+            border-radius: 12px;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            line-height: 1.7;
+            color: #8b949e;
+            height: 100%;
+            min-height: 280px;
+        }
+        .demo-terminal .term-title { color: #6366F1; font-weight: bold; margin-bottom: 12px; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
+        .demo-terminal .term-green { color: #10B981; }
+        .demo-terminal .term-yellow { color: #F59E0B; }
+        .demo-terminal .term-blue { color: #60A5FA; }
+        .demo-terminal .term-white { color: #e6edf3; }
+        .demo-terminal .term-dim { color: rgba(139,148,158,0.5); }
+        /* Hinhthuc section */
+        .h-nh-th-c-h-c-t-p { gap: 20px; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+        .h-nh-th-c-h-c-t-p:last-child { border-bottom: none; }
+        /* highlight color for timeline */
+        .higtlight-color { color: #6366F1; }
+        .highlight-color { color: #6366F1; }
+
+        /* Premium customization & differentiation from WeCommit */
+        .gradient-text {
+            background: linear-gradient(135deg, #ffffff 0%, #a5b4fc 50%, #6366f1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+        .gradient-text-green {
+            background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+        
+        /* Values cards customization */
+        .flex-block-4 {
+            background: #ffffff !important;
+            border: 1px solid rgba(0, 0, 0, 0.07) !important;
+            border-radius: 20px !important;
+            padding: 36px 28px !important;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.02) !important;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+            position: relative;
+        }
+        .flex-block-4:hover {
+            transform: translateY(-6px) !important;
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.08) !important;
+            border-color: rgba(99, 102, 241, 0.25) !important;
+        }
+        
+        /* Highlight specific deliverables */
+        .highlight-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f5f7ff 100%) !important;
+            border: 2px solid #6366f1 !important;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.12) !important;
+            transform: scale(1.01);
+        }
+        .highlight-card:hover {
+            transform: translateY(-8px) scale(1.03) !important;
+            box-shadow: 0 25px 50px rgba(99, 102, 241, 0.18) !important;
+        }
+        .highlight-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            color: #ffffff;
+            font-family: 'Outfit', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 12px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        }
+        
+        /* Custom image styling inside left column card */
+        .image-37 {
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+            margin-top: 20px;
+        }
+        
+        /* Button hover enhancements */
+        .button-arrow-fill {
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+        .button-arrow-fill:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.25);
+        }
+        .button-arrow-fill.fill-white:hover {
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15);
+        }
+        
+        /* Custom styling for dark cards (Hình thức tham gia) */
+        .chan-dung-hoc-vien-block.dac-quyen-support {
+            border: 1px solid rgba(16, 185, 129, 0.2) !important;
+            background: linear-gradient(180deg, rgba(16, 185, 129, 0.02) 0%, rgba(10, 10, 12, 0.5) 100%) !important;
+        }
+        .chan-dung-hoc-vien-block {
+            border-radius: 20px !important;
+            padding: 32px !important;
+            background: rgba(255, 255, 255, 0.02) !important;
+            border: 1px solid rgba(255, 255, 255, 0.05) !important;
+            transition: all 0.3s ease;
+        }
+        .chan-dung-hoc-vien-block:hover {
+            border-color: rgba(255, 255, 255, 0.12) !important;
+            background: rgba(255, 255, 255, 0.03) !important;
+        }
+        
+        /* Fix Values section grid layout alignment and spacing */
+        .flex-block-7 {
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: space-between !important;
+            height: 100% !important;
+            gap: 20px !important;
+        }
+        .w-layout-grid.grid {
+            align-items: stretch !important;
+        }
+    </style>
+</head>
+<body class="body">
+
+<!-- ========== NAVBAR ========== -->
+<section class="section">
+    <div class="columns w-row">
+        <div class="column w-col w-col-2 w-col-medium-4 w-col-small-4 w-col-tiny-tiny-stack">
+            <a href="#hero" class="w-inline-block" style="display: flex; align-items: center; text-decoration: none;">
+                <img src="logo_navbar.png" alt="MERCY TECH Logo" style="height: 38px; width: auto; object-fit: contain; margin-top: 2px;"/>
+            </a>
+        </div>
+        <div class="column-3 w-col w-col-8 w-col-medium-4 w-col-small-4 w-col-tiny-tiny-stack">
+            <div class="w-layout-hflex navigation-block">
+                <a href="#vande" class="navigation-text">Vấn đề &amp; Giải pháp</a>
+                <a href="#giatri" class="navigation-text">Giá trị cốt lõi</a>
+                <a href="#giangvien" class="navigation-text">Người dẫn dắt</a>
+                <a href="#chiphi" class="navigation-text">Chi phí</a>
+                <a href="#loitrinha" class="navigation-text">Lộ trình</a>
+            </div>
+        </div>
+        <div class="column-2 w-col w-col-2 w-col-medium-4 w-col-small-4 w-col-tiny-tiny-stack">
+            <a href="#dang-ky" class="button-arrow w-inline-block">
+                <div class="link blend-difference uppercase">Đăng ký</div>
+                <div class="arrow">
+                    <div class="div-block">
+                        <img src="https://cdn.prod.website-files.com/697b0cca42eeacffeeedc2c6/697b17958611e0f06ec5273b_Icon%20arrow.png" loading="lazy" alt="" class="image"/>
+                        <img src="https://cdn.prod.website-files.com/697b0cca42eeacffeeedc2c6/697b17958611e0f06ec5273b_Icon%20arrow.png" loading="lazy" alt=""/>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ========== HERO ========== -->
+<!-- EXACT WeCommit structure: container > div-block-5 > div-block-7 + div-block-6 -->
+<section id="hero" class="section-2">
+    <div class="w-layout-blockcontainer container-padding-50 container-hero-section w-container">
+        <div class="div-block-5">
+            <div class="div-block-7">
+                <div class="button-border-wrapper">
+                    <div class="div-block-2">
+                        <p class="paragraph-18 hero-sub-title">Workshop Online Miễn Phí · 90 Phút · Chủ Nhật 14/06/2026</p>
+                    </div>
+                </div>
+                <h3 class="heading-45-medium-80" style="visibility:visible!important;">Dành Cho Quản Lý, Marketer &amp; Chủ Doanh Nghiệp Không Có Background Kỹ Thuật</h3>
+                <h1 class="big-heading">AI Marketing</h1>
+            </div>
+            <div class="div-block-6">
+                <p class="paragraph-18 hero-para">Đa số các doanh nghiệp đều biết tiếp thị đa kênh (TikTok, Facebook Fanpage, YouTube Shorts) là kênh kéo khách cốt lõi. Nhưng việc sản xuất, đăng tải hàng chục video hàng ngày và phản hồi comment kịp thời lại là một cực hình tiêu tốn quá nhiều nhân lực.</p>
+                <p class="paragraph-18 hero-para">Buổi workshop này không dạy bạn sử dụng công cụ kéo thả đắt đỏ. Bạn sẽ học cách thiết lập hệ thống tự động đăng tải video từ điện thoại, sử dụng AI tự động viết caption/hashtag chuẩn SEO và phản hồi bình luận điều hướng khách hàng về Zalo 24/7 chạy ổn định trên VPS riêng với chi phí hạ tầng gần như bằng 0.</p>
+                <div class="w-layout-hflex flex-block">
+                    <a href="#dang-ky" class="link-block w-inline-block">
+                        <div class="w-layout-hflex button-arrow-fill fill-white">
+                            <p class="link no-margin-p">Đăng ký giữ chỗ</p>
+                            <div class="arrow">
+                                <div class="div-block">
+                                    <img src="https://cdn.prod.website-files.com/697b0cca42eeacffeeedc2c6/697b3745411df1f890eca1ed_Arrow%20Black.png" loading="lazy" alt=""/>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#loitrinha" class="link-block-2 w-inline-block">
+                        <div class="w-layout-hflex button-arrow-fill stroke-white">
+                            <p class="link no-margin-p white-text">Xem Lộ trình</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== STATEMENT ========== -->
+<section class="section-body padding-top-bottom-large">
+    <div class="gradient-line top"></div>
+    <div class="gradient-line bottom"></div>
+    <div class="w-layout-blockcontainer container-padding-50 w-container">
+        <div class="div-block-3">
+            <h2 class="heading-60 align-center">Chúng tôi không dạy bạn sử dụng công cụ kéo thả đắt đỏ. Chúng tôi chuyển giao giải pháp Custom Bot tự vận hành trên VPS của riêng bạn.</h2>
+        </div>
+        <h1 class="back-heading">MERCYTECH</h1>
+    </div>
+</section>
+
+<!-- ========== PROBLEM & SOLUTION ========== -->
+<section id="vande" class="section-body padding-top-bottom-120">
+    <div class="w-layout-blockcontainer container-padding-50 w-container">
+        <div class="w-layout-hflex flex-block-2">
+            <div class="block-tieu-de-tam-nhin">
+                <div class="w-layout-vflex tieu-de-mo-ta-big">
+                    <h2 class="heading-60">Tư duy hệ thống Không phải tư duy công cụ</h2>
+                    <p class="paragraph-18">Công cụ AI thay đổi chóng mặt mỗi tuần. Nhưng năng lực phân tích nghiệp vụ, thiết kế luồng tự động hóa và làm chủ server riêng là thứ bạn chỉ cần xây dựng một lần.</p>
+                </div>
+                <a href="#loitrinha" class="button-arrow-fill stroke-white inline-btn w-inline-block">
+                    <div class="link">Xem Lộ trình</div>
+                </a>
+            </div>
+            <div class="w-layout-vflex tam-nhin-he-thong-3-y">
+                <div class="w-layout-vflex tam-nhin-block">
+                    <p class="paragraph-16 uppercase opacity-50">01 — Đăng bài đa kênh</p>
+                    <h4 class="heading-40 tamnhintitle">Tự động đăng tải video ngắn đa kênh TikTok, Fanpage &amp; YouTube</h4>
+                    <p class="paragraph-18">Quay dựng xong chỉ cần đẩy qua Telegram Bot trên điện thoại. AI tự động sinh caption cuốn hút, gắn hashtag xu hướng &amp; xếp lịch đăng tải rải đều 24/7 trên VPS riêng.</p>
+                    <img src="mkt_channels_overload.png" loading="lazy" alt="Đăng bài hàng loạt đa kênh" class="image-4" style="border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,0.12); width:100%; height:auto; max-height:280px; object-fit:cover;"/>
+                </div>
+                <div class="w-layout-vflex tam-nhin-block">
+                    <p class="paragraph-16 uppercase opacity-50">02 — Trôi bình luận &amp; Cướp khách</p>
+                    <h4 class="heading-40 tamnhintitle">Tự động phản hồi bình luận &amp; Messenger dẫn về Zalo trong 5s</h4>
+                    <p class="paragraph-18">AI tự động đọc hiểu bình luận của khách, phản hồi lại công khai và inbox trực tiếp link Zalo tư vấn cá nhân, bảo vệ data khách hàng trước đối thủ cạnh tranh.</p>
+                    <img src="comment_inbox_flooding.png" loading="lazy" alt="Tự động trả lời comment" class="image-4" style="border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,0.12); width:100%; height:auto; max-height:280px; object-fit:cover;"/>
+                </div>
+                <div class="w-layout-vflex tam-nhin-block">
+                    <p class="paragraph-16 uppercase opacity-50">03 — Chi phí vận hành</p>
+                    <h4 class="heading-40 tamnhintitle">Làm chủ VPS riêng, chi phí hạ tầng gần như bằng 0</h4>
+                    <p class="paragraph-18">Tránh xa các công cụ n8n/Make.com tính phí theo lượt chạy (task fee). MERCY TECH hướng dẫn deploy bot chạy trọn đời trên VPS riêng tư, bảo mật tuyệt đối.</p>
+                    <img src="problem_vps_infrastructure.png" loading="lazy" alt="Singapore VPS Cloud Server" class="image-4" style="border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,0.12); width:100%; height:auto; max-height:280px; object-fit:cover;"/>
+                    
+                    <!-- Safety & Account Security Note -->
+                    <div style="margin-top: 16px; padding: 16px; background: rgba(99,102,241,0.05); border: 1px solid rgba(99,102,241,0.2); border-radius: 12px; font-size: 14px; line-height: 1.6; color: #e6edf3; text-align: left; font-family: 'Inter', sans-serif;">
+                        <div style="font-weight: bold; color: #a5b4fc; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                            <span>🔒</span> <span>Giải đáp về Bảo mật &amp; An toàn tài khoản mạng xã hội</span>
+                        </div>
+                        <ul style="padding-left: 18px; margin: 0; display: flex; flex-direction: column; gap: 6px; color: #8b949e; font-size: 13px;">
+                            <li><strong style="color: #fff;">100% Bảo mật thông tin:</strong> Toàn bộ dữ liệu video và thông tin tương tác của khách hàng được truyền trực tiếp trên VPS của riêng doanh nghiệp bạn, không thông qua bất kỳ server trung gian của bên thứ ba nào.</li>
+                            <li><strong style="color: #fff;">Sử dụng Proxy riêng sạch:</strong> Hệ thống cấu hình Proxy tĩnh riêng biệt cho mỗi tài khoản thương hiệu, hạn chế tối đa rủi ro checkpoint IP hoặc bị đánh giá spam từ các nền tảng TikTok/Facebook.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== VALUES ========== -->
+<div class="div-block-45">
+    <section id="giatri" class="section-body padding-top-bottom-120 white-back scale-div">
+        <div class="w-layout-blockcontainer container-padding-50 w-container">
+            <div class="w-layout-hflex flex-block-3">
+                <h2 class="heading-60 black-color-text" style="font-size: 38px; line-height: 1.3;">Đăng ký hôm nay,<br>bạn sẽ nhận được gì?</h2>
+                <p class="paragraph-18 black-color-text max-w-50" style="font-size: 19px; line-height: 1.6; font-weight: 500; color: #374151;">MERCY TECH cam kết chuyển giao trọn bộ giải pháp thực chiến cùng các tài sản công nghệ có thể áp dụng được ngay vào doanh nghiệp của bạn.</p>
+            </div>
+            <div class="w-layout-grid grid">
+                <div id="w-node-_0c2797ae-ccce-d95e-2944-e87d4fdedf84-eeedc326" class="w-layout-hflex flex-block-4 vercital" style="border: 1px solid rgba(99, 102, 241, 0.25) !important; background: linear-gradient(180deg, #ffffff 0%, #fcfcff 100%) !important;">
+                    <div class="highlight-badge" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); box-shadow: 0 4px 12px rgba(16,185,129,0.3);">Công cụ lõi</div>
+                    <h4 class="heading-40 black-color-text" style="font-size: 28px; font-weight: 800; color: #1e1b4b; margin-top: 15px;">Kiến trúc &amp; Sơ đồ Vận hành</h4>
+                    <p class="paragraph-18 black-color-text" style="font-size: 16px; line-height: 1.5; color: #4b5563;">Sơ đồ kiến trúc tự động hóa kết nối Telegram - VPS - Google Sheets - MXH giúp bạn tự thiết lập hệ thống Marketing Automation chuẩn chỉnh.</p>
+                    <!-- Clean Interactive CSS Flowchart instead of bloated AI Image -->
+                    <div style="width: 100%; margin-top: 24px; padding: 20px; background: #0b0f19; border-radius: 12px; border: 1px solid rgba(99,102,241,0.15); display: flex; flex-direction: column; gap: 12px; font-family: 'Inter', sans-serif;">
+                        <!-- Node 1: Input -->
+                        <div style="display: flex; align-items: center; gap: 12px; background: rgba(0,136,204,0.06); border: 1px solid rgba(0,136,204,0.25); padding: 10px 14px; border-radius: 8px;">
+                            <div style="width: 28px; height: 28px; border-radius: 50%; background: #0088cc; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: bold; color: #fff; flex-shrink: 0;">TG</div>
+                            <div style="flex: 1; text-align: left;">
+                                <div style="font-size: 13px; font-weight: bold; color: #fff; margin-bottom: 2px;">1. Gửi Video (Telegram Input)</div>
+                                <div style="font-size: 11px; color: #9ca3af; line-height: 1.3;">Gửi video/nội dung thô trực tiếp từ điện thoại vào Telegram Bot</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Arrow 1 -->
+                        <div style="text-align: center; color: #6366f1; font-size: 14px; font-weight: bold; line-height: 1; margin: -2px 0;">↓</div>
+                        
+                        <!-- Node 2: Process -->
+                        <div style="display: flex; align-items: center; gap: 12px; background: rgba(99,102,241,0.06); border: 1px solid rgba(99,102,241,0.25); padding: 10px 14px; border-radius: 8px;">
+                            <div style="width: 28px; height: 28px; border-radius: 50%; background: #6366F1; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #fff; flex-shrink: 0;">⚙</div>
+                            <div style="flex: 1; text-align: left;">
+                                <div style="font-size: 13px; font-weight: bold; color: #a5b4fc; margin-bottom: 2px;">2. AI Generator &amp; Scheduler (VPS)</div>
+                                <div style="font-size: 11px; color: #9ca3af; line-height: 1.3;">AI tự viết Caption/Hashtag &amp; xếp lịch Google Sheets qua Proxy riêng</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Arrow 2 -->
+                        <div style="text-align: center; color: #10b981; font-size: 14px; font-weight: bold; line-height: 1; margin: -2px 0;">↓</div>
+                        
+                        <!-- Node 3: Output -->
+                        <div style="display: flex; align-items: center; gap: 12px; background: rgba(16,185,129,0.04); border: 1px solid rgba(16,185,129,0.2); padding: 10px 14px; border-radius: 8px;">
+                            <div style="width: 28px; height: 28px; border-radius: 50%; background: #10B981; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #fff; flex-shrink: 0;">📈</div>
+                            <div style="flex: 1; text-align: left;">
+                                <div style="font-size: 13px; font-weight: bold; color: #6ee7b7; margin-bottom: 2px;">3. Tự Động Đăng Video &amp; Auto-Reply</div>
+                                <div style="font-size: 11px; color: #9ca3af; line-height: 1.3;">Tự đăng tải đa kênh MXH &amp; tự trả lời comment điều hướng về Zalo</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-layout-vflex flex-block-7">
+                    <div class="w-layout-hflex flex-block-4 triet-ly-nocode" style="background: #ffffff !important; border: 1px solid rgba(0, 0, 0, 0.08) !important; align-items: center; justify-content: space-between; gap: 20px;">
+                        <div class="w-layout-vflex" style="flex: 1;">
+                            <h5 class="heading-35 black-color-text" style="font-size: 22px; font-weight: 800; color: #111827;">Mẫu Cấu hình Prompt Bot (SOUL &amp; SKILL)</h5>
+                            <p class="paragraph-18 black-color-text" style="font-size: 15px; line-height: 1.5; color: #4b5563; margin-top: 6px;">Trọn bộ file prompt cấu hình AI (SOUL.md &amp; SKILL.md) hướng dẫn AI tự sinh caption cuốn hút, hashtag xu hướng và kịch bản auto-reply tự nhiên như nhân viên thật.</p>
+                        </div>
+                        <img src="clawbot_prompt_mockup.png" loading="lazy" alt="Mẫu Prompt SOUL &amp; SKILL" class="image-39" style="width: 130px; height: auto; border-radius: 8px; box-shadow: 0 6px 20px rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.2); flex-shrink: 0;"/>
+                    </div>
+                    <div class="w-layout-hflex flex-block-6">
+                        <div class="w-layout-hflex flex-block-4 vercital highlight-card">
+                            <div class="highlight-badge">Giá trị cao nhất</div>
+                            <img src="https://cdn.prod.website-files.com/697b0cca42eeacffeeedc2c6/697b5841b210351a5749f1d3_25036805d1996702a6eacf50e117af32_Icon%20set%2001.png" loading="lazy" alt="" class="icon-kien-truc" style="margin-top: 15px;"/>
+                            <h4 class="heading-35 black-color-text" style="font-size: 20px; font-weight: 800; color: #4f46e5;">Khung mã nguồn Clawbot MKT</h4>
+                            <p class="paragraph-18 black-color-text" style="font-size: 14px; line-height: 1.5; color: #4b5563;">Mã nguồn Clawbot MKT (Node.js/Python) tự động kết nối API, đăng video đa kênh và lắng nghe bình luận của khách để tự động phản hồi.</p>
+                        </div>
+                        <div class="w-layout-hflex flex-block-4 vercital" style="border: 1px solid rgba(245, 158, 11, 0.3) !important; background: linear-gradient(135deg, #ffffff 0%, #fffbeb 100%) !important;">
+                            <div class="highlight-badge" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); box-shadow: 0 4px 12px rgba(245,158,11,0.25);">Độc quyền</div>
+                            <img src="https://cdn.prod.website-files.com/697b0cca42eeacffeeedc2c6/697b58412a06969929983c04_5462de5a295cdb9bc1355aca76b9161d_Icon%20set%2002.png" loading="lazy" alt="" class="icon-kien-truc" style="margin-top: 15px;"/>
+                            <h4 class="heading-35 black-color-text" style="font-size: 20px; font-weight: 800; color: #d97706;">1-1 Consultation Call</h4>
+                            <p class="paragraph-18 black-color-text" style="font-size: 14px; line-height: 1.5; color: #4b5563;">Buổi tư vấn riêng 30 phút cùng mentor Vy Thiên Hùng thiết lập mô hình AI Automation tối ưu nhất cho hoạt động kinh doanh của doanh nghiệp bạn.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- ========== MENTOR ========== -->
+<section id="giangvien" class="section-body padding-top-bottom-120">
+    <div class="w-layout-blockcontainer container-padding-50 w-container">
+        <div class="columns-4 w-row">
+            <div class="column-14 w-col w-col-6 w-col-stack" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px 0;">
+                <img src="vythienhung.jpg" alt="Vy Thiên Hùng" style="width: 100%; max-width: 380px; aspect-ratio: 1; object-fit: cover; border-radius: 0; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 15px 35px rgba(0,0,0,0.3);"/>
+                <div style="text-align: center; margin-top: 20px;">
+                    <div style="color: #ffffff; font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 26px; margin-bottom: 6px;">Vy Thiên Hùng</div>
+                    <div style="color: #10B981; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 15px; letter-spacing: 0.5px; text-transform: uppercase;">CEO &amp; Founder MERCY TECH GLOBAL</div>
+                </div>
+            </div>
+            <div class="column-trong w-col w-col-1 w-col-stack"></div>
+            <div class="column-13 w-col w-col-5 w-col-stack">
+                <div class="w-layout-hflex title-bllock-with-paragraph-chi-phi">
+                    <div class="title-block">
+                        <p class="paragraph-16 uppercase opacity-50">Người dẫn dắt &amp; Mentor</p>
+                        <div class="div-block-46">
+                            <h2 class="heading-60 tranquochuy">Vy Thiên Hùng</h2>
+                            <div class="div-block-47">
+                                <div class="text-block-7">CEO &amp; Founder MERCY TECH GLOBAL</div>
+                            </div>
+                        </div>
+                        <div class="w-layout-vflex flex-block-26">
+                            <p class="paragraph-16">Với nhiều năm kinh nghiệm thiết lập kiến trúc tự động hóa, tích hợp hệ thống và tối ưu vận hành (BA) cho các đối tác từ chuỗi bán sỉ, bán lẻ đến doanh nghiệp y tế tại Việt Nam.</p>
+                            <div class="div-block-43">
+                                <p class="tittle-20 align-center italic">"Hệ thống AI chỉ thực sự có giá trị khi nó giải quyết được bài toán dòng tiền thực tế và giải phóng sức lao động thủ công của nhân sự."</p>
+                            </div>
+                            <p class="paragraph-16">Tôi giúp bạn sở hữu năng lực thiết kế luồng tự động hóa bằng AI, làm chủ mã nguồn custom bot để triển khai giải pháp bền vững cho doanh nghiệp của mình.</p>
+                        </div>
+                        <div class="w-layout-hflex flex-block-27">
+                            <div class="w-layout-vflex number-block">
+                                <p class="heading-60">100%</p>
+                                <p class="paragraph-16 uppercase opacity-50">Thực Chiến</p>
+                            </div>
+                            <div class="w-layout-vflex number-block">
+                                <p class="heading-60">0đ</p>
+                                <p class="paragraph-16 uppercase opacity-50">Chi phí Tool ẩn</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="gradient-line bottom"></div>
+</section>
+
+<!-- ========== CASE STUDIES (Masonry tabs – matches WeCommit structure exactly) ========== -->
+<section class="section-body padding-top-bottom-120 cac-du-an">
+    <div class="w-layout-blockcontainer container-padding-50 w-container">
+        <div class="w-layout-vflex tieu-de-mo-ta-big align-center padding-200">
+            <h2 class="heading-60">Bản demo &amp; Bảo chứng thực tế<br/>tại các dự án doanh nghiệp</h2>
+            <p class="paragraph-18 align-center">"Hệ thống Clawbot đã được chứng minh hiệu quả vận hành thực tế thông qua các dự án triển khai cho đối tác của MERCY TECH. Đây không phải demo thử nghiệm — đây là production code đang chạy thật."</p>
+        </div>
+        <div class="tabs w-tabs">
+            <div class="tabs-menu w-tab-menu">
+                <button class="tab-link w-inline-block w-tab-link w--current" onclick="switchTab('tab-wholesales', this)">
+                    <div class="tab-text" style="font-size:13px;font-weight:600;">Bot Marketing Đa Kênh</div>
+                </button>
+                <button class="tab-link w-inline-block w-tab-link" onclick="switchTab('tab-honda', this)">
+                    <div class="tab-text" style="font-size:13px;font-weight:600;">ERP Honda</div>
+                </button>
+                <button class="tab-link tab-link-wide-mobile w-inline-block w-tab-link" onclick="switchTab('tab-myauris', this)">
+                    <div class="tab-text" style="font-size:13px;font-weight:600;">MyAuris Brain</div>
+                </button>
+            </div>
+            <div class="tabs-content w-tab-content">
+                <!-- Tab 1: Wholesale Bot -->
+                <div id="tab-wholesales" class="w-tab-pane tab-content-active">
+                    <div class="mansonry-wrapper">
+                        <div class="demo-terminal masonry-image masonry-mobile-wide" style="height:auto;min-height:300px;grid-column:span 2;">
+                            <div class="term-title">Trợ lý AI Đăng Bài &amp; Comment · 6 Kênh MXH · Status: ACTIVE</div>
+                            <div class="term-green">● Hệ thống đang chạy trên VPS Singapore (SGP1)</div>
+                            <div style="margin-top:10px;" class="term-dim">─────────────────────────────</div>
+                            <div style="margin-top:8px;" class="term-white">[10:32:15] DETECTED: Video mới tải lên "/videos/CongTyA_Intro.mp4"</div>
+                            <div class="term-blue">[10:32:16] AI GENERATOR → caption &amp; hashtags thành công</div>
+                            <div class="term-green">[10:32:18] TIKTOK POSTING → Tải lên tài khoản TikTok 1 thành công ✓</div>
+                            <div class="term-green">[10:32:19] FB REELS POSTING → Tải lên Fanpage Facebook 1 thành công ✓</div>
+                            <div class="term-yellow">[10:32:19] GOOGLE SHEET → Cập nhật lịch trình đăng bài row 256</div>
+                            <div style="margin-top:10px;" class="term-dim">─────────────────────────────</div>
+                            <div style="margin-top:8px;" class="term-white">[10:33:05] NEW COMMENT ON FB: "Xin giá và tư vấn nhé"</div>
+                            <div class="term-blue">[10:33:06] AI ANALYZER → comment có ý định mua hàng (high priority)</div>
+                            <div class="term-green">[10:33:07] AUTO-REPLY COMMENT → "Chào bạn, check Messenger nhận thông tin nhé!"</div>
+                            <div class="term-yellow">[10:33:08] MESSENGER DISPATCH → Gửi link Zalo cá nhân tư vấn trực tiếp</div>
+                            <div style="margin-top:10px;color:rgba(99,102,241,0.7);font-size:11px;">Uptime: 99.9% | Đã đăng: 1,420 video | Trả lời: 4,890 bình luận | Tiết kiệm: ~45h/tháng nhân sự</div>
+                        </div>
+                        <div class="demo-terminal masonry-image" style="height:auto;min-height:300px;">
+                            <div class="term-title">Kiến trúc hệ thống</div>
+                            <div class="term-white" style="margin-top:6px;">Video từ điện thoại (Telegram Bot)</div>
+                            <div class="term-dim">↓ Node.js Uploader Daemon</div>
+                            <div class="term-blue">↓ 9router AI Engine (GPT-4o)</div>
+                            <div class="term-dim">↓ Google Sheets (Scheduling)</div>
+                            <div class="term-green">↓ Social Media API (TikTok/FB)</div>
+                            <div class="term-dim">↓ Webhooks Listener (Comments)</div>
+                            <div class="term-yellow">↓ Messenger Auto-Reply</div>
+                            <div style="margin-top:12px;border-top:1px solid rgba(255,255,255,0.06);padding-top:12px;">
+                                <div class="term-dim">Infrastructure</div>
+                                <div class="term-white">VPS: DigitalOcean SGP1</div>
+                                <div class="term-white">PM2: Always-on daemon</div>
+                                <div class="term-white">Cost: ~200k VNĐ/tháng</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tab 2: Honda ERP -->
+                <div id="tab-honda" class="w-tab-pane tab-content-hidden">
+                    <div class="mansonry-wrapper">
+                        <div class="demo-terminal masonry-image masonry-mobile-wide" style="height:auto;min-height:300px;grid-column:span 2;">
+                            <div class="term-title">Honda ERP · Tài chính &amp; Công nợ · Status: PRODUCTION</div>
+                            <div class="term-green">● Hệ thống đang chạy - cơ sở dữ liệu PostgreSQL</div>
+                            <div style="margin-top:10px;" class="term-dim">─────────────────────────────</div>
+                            <div style="margin-top:8px;" class="term-white">Chạy báo cáo công nợ nhà cung ứng Q2/2026...</div>
+                            <div class="term-blue">Truy vấn: 234 giao dịch | Thời gian: 1.2s</div>
+                            <div class="term-green">Xuất file: honda_congno_Q2_2026.xlsx ✓</div>
+                            <div style="margin-top:6px;" class="term-white">Kiểm tra hạn thanh toán sắp đến...</div>
+                            <div class="term-yellow">CẢNH BÁO: 3 hóa đơn đến hạn trong 7 ngày</div>
+                            <div class="term-blue">→ Gửi nhắc nhở Telegram tới kế toán trưởng ✓</div>
+                            <div style="margin-top:10px;color:rgba(99,102,241,0.7);font-size:11px;">Tự động hóa: Lập phiếu thu chi | Đối soát công nợ | Nhắc hạn dịch vụ</div>
+                        </div>
+                        <div class="demo-terminal masonry-image" style="height:auto;min-height:300px;">
+                            <div class="term-title">Database Schema</div>
+                            <div class="term-blue" style="margin-top:6px;">TABLE: nha_cung_ung</div>
+                            <div class="term-dim">  id, ten, ma_so_thue</div>
+                            <div class="term-dim">  han_thanh_toan, so_du</div>
+                            <div class="term-blue" style="margin-top:6px;">TABLE: hoa_don</div>
+                            <div class="term-dim">  id, ncc_id, gia_tri</div>
+                            <div class="term-dim">  ngay_den_han, trang_thai</div>
+                            <div class="term-blue" style="margin-top:6px;">TABLE: phieu_thu_chi</div>
+                            <div class="term-dim">  id, loai, so_tien</div>
+                            <div class="term-dim">  nguoi_tao, timestamp</div>
+                            <div style="margin-top:12px;border-top:1px solid rgba(255,255,255,0.06);padding-top:12px;">
+                                <div class="term-white">Stack: PostgreSQL + Express</div>
+                                <div class="term-white">Auth: JWT Role-based</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tab 3: MyAuris -->
+                <div id="tab-myauris" class="w-tab-pane tab-content-hidden">
+                    <div class="mansonry-wrapper _2-col-grid">
+                        <div class="demo-terminal masonry-image" style="height:auto;min-height:300px;">
+                            <div class="term-title">MyAuris Brain · AI RAG · Status: ONLINE</div>
+                            <div class="term-green">● Qdrant Vector DB: 1,247 chunks indexed</div>
+                            <div style="margin-top:10px;" class="term-dim">─────────────────────────</div>
+                            <div style="margin-top:8px;" class="term-white">Query: "phác đồ điều trị ù tai T-304"</div>
+                            <div class="term-blue">Semantic search → similarity: 0.94</div>
+                            <div class="term-green">Source: /protocols/tai-mui-hong/T-304.pdf</div>
+                            <div class="term-white" style="margin-top:6px;">Trả lời: Phác đồ T-304 gồm 3 giai đoạn...</div>
+                            <div class="term-dim">[trích dẫn trang 12, section 3.2]</div>
+                            <div style="margin-top:10px;border-top:1px solid rgba(255,255,255,0.06);padding-top:10px;" class="term-dim">Safety: 5-layer hallucination guard ✓</div>
+                        </div>
+                        <div class="demo-terminal masonry-image" style="height:auto;min-height:300px;">
+                            <div class="term-title">AI Pipeline</div>
+                            <div class="term-white" style="margin-top:6px;">Input → Safety Filter</div>
+                            <div class="term-blue">→ Semantic Retrieval (bge-m3)</div>
+                            <div class="term-blue">→ Context Assembly</div>
+                            <div class="term-green">→ GPT-4o Generation</div>
+                            <div class="term-yellow">→ Citation Injector</div>
+                            <div class="term-green">→ Output + Source Ref</div>
+                            <div style="margin-top:12px;border-top:1px solid rgba(255,255,255,0.06);padding-top:12px;">
+                                <div class="term-white">Model: bge-m3 + GPT-4o</div>
+                                <div class="term-white">Vector DB: Qdrant Cloud</div>
+                                <div class="term-white">API: FastAPI + LangChain</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="gradient-line bottom"></div>
+</section>
+
+<!-- ========== STUDENT PROFILE ========== -->
+<section class="section-body padding-top-bottom-120 chandung-section">
+    <div class="w-layout-blockcontainer container-padding-50 w-container">
+        <div class="w-layout-vflex tieu-de-mo-ta-big align-center marginbot-large">
+            <h2 class="heading-60">Chân dung học viên<br/>&amp; Tiêu chí phù hợp</h2>
+            <p class="paragraph-18 align-center">MERCY TECH chọn lọc học viên kỹ lưỡng để hướng dẫn chuyên sâu và đảm bảo hiệu quả chuyển đổi thực tế tốt nhất.</p>
+        </div>
+        <div class="w-layout-grid grid-2">
+            <div class="w-layout-vflex chan-dung-hoc-vien-block white">
+                <div class="w-layout-hflex flex-block-8">
+                    <img src="https://cdn.prod.website-files.com/697b0cca42eeacffeeedc2c6/697b4548c60571bc2b0e69ba_8d04e2a08b4a1fb56a01150088a3c4fa_Tick%20icon.png" loading="lazy" alt="" class="chandungicon"/>
+                    <h4 class="heading-40 hinhthuctitle">Đặc biệt phù hợp với</h4>
+                </div>
+                <div class="w-layout-vflex flex-block-13">
+                    <div class="w-layout-vflex">
+                        <p class="paragraph-14 uppercase">01 — Quản lý &amp; Leader</p>
+                        <h6 class="heading-30 chandungsub">Quản lý &amp; Leader</h6>
+                        <p class="paragraph-16">Muốn làm chủ tư duy thiết kế hệ thống AI Agent để tự triển khai cho phòng ban, không bị phụ thuộc vào bên kỹ thuật hay các vendor đắt đỏ.</p>
+                    </div>
+                    <div class="w-layout-vflex">
+                        <p class="paragraph-14 uppercase">02 — Chủ Shop &amp; Doanh nghiệp SME</p>
+                        <h6 class="heading-30 chandungsub">Chủ Shop &amp; Doanh nghiệp SME</h6>
+                        <p class="paragraph-16">Đang tìm kiếm giải pháp tự động hóa Zalo để chống sót đơn sỉ, giảm tải thời gian nhập dữ liệu thủ công và tối ưu chi phí vận hành tổng thể.</p>
+                    </div>
+                    <div class="w-layout-vflex">
+                        <p class="paragraph-14 uppercase">03 — Freelancer &amp; Dev</p>
+                        <h6 class="heading-30 chandungsub">Freelancer &amp; Dev</h6>
+                        <p class="paragraph-16">Muốn học cách dùng AI (Antigravity) sinh code nhanh để nhận thêm các job tự động hóa/custom bot Zalo-Telegram cho khách hàng doanh nghiệp.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="w-layout-vflex chan-dung-hoc-vien-block grey">
+                <div class="w-layout-vflex flex-block-15">
+                    <div class="w-layout-hflex flex-block-8">
+                        <img src="https://cdn.prod.website-files.com/697b0cca42eeacffeeedc2c6/697b45968aebea867ccb1b6d_ab29ec248d8fbea8deeab44f5e336b5d_Cross%20Icon.png" loading="lazy" alt="" class="chandungicon"/>
+                        <h4 class="heading-40 hinhthuctitle">Không phù hợp với</h4>
+                    </div>
+                    <div class="w-layout-vflex flex-block-14">
+                        <div class="w-layout-vflex khong-phu-hop-block">
+                            <h6 class="heading-30 chandungsub">Hardcore Developers</h6>
+                            <p class="paragraph-16">Những người muốn đi sâu vào lý thuyết thuật toán AI hoặc lập trình phần mềm truyền thống thay vì học tư duy thiết kế luồng ứng dụng thực chiến.</p>
+                        </div>
+                        <div class="w-layout-vflex khong-phu-hop-block">
+                            <h6 class="heading-30 chandungsub">Tool Collectors</h6>
+                            <p class="paragraph-16">Những người chỉ muốn "sưu tầm" danh sách công cụ AI hot trend mà không quan tâm đến tư duy nghiệp vụ và tối ưu hóa hệ thống thực tế.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="div-block-40"><p class="paragraph-16 italic">*Lưu ý: Workshop tập trung hoàn toàn vào Tư duy thiết kế hệ thống thực chiến</p></div>
+            </div>
+        </div>
+    </div>
+    <div class="gradient-line bottom"></div>
+</section>
+
+<!-- ========== INVESTMENT / COST ========== -->
+<section id="chiphi" class="section-body padding-top-bottom-120">
+    <div class="w-layout-blockcontainer container-padding-50 w-container">
+        <div class="w-row">
+            <div class="column-16 w-col w-col-5 w-col-stack">
+                <div class="block-chi-phi">
+                    <div class="w-layout-vflex tieu-de-mo-ta-big khoan-dau-tu">
+                        <div class="w-layout-vflex flex-block-30">
+                            <h2 class="heading-40">Học phí vé mời Zoom</h2>
+                            <div class="w-layout-vflex flex-block-29">
+                                <h2 class="heading-80" style="color:#10B981;">0</h2>
+                                <h2 class="heading-40 opacity-50" style="color:#10B981;">VNĐ</h2>
+                            </div>
+                            <h2 class="paragraph-16 uppercase opacity-50">Miễn phí — giới hạn 50 slot đăng ký sớm</h2>
+                        </div>
+                        <p class="paragraph-18">Đây <span><strong class="bold-text">không phải</strong></span> buổi marketing quảng cáo sản phẩm hay "teaser" mơ hồ.</p>
+                        <p class="paragraph-18">Đây là buổi <span class="bold-text">Proof of Work</span> thực tế từ các dự án đang chạy của MERCY TECH. Anh chị sẽ thấy tận mắt quá trình xây dựng, cấu hình và deploy hệ thống bot thực tế — cơ hội sở hữu tư duy hệ thống và cách ra lệnh cho AI code hộ để tự tạo ra tài sản công nghệ cho mình.</p>
+                    </div>
+                    <a href="#dang-ky" class="button-arrow-fill stroke-white inline-btn w-inline-block">
+                        <div class="link">Đăng ký tham gia Zoom</div>
+                    </a>
+                </div>
+            </div>
+            <div class="column-15 w-col w-col-7 w-col-stack">
+                <div class="w-layout-vflex gia-tri-goi-hoc">
+                    <div class="w-layout-hflex flex-block-8">
+                        <img src="https://cdn.prod.website-files.com/697b0cca42eeacffeeedc2c6/697c5c5aafd19ccf25105f78_a4abc7caab8baa378baec4ce2714ea30_shield%20icon.png" loading="lazy" alt="" class="chandungicon"/>
+                        <h4 class="heading-40 toi-nhan-rui-ro">Bảo chứng chất lượng — Quyền Phủ Quyết</h4>
+                    </div>
+                    <p class="paragraph-16">MERCY TECH tin rằng chất lượng thực tế phải đi trước. Đối với các anh em muốn đi sâu hơn sau workshop, chúng tôi có cơ chế đảm bảo tuyệt đối khi đăng ký Bootcamp thực chiến:</p>
+                    <div class="w-layout-vflex flex-block-32">
+                        <div class="w-layout-hflex gia-tri-buoc">
+                            <div class="circle"></div>
+                            <div class="w-layout-vflex">
+                                <h6 class="tittle-22">Bước 1: Tham gia buổi học đầu tiên của Bootcamp</h6>
+                                <p class="paragraph-16">Quan sát kỹ phương pháp hướng dẫn, độ thực tế của source code và khả năng support kỹ thuật của đội ngũ MERCY TECH.</p>
+                            </div>
+                        </div>
+                        <div class="w-layout-hflex gia-tri-buoc">
+                            <div class="circle"></div>
+                            <div class="w-layout-vflex">
+                                <h6 class="tittle-22">Quyền quyết định của học viên</h6>
+                                <div class="w-layout-hflex quyen-quyet-dinh">
+                                    <div class="phu-hop">
+                                        <div class="w-layout-vflex flex-block-31">
+                                            <img src="https://cdn.prod.website-files.com/697b0cca42eeacffeeedc2c6/697b4548c60571bc2b0e69ba_8d04e2a08b4a1fb56a01150088a3c4fa_Tick%20icon.png" loading="lazy" alt="" class="image-40"/>
+                                            <p class="paragraph-16 uppercase">Phù hợp</p>
+                                        </div>
+                                        <p class="paragraph-16">Chúng ta tiếp tục đồng hành trọn vẹn đến khi hoàn thiện hệ thống bot.</p>
+                                    </div>
+                                    <div class="phu-hop chua-phu-hop">
+                                        <div class="w-layout-vflex flex-block-31">
+                                            <img src="https://cdn.prod.website-files.com/697b0cca42eeacffeeedc2c6/697b45968aebea867ccb1b6d_ab29ec248d8fbea8deeab44f5e336b5d_Cross%20Icon.png" loading="lazy" alt="" class="image-40"/>
+                                            <p class="paragraph-16 uppercase">Chưa phù hợp</p>
+                                        </div>
+                                        <p class="paragraph-16">Nhận lại <span class="bold-text">100% học phí</span> giữ chỗ, không thắc mắc hay ràng buộc.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-layout-hflex gia-tri-buoc">
+                            <div class="circle"></div>
+                            <div class="w-layout-vflex">
+                                <div class="w-layout-hflex cam-ket-hoan-tien">
+                                    <img src="https://cdn.prod.website-files.com/697b0cca42eeacffeeedc2c6/697b4548c60571bc2b0e69ba_8d04e2a08b4a1fb56a01150088a3c4fa_Tick%20icon.png" loading="lazy" alt="" class="image-40"/>
+                                    <h6 class="tittle-22">Cam kết hoàn tiền 100%</h6>
+                                </div>
+                                <p class="paragraph-16 italic align-left">Không thắc mắc. Không ràng buộc. Chỉ áp dụng sau Buổi 1 của Bootcamp.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== TIMELINE ========== -->
+<section id="loitrinha" class="section-body padding-top-bottom-120 small-padding-bottom">
+    <div class="div-block-44">
+        <img src="https://cdn.prod.website-files.com/697b0cca42eeacffeeedc2c6/697b69c497c7ca161faee5ec_light.avif" loading="lazy" alt="" class="image-38"/>
+    </div>
+    <div class="w-layout-blockcontainer container-padding-50 w-container">
+        <div class="w-layout-vflex tieu-de-mo-ta-big align-center">
+            <h2 class="heading-60">Lộ trình chi tiết<br/>buổi Workshop 90 phút</h2>
+            <p class="paragraph-18 align-center">Đi từ tư duy nghiệp vụ cốt lõi đến live demo thực chiến và phương án làm chủ server riêng.</p>
+        </div>
+    </div>
+</section>
+
+<div class="section-timeline">
+    <div class="container-2">
+        <div class="timeline_component">
+            <div class="timeline_progress">
+                <div class="timeline_progress-bar"></div>
+            </div>
+            <!-- Part 1 -->
+            <div class="timeline_item">
+                <div class="timeline_left">
+                    <div class="paragraph-16 uppercase opacity-50">Phần 01 (15 Phút)</div>
+                    <div class="heading-40">Tư duy Nghiệp vụ &amp;<br/>Thiết kế luồng MKT</div>
+                </div>
+                <div class="timeline_centre"><div class="timeline_circle"></div></div>
+                <div class="timeline_right">
+                    <div class="margin-bottom-xlarge">
+                        <div class="tittle-22">Mục tiêu cốt lõi</div>
+                        <div class="w-layout-vflex flex-block-12">
+                            <p class="paragraph-16">Hiểu bản chất luồng dữ liệu Marketing Automation và chuyển đổi từ thao tác đăng tải/tương tác thủ công sang hệ thống chạy tự động.</p>
+                            <ul role="list" class="list-2">
+                                <li><p class="paragraph-16">Cách thiết kế luồng đi của video từ điện thoại (Telegram) đến hệ thống quản lý Google Sheets.</p></li>
+                                <li><p class="paragraph-16">Cơ chế điều hướng khách hàng từ bình luận công khai Fanpage vào hộp thư tin nhắn và về Zalo cá nhân.</p></li>
+                                <li><p class="paragraph-16">Phương pháp chọn kịch bản thông minh - hạn chế bãi bóp tương tác hoặc chặn spam từ nền tảng.</p></li>
+                            </ul>
+                            <p class="paragraph-16">→ Sau phần này: Bạn nắm được sơ đồ tổng quát và thiết kế luồng chuẩn để tối ưu phễu chuyển đổi.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Part 2 -->
+            <div class="timeline_item">
+                <div class="timeline_left">
+                    <div class="paragraph-16 uppercase opacity-50">Phần 02 (25 Phút)</div>
+                    <div class="heading-40">Prompting &amp;<br/>Luyện Trí Tuệ Nhân Tạo</div>
+                </div>
+                <div class="timeline_centre"><div class="timeline_circle"></div></div>
+                <div class="timeline_right">
+                    <div class="margin-bottom-xlarge">
+                        <div class="tittle-22">Mục tiêu cốt lõi</div>
+                        <div class="w-layout-vflex flex-block-12">
+                            <p class="paragraph-16">Phương pháp huấn luyện AI để tự sinh nội dung và kịch bản tư vấn bình luận giống hệt con người.</p>
+                            <ul role="list" class="list-2">
+                                <li><p class="paragraph-16">Cấu hình nhân cách bot (SOUL.md) để viết caption/hashtag chuẩn tông giọng từng thương hiệu.</p></li>
+                                <li><p class="paragraph-16">Thiết lập kịch bản thông minh phản hồi bình luận (SKILL.md) nhằm tối ưu tỷ lệ chuyển đổi Lead.</p></li>
+                                <li><p class="paragraph-16">Kỹ thuật chống ảo giác AI (Hallucination) để AI không tự ý báo giá sai hoặc trả lời thông tin nhạy cảm.</p></li>
+                            </ul>
+                            <p class="paragraph-16">→ Sau phần này: Bạn hiểu cách làm chủ prompt để AI viết bài &amp; tư vấn chính xác 100%.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Part 3 – Highlight -->
+            <div class="timeline_item">
+                <div class="timeline_left">
+                    <div class="paragraph-16 uppercase higtlight-color">Phần 03 (20 Phút) — Trọng tâm</div>
+                    <div class="heading-40">Live Demo: Đăng bài đa kênh<br/>&amp; Auto-Reply trong 5s</div>
+                </div>
+                <div class="timeline_centre">
+                    <div class="timeline_circle" style="background-color:#6366F1;box-shadow:0 0 12px rgba(99,102,241,0.6);"></div>
+                </div>
+                <div class="timeline_right timeline_right_highlight">
+                    <div class="margin-bottom-xlarge white-border">
+                        <div class="tittle-22">Trọng tâm thực chiến</div>
+                        <div class="w-layout-vflex flex-block-12">
+                            <p class="paragraph-16">Trải nghiệm trực quan quy trình tự động hóa hoàn chỉnh của trợ lý Marketing AI hoạt động thời gian thực.</p>
+                            <ul role="list" class="list-2">
+                                <li><p class="paragraph-16">Gửi video thô qua Telegram Bot trên điện thoại và xem AI tự sinh caption/hashtag chuẩn SEO chỉ sau vài giây.</p></li>
+                                <li><p class="paragraph-16">Đăng video Reels/TikTok tự động theo lịch hẹn Google Sheets trên máy chủ VPS Singapore.</p></li>
+                                <li><p class="paragraph-16">Live-test comment bài viết, AI lập tức phản hồi comment và gửi tin nhắn Messenger chứa link phễu Zalo trong vòng 5 giây.</p></li>
+                            </ul>
+                            <p class="paragraph-16">→ Sau phần này: Bạn thấy tận mắt cách hệ thống hoạt động thực tế 24/7 và sẵn sàng áp dụng ngay.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Part 4 -->
+            <div class="timeline_item">
+                <div class="timeline_left">
+                    <div class="paragraph-16 uppercase opacity-50">Phần 04 (30 Phút)</div>
+                    <div class="heading-40">Làm chủ hạ tầng VPS &amp;<br/>Q&amp;A trực tiếp</div>
+                </div>
+                <div class="timeline_centre"><div class="timeline_circle"></div></div>
+                <div class="timeline_right">
+                    <div class="margin-bottom-xlarge">
+                        <div class="tittle-22">Mục tiêu cốt lõi</div>
+                        <div class="w-layout-vflex flex-block-12">
+                            <p class="paragraph-16">Hướng dẫn cách deploy bot tự chạy trên server riêng và định hướng giải pháp phù hợp cho từng mô hình doanh nghiệp.</p>
+                            <ul role="list" class="list-2">
+                                <li><p class="paragraph-16">Cách thuê VPS và cấu hình PM2 để bot chạy ổn định 24/7, không bị tắt khi reset máy hay mất điện.</p></li>
+                                <li><p class="paragraph-16">Giải đáp thắc mắc trực tiếp của từng học viên về bài toán vận hành của riêng doanh nghiệp họ.</p></li>
+                                <li><p class="paragraph-16">Định hướng lộ trình Bootcamp thực chiến 4 tuần để tự build bot của riêng mình với sự hỗ trợ từ đội MERCY TECH.</p></li>
+                            </ul>
+                            <div class="div-block-39">
+                                <p class="paragraph-16 italic left-align-small">*Mỗi học viên sẽ được tư vấn cá nhân hóa về bài toán tự động hóa phù hợp nhất với ngành nghề của mình.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="overlay-fade-bottom"></div>
+        <div class="overlay-fade-top"></div>
+    </div>
+</div>
+
+<!-- ========== HÌNH THỨC HỌC TẬP (Section thiếu – match WeCommit exactly) ========== -->
+<section class="section-body padding-top-bottom-100">
+    <div class="w-layout-blockcontainer container-padding-50 w-container">
+        <div class="w-layout-grid grid-2">
+            <div class="w-layout-vflex chan-dung-hoc-vien-block">
+                <div class="w-layout-hflex flex-block-8">
+                    <img src="https://cdn.prod.website-files.com/697b0cca42eeacffeeedc2c6/697b59bff329a310ac6818a7_arcticons_zoom.png" loading="lazy" alt="" class="chandungicon"/>
+                    <h4 class="heading-40 hinhthuctitle">Hình thức tham gia</h4>
+                </div>
+                <div class="w-layout-vflex h-nh-th-c-h-c-t-p">
+                    <h6 class="heading-30 hinhthuctitle">Zoom Trực Tiếp (Live)</h6>
+                    <p class="paragraph-16">01 buổi duy nhất (90 phút). Tương tác trực tiếp, thử nghiệm bot ngay trên màn hình cùng người hướng dẫn Vy Thiên Hùng.</p>
+                </div>
+                <div class="w-layout-vflex h-nh-th-c-h-c-t-p">
+                    <h6 class="heading-30 hinhthuctitle">Nhận tài liệu sau buổi học</h6>
+                    <p class="paragraph-16">Toàn bộ slide, template SOUL.md/SKILL.md mẫu và danh sách tài nguyên triển khai sẽ được gửi qua nhóm Zalo ngay sau workshop.</p>
+                </div>
+                <div class="w-layout-vflex flex-block-16">
+                    <h6 class="heading-30 hinhthuctitle">Cộng đồng thực chiến</h6>
+                    <p class="paragraph-16">Kết nối với những chủ shop, quản lý và freelancer đang ứng dụng AI Automation thực tế — học hỏi từ người đang làm thật, không phải lý thuyết.</p>
+                </div>
+            </div>
+            <div class="w-layout-vflex chan-dung-hoc-vien-block dac-quyen-support">
+                <div class="w-layout-vflex flex-block-17">
+                    <div class="w-layout-hflex flex-block-8">
+                        <img src="https://cdn.prod.website-files.com/697b0cca42eeacffeeedc2c6/697b5ae7c1af39213a55061e_symbol%20logo.png" loading="lazy" alt="" class="chandungicon"/>
+                        <h4 class="heading-40 hinhthuctitle">Đặc quyền hỗ trợ</h4>
+                    </div>
+                    <div class="w-layout-vflex flex-block-18">
+                        <h6 class="heading-30 hinhthuctitle">Tư vấn 1-1 sau Workshop (Không bắt buộc)</h6>
+                        <p class="paragraph-16 align-center">Dành cho học viên muốn tháo gỡ vướng mắc cụ thể, làm rõ cách áp dụng vào bài toán doanh nghiệp riêng, hoặc tìm hiểu về lộ trình Bootcamp chuyên sâu 4 tuần.</p>
+                    </div>
+                </div>
+                <div class="div-block-50">
+                    <div class="div-block-49">
+                        <h6 class="heading-30-copy timetable">Chủ Nhật 14/06/2026 · 20:00 - 21:30</h6>
+                    </div>
+                </div>
+                <div class="div-block-40">
+                    <p class="paragraph-16 italic"><em>*Slot Zoom giới hạn tối đa 50 người để đảm bảo chất lượng tương tác và Q&amp;A trực tiếp với từng học viên.</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== CTA REGISTRATION ========== -->
+<section id="dang-ky" class="section-body padding-top-bottom-120 white-section">
+    <div class="w-layout-blockcontainer container-padding-50 w-container">
+        <h2 class="heading-60 dark-heading center-heading">Sẵn sàng cho<br/>hành trình tiếp theo?</h2>
+        <div class="cta-form">
+            <div class="w-layout-grid grid-3">
+                <div class="cta-grid-child">
+                    <div class="paragraph-16 black semibold-uppercase">Ngày diễn ra</div>
+                    <div class="paragraph-big">Chủ Nhật 14/06/2026</div>
+                </div>
+                <div class="cta-grid-child">
+                    <div class="paragraph-16 black semibold-uppercase">Thời lượng</div>
+                    <div class="paragraph-big">90 Phút</div>
+                </div>
+                <div class="cta-grid-child">
+                    <div class="paragraph-16 black semibold-uppercase">Lịch học cố định</div>
+                    <div class="paragraph-big">20:00 - 21:30</div>
+                    <div class="paragraph-14 black margin-top-close">Qua Zoom (link gửi sau đăng ký)</div>
+                </div>
+            </div>
+        </div>
+        <div class="div-block-48" style="display: flex; flex-direction: row; gap: 32px; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; margin-bottom: 24px;">
+            <div class="heading-30 black" style="flex: 1.2; min-width: 300px; font-size: 20px; line-height: 1.5; color: #1f2937;">
+                MERCY TECH giới hạn tối đa 50 slot Zoom để cam kết chất lượng tương tác và giải đáp trực tiếp tốt nhất cho từng học viên.
+                
+                <div style="margin-top: 14px; font-size: 14px; color: #4b5563; line-height: 1.6;">
+                    Sau buổi workshop, MERCY TECH cung cấp 2 giải pháp chuyển giao chính:
+                    <ul style="padding-left: 18px; margin: 8px 0 0 0; display: flex; flex-direction: column; gap: 6px;">
+                        <li><strong>Khóa học/Bootcamp thực chiến:</strong> Hướng dẫn chi tiết từng dòng code để bạn tự lập trình, deploy và làm chủ hệ thống bot của riêng mình.</li>
+                        <li><strong>Dịch vụ Setup Doanh nghiệp trọn gói:</strong> Đội ngũ Mercy Tech trực tiếp tư vấn khảo sát nghiệp vụ, lập trình, cấu hình Proxy/VPS và triển khai bàn giao hệ thống AI vận hành hoàn chỉnh cho doanh nghiệp của bạn.</li>
+                    </ul>
+                </div>
+
+                <!-- Highlights for student benefits upon registration -->
+                <div style="margin-top: 24px; padding: 20px; background: rgba(99, 102, 241, 0.05); border-left: 4px solid #6366f1; border-radius: 4px 12px 12px 4px; box-shadow: 0 4px 15px rgba(99,102,241,0.02);">
+                    <div style="font-family:'Outfit',sans-serif; font-weight:700; font-size:15px; color:#4f46e5; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:12px;">Đặc quyền nhận ngay sau buổi học:</div>
+                    <ul style="list-style: none; padding-left: 0; margin: 0; display: flex; flex-direction: column; gap: 10px;">
+                        <li style="display: flex; align-items: flex-start; gap: 8px; font-size: 14px; line-height: 1.4; color: #374151;">
+                            <span style="color:#10b981; font-weight:bold; font-size:16px;">✓</span> <span><strong>Mã nguồn Clawbot MKT</strong> (Tự động đăng bài &amp; Auto-Reply)</span>
+                        </li>
+                        <li style="display: flex; align-items: flex-start; gap: 8px; font-size: 14px; line-height: 1.4; color: #374151;">
+                            <span style="color:#10b981; font-weight:bold; font-size:16px;">✓</span> <span><strong>Mẫu Prompt cấu hình AI Agent</strong> (SOUL.md &amp; SKILL.md)</span>
+                        </li>
+                        <li style="display: flex; align-items: flex-start; gap: 8px; font-size: 14px; line-height: 1.4; color: #374151;">
+                            <span style="color:#10b981; font-weight:bold; font-size:16px;">✓</span> <span><strong>Bản vẽ sơ đồ kiến trúc</strong> hệ thống Marketing Automation đa kênh</span>
+                        </li>
+                        <li style="display: flex; align-items: flex-start; gap: 8px; font-size: 14px; line-height: 1.4; color: #374151;">
+                            <span style="color:#10b981; font-weight:bold; font-size:16px;">✓</span> <span><strong>Tư vấn 1-1 trực tiếp</strong> tháo gỡ bài toán của bạn với Mentor</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="chi-phi-footer" style="flex: 0.8; min-width: 200px; text-align: center; background: #fafafa; border: 1px solid #eaeaea; padding: 24px; border-radius: 16px;">
+                <div class="paragraph-16 black semibold-uppercase opacity-70" style="font-size: 13px; font-weight: 700; color: #4b5563;">Học phí tham gia</div>
+                <div class="heading-60 black-color-text opacity-80 semibold align-center" style="color:#10B981; font-size: 54px; font-weight: 800; line-height: 1.1; margin: 12px 0;">0 VNĐ</div>
+                <div class="paragraph-14 black margin-top-close small-text" style="font-size: 12px; color: #6b7280; line-height: 1.4;">Cam kết 100% giá trị thực chiến, không lý thuyết suông</div>
+            </div>
+        </div>
+        <div class="form-block w-form">
+            <div id="cta-form-wrapper">
+                <form id="wf-form-Contact-Form" name="wf-form-Contact-Form" class="form-2">
+                    <div class="field-block">
+                        <label for="name" class="field-label-name">Tên của bạn<span class="red-color"> *</span></label>
+                        <input class="field-text w-input" maxlength="256" name="name" placeholder="Ví dụ: Vy Thiên Hùng" type="text" id="name" required=""/>
+                    </div>
+                    <div class="w-layout-vflex flex-block-28">
+                        <div class="field-block">
+                            <label for="Email" class="field-label-name">Email<span class="red-color"> *</span></label>
+                            <input class="field-text w-input" maxlength="256" name="Email" placeholder="yourmail@example.com" type="email" id="Email" required=""/>
+                        </div>
+                        <div class="field-block">
+                            <label for="Tel" class="field-label-name">Số điện thoại (Zalo)<span class="red-color"> *</span></label>
+                            <input class="field-text w-input" maxlength="256" name="Tel" pattern="[0-9]{10}" placeholder="09xxxxxxxx" type="tel" id="Tel" required=""/>
+                        </div>
+                    </div>
+                    <div class="field-block">
+                        <label for="Role" class="field-label-name">Chức vụ / Ngành nghề kinh doanh *</label>
+                        <textarea id="Role" name="Role" maxlength="5000" placeholder="Chủ shop bán sỉ / Trưởng phòng vận hành / Freelancer Dev" class="field-text note-field-text w-input" required="" style="height:60px;"></textarea>
+                    </div>
+                    <div class="field-block">
+                        <label for="Ques" class="field-label-name">Bài toán bạn đang gặp phải là gì?</label>
+                        <textarea id="Ques" name="Ques" maxlength="5000" placeholder="Đâu là điều bạn quan tâm nhất? / Quy trình nào cần tự động hóa ngay? / Câu hỏi khác nếu có..." class="field-text note-field-text longer-textarea-field w-input"></textarea>
+                    </div>
+                    <div class="field-block">
+                        <label for="Source" class="field-label-name">Bạn biết đến Workshop từ nguồn nào? *</label>
+                        <select id="Source" name="Source" class="field-text w-input" required="" style="height:50px;">
+                            <option value="" disabled selected>Chọn nguồn đăng ký</option>
+                            <option value="zalo-personal">Zalo cá nhân Vy Thiên Hùng</option>
+                            <option value="fb-personal">Facebook cá nhân Vy Thiên Hùng</option>
+                            <option value="group-ai">Group cộng đồng AI Việt Nam</option>
+                            <option value="group-misa">Group cộng đồng kế toán / ERP</option>
+                            <option value="referral">Bạn bè giới thiệu</option>
+                            <option value="group-other">Khác</option>
+                        </select>
+                    </div>
+                    <label class="w-checkbox" style="margin-top:16px;">
+                        <input type="checkbox" name="newsletter" id="newsletter" class="w-checkbox-input"/>
+                        <span class="paragraph-14 black w-form-label" for="newsletter">Tôi muốn nhận thông tin cập nhật từ MERCY TECH</span>
+                    </label>
+                    <div class="div-block-14" style="margin-top:24px;">
+                        <input type="submit" class="button-arrow-fill stroke-white stroke-black w-button" style="background-color:#07070a;color:#ffffff;border-color:#07070a;" value="Xác nhận đăng ký tham gia"/>
+                    </div>
+                </form>
+            </div>
+            <!-- Success State -->
+            <div id="cta-success-wrapper" style="display:none;text-align:center;padding:48px 0;">
+                <div style="width:72px;height:72px;background:rgba(16,185,129,0.1);color:#10B981;border:2px solid rgba(16,185,129,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-size:32px;font-weight:700;font-family:'Outfit',sans-serif;">✓</div>
+                <h1 class="success-heading-form" style="color:#07070a;">Đăng Ký Thành Công!</h1>
+                <div class="success-text-note" style="color:rgba(0,0,0,0.6);font-size:15px;margin-bottom:32px;line-height:1.7;">
+                    Thông tin của bạn đã được ghi nhận.<br/>
+                    Hãy bấm nút bên dưới để tham gia nhóm Zalo hỗ trợ —<br/>nhận link Zoom và tài liệu hướng dẫn chuẩn bị trước buổi học.
+                </div>
+                <a href="https://zalo.me/g/knfhm1bqcempjbodwfwa" target="_blank" class="button-arrow-fill stroke-white stroke-black w-button" style="background-color:#0068FF;color:#ffffff;border-color:#0068FF;display:inline-flex;align-items:center;gap:10px;">
+                    Tham Gia Nhóm Zalo Nhận Link Zoom
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== FOOTER (WeCommit style) ========== -->
+<section class="section-4">
+    <div class="container-padding-50 center-margin">
+        <div class="f-footer-bottom">
+            <div class="f-footer-brand" style="display: flex; align-items: center; gap: 12px;">
+                <a href="#hero" class="f-footer-logo-mark w-inline-block" style="background: none; width: auto; height: auto;">
+                    <img src="logo_footer.png" alt="MERCY TECH Logo" style="height: 32px; width: auto; object-fit: contain;"/>
+                </a>
+                <div class="f-footer-line"></div>
+                <p class="f-footer-detail">© 2026 <strong class="bold-text-2">MERCY TECH</strong>. Mọi quyền được bảo lưu.</p>
+            </div>
+            <div class="f-footer-group">
+                <div class="f-footer-menu">
+                    <a href="mailto:vythienhung@mercytech.vn" class="f-footer-link w-inline-block">
+                        <div class="text-block-8">Liên hệ hợp tác</div>
+                    </a>
+                    <div class="f-footer-vertical-divider"></div>
+                    <a href="#dang-ky" class="f-footer-link w-inline-block">
+                        <div>Đăng ký Workshop</div>
+                    </a>
+                    <div class="f-footer-vertical-divider"></div>
+                    <a href="#loitrinha" class="f-footer-link w-inline-block">
+                        <div>Lộ trình</div>
+                    </a>
+                </div>
+                <div class="f-footer-social-row-large">
+                    <div class="f-footer-social-group">
+                        <!-- Facebook -->
+                        <a href="#" class="f-footer-social w-inline-block">
+                            <div class="f-icon-regular w-embed">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12.0001 3.6665C7.39758 3.6665 3.66675 7.39734 3.66675 11.9998C3.66675 16.159 6.71425 19.6065 10.6984 20.2323V14.4082H8.58175V11.9998H10.6984V10.164C10.6984 8.07567 11.9417 6.92234 13.8459 6.92234C14.7576 6.92234 15.7109 7.08484 15.7109 7.08484V9.13484H14.6609C13.6251 9.13484 13.3026 9.77734 13.3026 10.4365V11.9998H15.6134L15.2442 14.4082H13.3026V20.2323C17.2859 19.6073 20.3334 16.1582 20.3334 11.9998C20.3334 7.39734 16.6026 3.6665 12.0001 3.6665Z" fill="currentColor"/>
+                                </svg>
+                            </div>
+                        </a>
+                        <!-- Zalo (custom icon) -->
+                        <a href="#" class="f-footer-social w-inline-block">
+                            <div class="f-icon-regular w-embed">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="3" y="3" width="18" height="18" rx="4" fill="currentColor" opacity="0.15"/>
+                                    <text x="12" y="15.5" text-anchor="middle" font-size="8" font-weight="bold" fill="currentColor" font-family="Arial">ZALO</text>
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== SCRIPTS ========== -->
+<script type="text/javascript">
+    // Add w-mod-js class (Webflow standard)
+    !function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js";("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);
+
+    // Tab switching
+    function switchTab(tabId, btnElement) {
+        document.querySelectorAll('.w-tab-pane').forEach(pane => {
+            pane.classList.remove('tab-content-active');
+            pane.classList.add('tab-content-hidden');
+        });
+        document.querySelectorAll('.tab-link').forEach(link => {
+            link.classList.remove('w--current');
+        });
+        const target = document.getElementById(tabId);
+        if (target) {
+            target.classList.remove('tab-content-hidden');
+            target.classList.add('tab-content-active');
+        }
+        if (btnElement) btnElement.classList.add('w--current');
+    }
+
+    // Form submission
+    document.getElementById('wf-form-Contact-Form').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const payload = {
+            type: 'workshop_registration',
+            name:   document.getElementById('name').value,
+            email:  document.getElementById('Email').value,
+            tel:    document.getElementById('Tel').value,
+            role:   document.getElementById('Role').value,
+            ques:   document.getElementById('Ques').value,
+            source: document.getElementById('Source').value,
+            newsletter: document.getElementById('newsletter').checked,
+            timestamp: new Date().toLocaleString('vi-VN')
+        };
+
+        console.log('[MERCY TECH] Workshop registration:', payload);
+
+        // 1. Gửi trực tiếp lên Google Sheets qua Apps Script
+        const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbzf07iN0u4mV1TGGtuGQ1t7Ey9HVecScILUZURbWb_tt_GHL2EkFKS_hjwv1rlHhNh-4A/exec';
+        
+        fetch(GOOGLE_SHEET_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        })
+        .then(() => {
+            console.log('[MERCY TECH] Sent to Google Sheets successfully.');
+        })
+        .catch(err => {
+            console.error('[MERCY TECH] Google Sheets submit error:', err);
+        });
+
+        // 2. Gửi sang Google Forms (https://forms.gle/kNUsSPknaZvG3T5e7)
+        const GOOGLE_FORM_ACTION_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfPMt9g9kOBFclw3U0Cdn_yoJ_3of95czeZM9xGFp7mZFTlIQ/formResponse';
+        
+        const sourceSelect = document.getElementById('Source');
+        const sourceText = sourceSelect.options[sourceSelect.selectedIndex].text;
+        
+        const googleFormData = new URLSearchParams();
+        googleFormData.append('entry.758205017', payload.name);
+        googleFormData.append('entry.1317464237', payload.email);
+        googleFormData.append('entry.1723274113', payload.tel);
+        googleFormData.append('entry.1943911455', payload.role);
+        googleFormData.append('entry.652271284', payload.ques);
+        googleFormData.append('entry.266646349', sourceText);
+        
+        if (payload.newsletter) {
+            googleFormData.append('entry.1509250044', 'True');
+        }
+
+        fetch(GOOGLE_FORM_ACTION_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: googleFormData.toString()
+        })
+        .then(() => {
+            console.log('[MERCY TECH] Sent to Google Forms successfully.');
+        })
+        .catch(err => {
+            console.error('[MERCY TECH] Google Forms submit error:', err);
+        });
+
+        // Show success state
+        document.getElementById('cta-form-wrapper').style.display = 'none';
+        document.getElementById('cta-success-wrapper').style.display = 'block';
+    });
+</script>
+</body>
+</html>
