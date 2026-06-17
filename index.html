@@ -43,12 +43,130 @@
         }
 
         html.w-mod-js:not(.w-mod-ix3) :is(.heading-45-medium-80:has(.heading-45-medium-80)) { visibility: hidden !important; }
+
+        /* ========================================
+           VISUAL ENERGY – GLOBAL
+        ======================================== */
+
+        /* Alternating section tint so page isn't one flat color */
+        #vande, #giatri, #loitrinha { background: radial-gradient(ellipse 80% 40% at 50% 0%, rgba(214,185,140,0.05) 0%, transparent 70%); }
+        #giangvien { background: radial-gradient(ellipse 70% 50% at 30% 50%, rgba(143,199,174,0.05) 0%, transparent 60%); }
+        #chiphi { background: radial-gradient(ellipse 80% 40% at 70% 0%, rgba(214,185,140,0.07) 0%, transparent 65%); }
+        #dang-ky { background: radial-gradient(ellipse 90% 50% at 50% 100%, rgba(214,185,140,0.08) 0%, transparent 70%); }
+
+        /* Hero title gets a faint gold glow */
+        .hero-title {
+            text-shadow: 0 0 80px rgba(214,185,140,0.18);
+        }
+
+        /* Primary CTA button – shimmer animation */
+        @keyframes shimmer-gold {
+            0%   { background-position: -200% center; }
+            100% { background-position:  200% center; }
+        }
+        .button-arrow-fill.fill-white {
+            background: linear-gradient(90deg, #ffffff 0%, #f5f0e8 40%, #ffffff 60%, #f8f5f0 100%);
+            background-size: 200% auto;
+            animation: shimmer-gold 3.2s linear infinite;
+        }
+
+        /* Section kicker labels – gold color unification */
+        .hero-eyebrow,
+        .case-panel-kicker,
+        .showcase-kicker,
+        .deliverables-kicker,
+        .proof-signal-label,
+        .case-proof-label,
+        .pricing-tag,
+        .cta-summary-label {
+            color: var(--accent) !important;
+        }
+
+        /* Cards – stronger glass depth */
+        .hero-mini-card,
+        .tam-nhin-block,
+        .chan-dung-hoc-vien-block,
+        .deliverable-card,
+        .case-system-step,
+        .case-mini-card,
+        .proof-signal-card,
+        .timeline_item {
+            background: linear-gradient(145deg, rgba(255,255,255,0.055), rgba(255,255,255,0.02)) !important;
+            border: 1px solid rgba(255,255,255,0.09) !important;
+        }
+        
+        /* Gradient separators between major sections */
+        .gradient-line.top {
+            background: linear-gradient(90deg, transparent 0%, rgba(214,185,140,0.3) 30%, rgba(214,185,140,0.5) 50%, rgba(214,185,140,0.3) 70%, transparent 100%) !important;
+            height: 1px !important;
+            opacity: 0.6 !important;
+        }
+        .gradient-line.bottom {
+            background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.12) 50%, transparent 100%) !important;
+            height: 1px !important;
+            opacity: 0.5 !important;
+        }
+
+        /* Hero stat numbers - make them pop */
+        .number-block .heading-60 {
+            background: linear-gradient(135deg, #ffffff 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Deliverable featured card - golden left border */
+        .deliverable-card.featured {
+            background: #121722 !important;
+            border-color: #121722 !important;
+            border-left: 3px solid var(--accent) !important;
+        }
+
+        /* Timeline step number highlight */
+        .timeline_left .heading-30,
+        .timeline_left .heading-35 {
+            color: var(--accent);
+        }
+
         a:-webkit-any-link { text-decoration: unset; }
         body {
             background: radial-gradient(circle at top, rgba(255,255,255,0.04), transparent 28%), var(--bg);
             color: var(--text);
             font-family: 'Inter', sans-serif;
+            overflow-x: clip;
         }
+        html {
+            overflow-x: clip;
+        }
+
+        /* ====================================================
+           GLOBAL WEBFLOW RESETS (apply at ALL screen widths)
+           These classes have massive padding/sizing from the
+           Webflow external CSS that must be contained.
+        ==================================================== */
+
+        /* .container-padding-50 base has padding-left/right: 50px */
+        /* We keep 50px on desktop, reduce on mobile via media query */
+
+        /* .section (navbar) = position:fixed; padding: 15px 50px in Webflow */
+        /* Our local CSS already overrides this correctly */
+
+        /* .container-padding-50.container-hero-section = height:100vh; display:flex */
+        /* Must keep our local flex display for hero */
+        .container-padding-50.container-hero-section {
+            height: auto !important;
+        }
+
+        /* Sticky left column layout for desktop/laptop */
+        @media screen and (min-width: 768px) {
+            .block-tieu-de-tam-nhin {
+                position: sticky !important;
+                position: -webkit-sticky !important;
+                top: 110px !important;
+                align-self: flex-start !important;
+            }
+        }
+
         .body,
         p,
         li,
@@ -107,10 +225,14 @@
             }
         }
         body > .section:first-of-type {
-            position: sticky;
-            top: 0;
-            z-index: 1200;
-            padding: 14px 22px 0;
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            width: 100% !important;
+            z-index: 1200 !important;
+            padding: 14px 22px 0 !important;
+            box-sizing: border-box !important;
             background: linear-gradient(180deg, rgba(7,9,15,0.94) 0%, rgba(7,9,15,0.68) 72%, rgba(7,9,15,0) 100%);
             backdrop-filter: blur(18px);
         }
@@ -393,7 +515,7 @@
             letter-spacing: 0.01em;
             white-space: normal;
             overflow-wrap: anywhere;
-            flex: 1 1 420px;
+            flex: 1 1 auto;
             min-width: 0;
         }
         .hero-eyebrow {
@@ -412,6 +534,10 @@
             line-height: 0.94;
             font-weight: 700;
             color: #ffffff;
+            max-width: 900px;
+        }
+        .hero-copy .heading-45-medium-80 {
+            font-size: clamp(28px, 4vw, 56px);
             max-width: 900px;
         }
         .hero-title .hero-title-sub {
@@ -1486,204 +1612,614 @@
             .hero-shell,
             .pricing-shell,
             .cta-main-grid,
-            .proof-signal-grid,
-            .cta-summary-grid,
             .case-study-grid,
-            .case-board-grid,
+            .case-board-grid {
+                grid-template-columns: 1fr;
+            }
+            .proof-signal-grid,
             .case-system-grid,
-            .showcase-grid { grid-template-columns: 1fr; }
+            .deliverables-grid,
+            .case-mini-stack,
+            .showcase-bottom-row,
+            .flex-block-27 {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            .cta-summary-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+            .showcase-grid {
+                grid-template-columns: 1.08fr 0.92fr;
+            }
             .hero-copy {
                 max-width: 100%;
                 padding-top: 20px;
             }
             .hero-mini-grid { grid-template-columns: 1fr; }
-            .deliverables-grid,
             .showcase-stack.two-up { grid-template-columns: repeat(2, minmax(0, 1fr)); }
             .deliverables-shell,
             .cta-shell,
             .pricing-main-card,
             .pricing-side-card,
             .showcase-shell { padding: 30px; }
+            #giangvien .columns-4 {
+                align-items: flex-start !important;
+                row-gap: 28px !important;
+            }
+            #giangvien .column-trong {
+                display: none;
+            }
+            #giangvien .column-14,
+            #giangvien .column-13 {
+                width: 100%;
+                max-width: 100%;
+                padding-left: 0;
+                padding-right: 0;
+            }
+            #giangvien .column-14 > div[style*="max-width:580px"] {
+                max-width: 100% !important;
+            }
+            #mentor-video-card {
+                flex: 1 1 280px !important;
+                width: min(100%, 280px) !important;
+            }
         }
         @media screen and (max-width: 767px) {
             /* ========== NAVBAR ========== */
             body > .section:first-of-type {
-                padding: 8px 8px 0;
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+                z-index: 9999 !important;
+                padding: 8px 8px 0 !important;
+                background: rgba(7, 9, 15, 0.92) !important;
+                backdrop-filter: blur(16px) !important;
+                -webkit-backdrop-filter: blur(16px) !important;
             }
             body > .section:first-of-type .columns {
-                grid-template-columns: auto 1fr;
-                justify-items: stretch;
-                align-items: center;
-                gap: 12px;
-                padding: 10px 12px;
+                display: flex !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                gap: 12px !important;
+                padding: 10px 14px !important;
+                border-radius: 18px !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                min-width: 0 !important;
+                box-sizing: border-box !important;
             }
             body > .section:first-of-type .column {
-                width: auto;
-                min-width: 0;
+                width: auto !important;
+                min-width: 0 !important;
             }
             body > .section:first-of-type .column a.w-inline-block {
-                justify-content: flex-start;
-                width: auto;
+                justify-content: flex-start !important;
+                width: auto !important;
+                display: flex !important;
+                align-items: center !important;
             }
             body > .section:first-of-type .column a.w-inline-block img {
-                height: 28px;
+                height: 28px !important;
+                margin-top: 0 !important;
             }
-            body > .section:first-of-type .column-2,
+            body > .section:first-of-type .column-2 {
+                display: block !important;
+                width: auto !important;
+                min-width: 0 !important;
+            }
             body > .section:first-of-type .column-3 {
-                display: none;
+                display: none !important;
             }
             .navigation-block {
-                display: none;
+                display: none !important;
+            }
+            .nav-register-cta {
+                display: flex !important;
+                align-items: center !important;
+                padding: 6px 12px !important;
+                border-radius: 999px !important;
+                background: var(--accent) !important;
+                color: var(--ink) !important;
+                font-size: 13px !important;
+                font-weight: 700 !important;
+                height: 32px !important;
+                min-height: 0 !important;
+                border: none !important;
+                gap: 6px !important;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.18) !important;
+            }
+            .nav-register-copy {
+                display: flex !important;
+                align-items: center !important;
+                text-align: left !important;
+            }
+            .nav-register-label {
+                font-size: 13px !important;
+                font-weight: 700 !important;
+                text-transform: none !important;
+                color: var(--ink) !important;
+                letter-spacing: normal !important;
+            }
+            .nav-register-offer,
+            .nav-register-cta .arrow {
+                display: none !important;
+            }
+            .nav-countdown-chip {
+                background: #0d1117 !important;
+                color: #ffffff !important;
+                font-size: 11px !important;
+                padding: 2px 8px !important;
+                border-radius: 999px !important;
+                font-weight: 700 !important;
+                margin: 0 !important;
+                border: none !important;
             }
 
             /* ========== GLOBAL SPACING SYSTEM ========== */
-            .section-body.padding-top-bottom-120 {
-                padding-top: 64px !important;
-                padding-bottom: 64px !important;
+            /* Prevent horizontal overflow on mobile */
+            .section,
+            .section-body,
+            .section-2 {
+                overflow-x: hidden;
+                max-width: 100vw;
             }
+            .back-heading {
+                display: none !important;
+            }
+
+            /* ========== WEBFLOW OVERFLOW RESET ==========
+               All classes below come from the external Webflow
+               CSS and use fixed widths / large paddings that 
+               break mobile layout.
+            ================================================ */
+
+            /* Fixed-width containers */
+            .div-block-38,
+            .icon-step,
+            .quy-trinh-trien-khai,
+            .container-padding-51 {
+                width: 100% !important;
+                max-width: 100% !important;
+                min-width: 0 !important;
+                box-sizing: border-box !important;
+            }
+
+            /* Large padding resets */
+            .div-block-3 {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+            }
+            .tieu-de-mo-ta-big.align-center.padding-200 {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+            }
+            .chan-dung-hoc-vien-block {
+                padding-left: 16px !important;
+                padding-right: 16px !important;
+            }
+
+            /* Sticky/position resets */
+            .block-tieu-de-tam-nhin {
+                padding-right: 0 !important;
+                border-right: none !important;
+                position: static !important;
+            }
+            .column-13 {
+                position: static !important;
+            }
+            .timeline_date-text {
+                position: static !important;
+            }
+            .timeline_circle {
+                position: static !important;
+            }
+            .timeline_progress-bar {
+                display: none !important;
+            }
+
+            /* Large gap resets */
+            .tam-nhin-he-thong-3-y {
+                column-gap: 14px !important;
+                row-gap: 14px !important;
+            }
+            .flex-block-2 {
+                column-gap: 0 !important;
+                row-gap: 24px !important;
+            }
+            .quy-trinh-trien-khai {
+                column-gap: 24px !important;
+                row-gap: 24px !important;
+            }
+
+            /* max-width: 50% traps */
+            .flex-block-10,
+            .paragraph-18-copy.black-color-text.max-w-50 {
+                max-width: 100% !important;
+                width: 100% !important;
+            }
+
+            /* Hero shell override */
+            .div-block-5 {
+                display: grid !important;
+            }
+            .div-block-6,
+            .div-block-7 {
+                max-width: 100% !important;
+                width: 100% !important;
+                min-width: 0 !important;
+            }
+
+            /* Targeted media overflow guards */
+            img, video, iframe, embed, object {
+                max-width: 100% !important;
+                height: auto;
+            }
+            .section-body.padding-top-bottom-120 {
+                padding-top: 52px !important;
+                padding-bottom: 52px !important;
+            }
+            .section-body.padding-top-bottom-large {
+                padding-top: 44px !important;
+                padding-bottom: 44px !important;
+            }
+            .padding-top-bottom-100,
+            .small-padding-bottom {
+                padding-top: 52px !important;
+                padding-bottom: 52px !important;
+            }
+            /* Critical: container-padding-50 from Webflow = padding-left/right: 50px */
+            /* Only reset padding/sizing - do NOT override display or height */
             .container-padding-50,
-            .w-container {
+            .container-padding-50.container-hero-section,
+            .w-container,
+            .w-layout-blockcontainer,
+            .container-hero-section {
+                width: 100% !important;
+                max-width: 100% !important;
+                min-width: 0 !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
                 padding-left: 20px !important;
                 padding-right: 20px !important;
+                box-sizing: border-box !important;
+            }
+            .container-padding-50.container-hero-section {
+                height: auto !important;
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: flex-end !important;
+            }
+            /* Hero content must be full width */
+            .hero-shell,
+            .hero-copy {
+                width: 100% !important;
+                max-width: 100% !important;
+                min-width: 0 !important;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
             }
             .section-2 {
-                padding-top: 72px !important;
+                padding-top: 88px !important;
+            }
+            /* Reduce hero section container top padding */
+            .container-hero-section {
+                padding-top: 40px !important;
+                padding-bottom: 32px !important;
+            }
+            /* Fix section bottom empty space from Webflow animations */
+            .section-4 {
+                padding-top: 36px !important;
+                padding-bottom: 36px !important;
             }
 
             /* ========== HERO SECTION ========== */
+            /* Gold accent orb behind hero */
+            #hero::before {
+                content: '';
+                position: absolute;
+                top: 60px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 280px;
+                height: 280px;
+                border-radius: 50%;
+                background: radial-gradient(circle, rgba(214,185,140,0.15) 0%, rgba(214,185,140,0.05) 50%, transparent 70%);
+                pointer-events: none;
+                z-index: 0;
+            }
+            #hero .container-hero-section {
+                position: relative;
+                z-index: 1;
+            }
             .hero-shell {
                 grid-template-columns: 1fr;
-                gap: 24px;
+                gap: 18px;
+                width: 100%;
+                max-width: 100%;
+                min-width: 0;
             }
             .hero-copy {
-                gap: 16px;
+                gap: 12px;
                 padding-top: 0;
+                width: 100%;
+                max-width: 100%;
+                min-width: 0;
+                /* Kill Webflow IX2 animation transform that offsets -52px left */
+                transform: none !important;
+                opacity: 1 !important;
+            }
+            /* Kill ALL Webflow IX2 initial animation states on mobile */
+            .motion-reveal,
+            .hero-copy,
+            .hero-panel,
+            .hero-actions,
+            .hero-mini-grid,
+            [class*="section-focus"],
+            [data-w-id] {
+                transform: none !important;
+                opacity: 1 !important;
+                transition: none !important;
             }
             .hero-kicker {
-                padding: 10px 14px;
-                gap: 10px;
+                padding: 9px 12px;
+                gap: 8px;
                 margin-top: 0 !important;
+                width: 100%;
+                border-radius: 16px;
+                box-sizing: border-box;
             }
             .hero-kicker-text {
-                font-size: 12px;
-                line-height: 1.42;
+                font-size: 11px;
+                line-height: 1.36;
+                flex: 1 1 auto;
+                min-width: 0;
             }
             .hero-eyebrow {
-                font-size: 11px;
+                font-size: 10px;
+                letter-spacing: 0.14em;
             }
             .hero-title {
-                font-size: clamp(36px, 11vw, 48px);
-                line-height: 1.05;
+                font-size: clamp(30px, 9.5vw, 40px) !important;
+                line-height: 1.05 !important;
+                letter-spacing: -0.02em !important;
+                max-width: 100% !important;
             }
             .heading-45-medium-80 {
-                font-size: clamp(20px, 5vw, 28px) !important;
+                font-size: clamp(17px, 4.6vw, 22px) !important;
                 line-height: 1.3 !important;
+                max-width: 100% !important;
             }
             .hero-desc {
-                font-size: 16px;
-                line-height: 1.65;
+                font-size: 14px !important;
+                line-height: 1.6 !important;
+                max-width: 100% !important;
             }
             .hero-actions {
-                flex-direction: column;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
                 gap: 10px;
-                padding-top: 4px;
+                padding-top: 2px;
+                width: 100%;
             }
             .hero-actions a {
                 width: 100%;
+                max-width: 100%;
+                min-width: 0;
             }
-            .hero-actions .button-arrow-fill {
-                min-height: 48px;
-                padding: 12px 20px;
+            .hero-actions .button-arrow-fill.fill-white {
+                min-height: 46px;
+                padding: 12px 14px;
                 justify-content: center;
+                width: 100%;
+                box-shadow: 0 0 24px rgba(214,185,140,0.22), 0 8px 22px rgba(0,0,0,0.24) !important;
             }
+            .hero-actions .button-arrow-fill.stroke-white {
+                min-height: 46px;
+                padding: 12px 14px;
+                justify-content: center;
+                width: 100%;
+            }
+            .hero-actions .link {
+                font-size: 13px;
+                text-align: center;
+            }
+            /* Show hero-panel as compact card on mobile */
             .hero-panel {
-                display: none;
+                display: block;
+                padding: 20px;
+                border-radius: 22px;
+                background: linear-gradient(135deg, rgba(255,255,255,0.055) 0%, rgba(255,255,255,0.02) 100%);
+                border: 1px solid rgba(255,255,255,0.11);
+                box-shadow: 0 20px 48px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.06);
+                position: relative;
+                overflow: hidden;
+            }
+            .hero-panel::before {
+                content: '';
+                position: absolute;
+                top: -40px;
+                right: -40px;
+                width: 160px;
+                height: 160px;
+                border-radius: 50%;
+                background: radial-gradient(circle, rgba(214,185,140,0.14), transparent 70%);
+                pointer-events: none;
+            }
+            .hero-panel-badge {
+                font-size: 9px;
+                padding: 5px 10px;
+            }
+            .hero-panel-title {
+                font-size: 15px;
+                margin: 10px 0 12px;
+                line-height: 1.25;
+            }
+            .hero-stack {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+            .hero-stack-item {
+                display: flex;
+                gap: 10px;
+                align-items: flex-start;
+            }
+            .hero-stack-icon {
+                font-size: 13px;
+                flex-shrink: 0;
+                width: 26px;
+                height: 26px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 8px;
+                background: rgba(214,185,140,0.12);
+                border: 1px solid rgba(214,185,140,0.2);
+                color: var(--accent);
+            }
+            .hero-stack-item h4 {
+                font-size: 13px;
+                margin: 0 0 3px;
+                color: rgba(255,255,255,0.95);
+                font-family: 'Outfit', sans-serif;
+            }
+            .hero-stack-item p {
+                font-size: 12px;
+                margin: 0;
+                color: var(--muted);
+                line-height: 1.5;
             }
             .hero-mini-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-                margin-top: 8px;
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+                margin-top: 4px;
+                width: 100%;
             }
             .hero-mini-card {
-                padding: 14px;
+                padding: 12px;
+                width: 100%;
+                min-width: 0;
+                border-radius: 16px;
             }
             .hero-mini-card:nth-child(3) {
                 grid-column: 1 / -1;
             }
             .hero-mini-label {
-                font-size: 11px;
-                margin-bottom: 6px;
+                font-size: 10px;
+                margin-bottom: 5px;
             }
             .hero-mini-value {
-                font-size: 14px;
-                line-height: 1.5;
+                font-size: 13px;
+                line-height: 1.45;
             }
 
             /* ========== SHOWCASE SECTION ========== */
             .showcase-shell {
-                padding: 24px;
-                border-radius: 20px;
+                padding: 20px;
+                border-radius: 18px;
+            }
+            .showcase-head {
+                margin-bottom: 10px;
             }
             .showcase-kicker {
                 font-size: 10px;
-                margin-bottom: 8px;
+                margin-bottom: 6px;
             }
             .showcase-title {
-                font-size: 30px;
-                line-height: 1.1;
+                font-size: 26px;
+                line-height: 1.08;
             }
             .showcase-grid {
-                grid-template-columns: 1fr;
-                gap: 12px;
-                margin-top: 20px;
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 16px !important;
+                margin-top: 16px !important;
             }
-            .showcase-card {
-                min-height: unset;
-                height: auto;
-                border-radius: 20px;
+            .showcase-column,
+            .showcase-stack {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 16px !important;
+                width: 100% !important;
             }
-            .showcase-card img {
-                height: auto;
-                width: 100%;
-                aspect-ratio: 4/3;
-                object-fit: cover;
+            .showcase-card,
+            .showcase-card.tall,
+            .showcase-card.medium {
+                min-height: 0 !important;
+                height: auto !important;
+                border-radius: 18px !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                overflow: hidden !important;
             }
-            .showcase-card.tall img {
-                aspect-ratio: 3/4;
+            .showcase-card img,
+            .showcase-card.tall img,
+            .showcase-card.medium img {
+                display: block !important;
+                width: 100% !important;
+                height: auto !important;
+                min-height: 0 !important;
+                aspect-ratio: auto !important;
+                object-fit: contain !important;
             }
-            .showcase-stack,
-            .showcase-column {
-                gap: 12px;
-            }
-            .showcase-stack.two-up {
-                grid-template-columns: 1fr;
-                gap: 12px;
+            .showcase-bottom-row {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 16px !important;
+                margin-top: 16px !important;
+                width: 100% !important;
             }
 
             /* ========== DELIVERABLES SECTION ========== */
             .deliverables-shell {
-                padding: 24px;
-                border-radius: 20px;
+                padding: 20px;
+                border-radius: 18px;
             }
             .deliverables-top {
-                margin-bottom: 20px;
+                margin-bottom: 16px;
+                gap: 8px;
             }
             .deliverables-top h3 {
-                font-size: 28px;
-                line-height: 1.2;
-                margin-bottom: 12px;
+                font-size: 24px;
+                line-height: 1.15;
+                margin-bottom: 8px;
             }
             .deliverables-top p {
-                font-size: 15px;
-                line-height: 1.6;
+                font-size: 14px;
+                line-height: 1.55;
             }
             .deliverables-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
+                display: grid !important;
+                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+                gap: 10px !important;
             }
             .deliverable-card {
-                padding: 18px;
+                padding: 14px !important;
+                border-radius: 16px !important;
+                min-height: auto !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+                display: flex !important;
+                flex-direction: column !important;
+            }
+            .deliverable-number {
+                font-size: 26px !important;
+                margin: 10px 0 8px !important;
+                position: static !important;
+            }
+            .deliverable-card {
+                padding: 16px;
                 border-radius: 16px;
+                min-height: auto !important;
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+            .deliverable-card.featured {
+                background: #121722 !important;
+                border-color: #121722 !important;
             }
             .deliverable-tag {
                 font-size: 9px;
@@ -1691,150 +2227,328 @@
                 margin-bottom: 8px;
             }
             .deliverable-number {
-                font-size: 32px;
-                margin-bottom: 10px;
+                font-size: 28px;
+                margin-bottom: 8px;
             }
             .deliverable-card h4 {
-                font-size: 16px;
-                line-height: 1.3;
+                font-size: 15px;
+                line-height: 1.25;
                 margin-bottom: 8px;
             }
             .deliverable-card p {
-                font-size: 13px;
-                line-height: 1.5;
+                font-size: 12px;
+                line-height: 1.45;
+            }
+
+            /* ========== MENTOR SECTION ========== */
+            #giangvien .columns-4 {
+                display: flex !important;
+                flex-direction: column;
+                align-items: stretch !important;
+                row-gap: 20px !important;
+            }
+            #giangvien .column-14 {
+                width: 100% !important;
+                max-width: 100% !important;
+                flex: 1 1 100% !important;
+                padding: 0 !important;
+                order: 1;
+            }
+            #giangvien .column-13 {
+                width: 100% !important;
+                max-width: 100% !important;
+                flex: 1 1 100% !important;
+                padding-left: 0;
+                padding-right: 0;
+                order: 2;
+            }
+            #giangvien .column-14 > div[style*="max-width:580px"] {
+                width: 100% !important;
+                max-width: 100% !important;
+                display: grid !important;
+                grid-template-columns: 1fr;
+                gap: 20px !important;
+                margin-top: 16px !important;
+            }
+            #giangvien .column-14 > div[style*="max-width:580px"] > div:first-child {
+                display: flex !important;
+                flex-direction: column !important;
+                height: auto !important;
+                flex: 1 1 100% !important;
+                min-width: 0 !important;
+                padding: 12px !important;
+                border-radius: 20px !important;
+            }
+            #giangvien .column-14 > div[style*="max-width:580px"] > div:first-child img {
+                width: 100% !important;
+                height: auto !important;
+                aspect-ratio: 16 / 9 !important;
+                object-fit: cover !important;
+                min-height: 0 !important;
+                max-height: none !important;
+            }
+            .mentor-portrait {
+                width: min(100%, 280px);
+                max-width: 100%;
+            }
+            .mentor-caption {
+                margin-top: 12px;
+                text-align: center;
+                padding-inline: 10px;
+            }
+            #mentor-video-card {
+                flex: 1 1 100% !important;
+                width: 100% !important;
+                max-width: 100%;
+                margin: 0 auto;
+                border-radius: 22px !important;
+                align-self: auto !important;
+                padding: 10px !important;
+            }
+            .mentor-video-embed {
+                border-radius: 18px !important;
+            }
+            .title-bllock-with-paragraph-chi-phi {
+                gap: 0;
+            }
+            .flex-block-27 {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                align-items: stretch;
+                gap: 10px;
+            }
+            .number-block {
+                width: 100%;
+                align-items: flex-start;
+                padding: 14px 16px;
+                border-radius: 18px;
+                background: rgba(255,255,255,0.03);
+                border: 1px solid rgba(255,255,255,0.08);
+            }
+            .number-block .heading-60 {
+                font-size: clamp(26px, 7vw, 34px) !important;
+                line-height: 1 !important;
+            }
+            .number-block .paragraph-16,
+            .number-block p {
+                font-size: 12px !important;
+                line-height: 1.45 !important;
+                margin-top: 4px;
             }
 
             /* ========== CASE STUDY SECTION ========== */
             .case-study-grid {
                 grid-template-columns: 1fr;
-                gap: 16px;
+                gap: 14px;
             }
             .case-system-card,
             .case-proof-card {
-                padding: 20px;
-                border-radius: 20px;
+                padding: 18px;
+                border-radius: 18px;
             }
             .case-panel-kicker {
                 font-size: 10px;
                 padding: 6px 10px;
             }
             .case-system-title {
-                font-size: 24px;
-                line-height: 1.2;
-                margin: 14px 0 10px;
+                font-size: 22px;
+                line-height: 1.15;
+                margin: 12px 0 8px;
             }
             .case-system-copy {
-                font-size: 14px;
-                line-height: 1.6;
+                font-size: 13px;
+                line-height: 1.55;
             }
             .case-system-grid {
-                grid-template-columns: 1fr;
-                gap: 10px;
-                margin-top: 16px;
+                display: grid !important;
+                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+                gap: 10px !important;
+                margin-top: 14px !important;
             }
             .case-system-step {
-                padding: 14px;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                padding: 14px !important;
+                border-radius: 16px !important;
+                position: relative !important;
+                min-height: auto !important;
+                font-size: 12px;
+                line-height: 1.45;
             }
             .case-system-index {
-                font-size: 11px;
+                position: static !important;
+                margin-bottom: 8px !important;
+                display: inline-flex !important;
+                font-size: 10px !important;
             }
             .case-system-step strong {
-                font-size: 14px;
-            }
-            .case-system-step {
                 font-size: 13px;
+                line-height: 1.3;
+                display: block;
+                margin-bottom: 4px;
             }
             .case-board-flow {
-                margin-top: 16px;
-                gap: 8px;
-                flex-wrap: wrap;
+                margin-top: 14px;
+                gap: 6px;
+                flex-direction: column !important;
+                align-items: stretch !important;
             }
             .case-board-flow-node {
-                font-size: 12px;
-                padding: 8px 12px;
+                font-size: 11px;
+                padding: 8px 10px;
+                text-align: center !important;
             }
             .case-board-flow-arrow {
-                font-size: 14px;
+                font-size: 13px;
+                text-align: center !important;
+                transform: rotate(90deg) !important;
+                margin: 2px 0 !important;
             }
             .case-proof-label {
                 font-size: 10px;
             }
             .case-proof-title {
-                font-size: 20px;
-                line-height: 1.25;
+                font-size: 18px;
+                line-height: 1.22;
             }
             .case-proof-copy {
-                font-size: 14px;
-                line-height: 1.6;
+                font-size: 13px;
+                line-height: 1.55;
+            }
+            .case-mini-stack {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 10px;
+            }
+            .case-mini-card:last-child {
+                grid-column: 1 / -1;
+            }
+            .case-unified-panel {
+                margin-top: 16px;
+                padding: 18px;
+                border-radius: 18px;
+            }
+            .case-board-column,
+            .case-board-feature,
+            .case-board-points {
+                gap: 10px;
             }
 
             /* ========== CTA SECTION ========== */
             .cta-shell {
-                padding: 24px;
-                border-radius: 20px;
+                padding: 20px;
+                border-radius: 18px;
             }
             .cta-summary-grid {
-                grid-template-columns: 1fr;
-                gap: 12px;
-                margin-bottom: 24px;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 10px;
+                margin-bottom: 18px;
             }
             .cta-summary-card {
-                padding: 14px;
+                padding: 12px;
+                border-radius: 16px;
+            }
+            .cta-summary-card:last-child {
+                grid-column: 1 / -1;
             }
             .cta-summary-label {
-                font-size: 11px;
+                font-size: 10px;
             }
             .cta-summary-value {
-                font-size: 15px;
+                font-size: 14px;
+                line-height: 1.45;
             }
             .cta-main-grid {
                 grid-template-columns: 1fr;
-                gap: 20px;
+                gap: 18px;
             }
             .cta-copy h3 {
-                font-size: 26px;
-                line-height: 1.25;
-                margin-bottom: 12px;
+                font-size: 24px;
+                line-height: 1.2;
+                margin-bottom: 10px;
             }
             .cta-copy > p {
-                font-size: 15px;
-                line-height: 1.6;
-                margin-bottom: 16px;
+                font-size: 14px;
+                line-height: 1.55;
+                margin-bottom: 14px;
             }
             .cta-benefit-list {
-                gap: 12px;
+                gap: 10px;
             }
             .cta-benefit-item {
-                gap: 10px;
-                font-size: 14px;
-                line-height: 1.5;
+                gap: 8px;
+                font-size: 13px;
+                line-height: 1.45;
             }
             .cta-benefit-check {
-                width: 22px;
-                height: 22px;
-                font-size: 11px;
+                width: 20px;
+                height: 20px;
+                font-size: 10px;
                 flex-shrink: 0;
             }
             .cta-price-card {
-                padding: 24px;
-                border-radius: 20px;
+                padding: 18px;
+                border-radius: 18px;
+                width: 100%;
+                max-width: 100%;
+                min-width: 0;
+                box-sizing: border-box;
             }
             .cta-price-card .price-now {
-                font-size: 42px;
+                font-size: 34px;
+            }
+            .cta-countdown-box {
+                padding: 14px 16px;
+                margin-top: 10px;
+            }
+            .cta-countdown-time {
+                font-size: clamp(26px, 8vw, 30px);
+            }
+            .price-note {
+                font-size: 11px;
+                line-height: 1.55;
             }
 
             /* ========== FORM ========== */
+            .form-block,
+            .form-2,
+            .flex-block-28,
+            .field-block,
+            .field-text,
+            .w-input,
+            textarea,
+            select,
+            .w-checkbox {
+                width: 100% !important;
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+            }
+            .form-2 {
+                display: grid;
+                gap: 14px;
+            }
+            .flex-block-28 {
+                display: flex;
+                flex-direction: column;
+                gap: 14px;
+            }
+            .field-block {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 0;
+            }
             .field-text,
             .w-input,
             textarea,
             select {
                 min-height: 48px !important;
-                padding: 12px 16px !important;
+                padding: 12px 14px !important;
                 font-size: 16px !important;
                 border-radius: 14px !important;
             }
             textarea {
-                min-height: 120px !important;
+                min-height: 112px !important;
             }
             .submit-button,
             .w-button {
@@ -1842,66 +2556,211 @@
                 font-size: 16px !important;
                 border-radius: 14px !important;
             }
+            #cta-success-wrapper {
+                padding: 28px 0 6px !important;
+            }
+            #cta-success-wrapper a {
+                width: 100%;
+                justify-content: center;
+                text-align: center;
+            }
 
             /* ========== OTHER SECTIONS ========== */
+            .grid-2 {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+            /* Single column on mobile for tam-nhin blocks */
+            .tam-nhin-he-thong-3-y {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 14px;
+                width: 100% !important;
+            }
             .tam-nhin-block,
             .chan-dung-hoc-vien-block {
-                padding: 20px;
-                border-radius: 20px;
+                padding: 18px;
+                border-radius: 18px;
+                width: 100% !important;
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+                flex-shrink: 0 !important;
             }
             .tam-nhin-block .heading-40,
-            .tamnhintitle {
-                font-size: 26px;
-                line-height: 1.2;
+            .tamnhintitle,
+            .heading-40,
+            .hinhthuctitle {
+                font-size: 22px;
+                line-height: 1.18;
             }
-            .proof-signal-grid,
+            .tam-nhin-block .opacity-50 {
+                color: var(--accent) !important;
+                font-weight: 700 !important;
+                opacity: 1 !important;
+                letter-spacing: 0.08em !important;
+            }
+            /* proof-signal-grid: now in a full-width block, use 2 cols */
+            .proof-signal-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+                gap: 10px;
+                width: 100% !important;
+            }
+            .proof-visual-board {
+                width: 100% !important;
+            }
+            .proof-signal-card {
+                padding: 14px;
+                border-radius: 16px;
+            }
             .case-board-grid {
                 grid-template-columns: 1fr;
-                gap: 12px;
+                gap: 10px;
+            }
+            .proof-flow-row {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+            .proof-flow-arrow {
+                display: none;
+            }
+            .pricing-shell {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 14px;
             }
             .pricing-main-card,
             .pricing-side-card {
-                padding: 24px;
-                border-radius: 20px;
+                padding: 20px;
+                border-radius: 18px;
+            }
+            .pricing-price-row {
+                flex-wrap: wrap;
+                gap: 10px;
+                align-items: flex-end;
+            }
+            .pricing-side-list {
+                gap: 10px;
+            }
+            .timeline_component {
+                gap: 14px;
+            }
+            .timeline_item {
+                display: grid !important;
+                grid-template-columns: 1fr !important;
+                gap: 12px !important;
+                padding: 16px !important;
+                border-radius: 18px !important;
+                background: rgba(255,255,255,0.03) !important;
+                border: 1px solid rgba(255,255,255,0.08) !important;
+            }
+            .timeline_left,
+            .timeline_right {
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+            .timeline_centre {
+                display: none !important;
             }
             .heading-60 {
-                font-size: 32px !important;
-                line-height: 1.15 !important;
+                font-size: clamp(24px, 6.5vw, 30px) !important;
+                line-height: 1.1 !important;
+                letter-spacing: -0.02em;
             }
             .heading-45-medium-80 {
-                font-size: 24px !important;
+                font-size: clamp(18px, 5vw, 22px) !important;
                 line-height: 1.25 !important;
             }
             .paragraph-18 {
-                font-size: 16px !important;
-                line-height: 1.65 !important;
+                font-size: 15px !important;
+                line-height: 1.6 !important;
             }
             .paragraph-16 {
-                font-size: 15px !important;
+                font-size: 14px !important;
+                line-height: 1.58 !important;
+            }
+            /* Ensure body text across all cards is readable */
+            .tam-nhin-block p,
+            .chan-dung-hoc-vien-block p,
+            .proof-signal-card p,
+            .deliverable-card p,
+            .cta-benefit-item {
+                font-size: 13px !important;
+                line-height: 1.55 !important;
+            }
+
+            /* ========== FOOTER ========== */
+            .f-footer-bottom,
+            .f-footer-group,
+            .f-footer-menu {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            .f-footer-bottom {
+                gap: 14px;
+            }
+            .f-footer-brand {
+                flex-wrap: wrap;
+                gap: 8px !important;
+            }
+            .f-footer-line,
+            .f-footer-vertical-divider {
+                display: none;
+            }
+            .f-footer-social-row-large {
+                width: 100%;
+            }
+            .f-footer-social-group {
+                justify-content: flex-start;
             }
         }
 
         /* ========== VERY SMALL SCREENS ========== */
         @media screen and (max-width: 479px) {
             .section-body.padding-top-bottom-120 {
-                padding-top: 56px !important;
-                padding-bottom: 56px !important;
+                padding-top: 44px !important;
+                padding-bottom: 44px !important;
+            }
+            .section-body.padding-top-bottom-large,
+            .padding-top-bottom-100,
+            .small-padding-bottom {
+                padding-top: 44px !important;
+                padding-bottom: 44px !important;
             }
             .container-padding-50,
-            .w-container {
-                padding-left: 16px !important;
-                padding-right: 16px !important;
+            .w-container,
+            .container-hero-section {
+                width: 100% !important;
+                max-width: 100% !important;
+                min-width: 0 !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+                padding-left: 14px !important;
+                padding-right: 14px !important;
+                box-sizing: border-box !important;
             }
             .section-2 {
-                padding-top: 64px !important;
+                padding-top: 98px !important;
             }
 
             /* Hero adjustments */
+            .hero-shell {
+                gap: 16px;
+            }
             .hero-title {
-                font-size: clamp(32px, 10vw, 42px);
+                font-size: clamp(30px, 10vw, 38px);
             }
             .heading-45-medium-80 {
-                font-size: clamp(18px, 4.5vw, 24px) !important;
+                font-size: clamp(17px, 4.6vw, 22px) !important;
+            }
+            .hero-actions {
+                grid-template-columns: 1fr;
+            }
+            .hero-actions .button-arrow-fill {
+                padding-inline: 14px;
             }
             .hero-mini-grid {
                 grid-template-columns: 1fr;
@@ -1910,39 +2769,81 @@
                 grid-column: 1;
             }
 
-            /* Showcase adjustments */
-            .showcase-title {
-                font-size: 28px;
+            /* Mentor adjustments */
+            #mentor-video-card {
+                max-width: none;
+                padding: 10px !important;
             }
-            .showcase-shell {
-                padding: 20px;
+            .mentor-video-placeholder {
+                padding: 18px 14px !important;
+            }
+            .flex-block-27 {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
             }
 
-            /* Deliverables - switch to 1 column */
-            .deliverables-grid {
-                grid-template-columns: 1fr;
-            }
+
             .deliverables-shell {
-                padding: 20px;
+                padding: 18px;
             }
+
+            /* Case study */
+            .case-mini-stack,
+            .flex-block-27 {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            .case-system-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            }
+            .proof-signal-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            .cta-summary-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            .case-mini-card:last-child,
+            .cta-summary-card:last-child,
+            .tam-nhin-he-thong-3-y > .tam-nhin-block:last-child {
+                grid-column: 1 / -1;
+            }
+
 
             /* CTA adjustments */
             .cta-shell {
-                padding: 20px;
+                padding: 18px;
             }
             .cta-copy h3 {
+                font-size: 22px;
+            }
+            .cta-price-card .price-now {
+                font-size: 30px;
+            }
+            .cta-countdown-time {
                 font-size: 24px;
             }
 
-            /* Case study adjustments */
-            .case-system-card,
-            .case-proof-card {
-                padding: 18px;
+            /* Timeline adjustments */
+            .timeline_item {
+                padding: 14px;
+            }
+
+            /* Footer adjustments */
+            .f-footer-detail {
+                font-size: 13px;
+                line-height: 1.55;
             }
 
             /* Global heading adjustments */
             .heading-60 {
-                font-size: 28px !important;
+                font-size: clamp(22px, 6vw, 26px) !important;
+                letter-spacing: -0.02em;
+            }
+            .hero-title {
+                font-size: clamp(28px, 9vw, 36px);
+                line-height: 1.05;
+            }
+            /* Tighten stat numbers on very small screens */
+            .number-block .heading-60 {
+                font-size: clamp(22px, 6.5vw, 28px) !important;
             }
         }
 
@@ -2208,6 +3109,54 @@
                 filter: none !important;
             }
         }
+
+        /* ========== COLLAPSIBLE MOBILE ACCORDIONS ========== */
+        .collapsible-mobile-trigger {
+            display: none;
+        }
+        @media screen and (max-width: 767px) {
+            .collapsible-mobile-trigger {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                width: 100%;
+                padding: 12px 16px;
+                margin-top: 14px;
+                background: rgba(255, 255, 255, 0.04);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                border-radius: 14px;
+                color: var(--accent);
+                font-size: 13px;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.06em;
+                cursor: pointer;
+                transition: all 0.24s ease;
+                box-sizing: border-box;
+            }
+            .collapsible-mobile-trigger:hover,
+            .collapsible-mobile-trigger.is-active {
+                background: rgba(214, 185, 140, 0.12);
+                border-color: rgba(214, 185, 140, 0.24);
+                color: #ffffff;
+            }
+            .collapsible-mobile-content {
+                display: grid !important;
+                grid-template-rows: 0fr;
+                transition: grid-template-rows 0.38s cubic-bezier(0.22, 1, 0.36, 1), margin-top 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+                overflow: hidden;
+                width: 100%;
+                margin-top: 0;
+            }
+            .collapsible-mobile-content.is-expanded {
+                grid-template-rows: 1fr !important;
+                margin-top: 12px;
+            }
+            .collapsible-mobile-inner {
+                min-height: 0;
+            }
+        }
     </style>
 </head>
 <body class="body">
@@ -2259,7 +3208,7 @@
                 </div>
                 <p class="hero-eyebrow">Clawbot AI Automation Workshop</p>
                 <h1 class="hero-title">OpenClaw <span class="hero-title-sub">AI Automation</span></h1>
-                <h3 class="heading-45-medium-80" style="visibility:visible!important; max-width:900px; color:rgba(255,255,255,0.92); font-size:clamp(28px,4vw,56px); line-height:1.08; letter-spacing:-0.04em; font-weight:500; margin:0; font-family:'Inter',sans-serif;">Hiểu bối cảnh thị trường AI, biết cách setup workflow thực tế và thực hành từng bước OpenClaw trên VPS</h3>
+                <h3 class="heading-45-medium-80" style="visibility:visible!important; color:rgba(255,255,255,0.92); line-height:1.08; letter-spacing:-0.04em; font-weight:500; margin:0; font-family:'Inter',sans-serif;">Hiểu bối cảnh thị trường AI, biết cách setup workflow thực tế và thực hành từng bước OpenClaw trên VPS</h3>
                 <p class="hero-desc">Một buổi học tách rõ phần lý thuyết và phần thực hành: từ tư duy workflow AI đến thao tác setup OpenClaw, AI Marketing và đăng bài đa nền tảng.</p>
                 <div class="hero-actions">
                     <a href="#dang-ky" class="link-block w-inline-block">
@@ -2360,35 +3309,40 @@
                     <p class="paragraph-16 uppercase opacity-50">02 — AI Marketing thực hành</p>
                     <h4 class="heading-40 tamnhintitle">Đi từng bước logic xử lý comment, inbox và điều hướng lead</h4>
                     <p class="paragraph-18">Phần thực hành tập trung vào AI Marketing thực tế: cách hệ thống nhận tín hiệu, phân loại phản hồi và đưa khách về đúng kênh xử lý tiếp theo như Zalo hoặc sale.</p>
-                    <div class="proof-visual-board">
-                        <div class="proof-visual-head">
-                            <p class="proof-visual-title">Lead Response Board</p>
-                            <div class="proof-visual-pill">AI marketing workflow</div>
-                        </div>
-                        <div class="proof-signal-grid">
-                            <div class="proof-signal-card">
-                                <p class="proof-signal-label">Tín hiệu vào</p>
-                                <div class="proof-comment-list">
-                                    <div class="proof-comment-item"><strong>Comment hỏi giá</strong> Xác định nhu cầu mua và gắn nhãn mức độ quan tâm.</div>
-                                    <div class="proof-comment-item"><strong>Inbox xin tư vấn</strong> Kích hoạt đúng mẫu trả lời theo mục tiêu marketing.</div>
-                                    <div class="proof-comment-item"><strong>Khách tương tác lại</strong> Tiếp tục điều hướng về Zalo hoặc đội sale để chốt nhanh hơn.</div>
+                    <button class="collapsible-mobile-trigger" onclick="toggleMobileCollapse(this)">Xem sơ đồ logic phản hồi ▼</button>
+                    <div class="collapsible-mobile-content">
+                        <div class="collapsible-mobile-inner">
+                            <div class="proof-visual-board">
+                                <div class="proof-visual-head">
+                                    <p class="proof-visual-title">Lead Response Board</p>
+                                    <div class="proof-visual-pill">AI marketing workflow</div>
+                                </div>
+                                <div class="proof-signal-grid">
+                                    <div class="proof-signal-card">
+                                        <p class="proof-signal-label">Tín hiệu vào</p>
+                                        <div class="proof-comment-list">
+                                            <div class="proof-comment-item"><strong>Comment hỏi giá</strong> Xác định nhu cầu mua và gắn nhãn mức độ quan tâm.</div>
+                                            <div class="proof-comment-item"><strong>Inbox xin tư vấn</strong> Kích hoạt đúng mẫu trả lời theo mục tiêu marketing.</div>
+                                            <div class="proof-comment-item"><strong>Khách tương tác lại</strong> Tiếp tục điều hướng về Zalo hoặc đội sale để chốt nhanh hơn.</div>
+                                        </div>
+                                    </div>
+                                    <div class="proof-signal-card">
+                                        <p class="proof-signal-label">Hành động hệ thống</p>
+                                        <div class="proof-action-list">
+                                            <div class="proof-action-item"><strong>Public reply</strong> Giữ nhịp tương tác tự nhiên ngay dưới bài đăng.</div>
+                                            <div class="proof-action-item"><strong>Private message</strong> Gửi hướng dẫn hoặc kịch bản tư vấn phù hợp.</div>
+                                            <div class="proof-action-item"><strong>Lead routing</strong> Chuyển đúng đầu mối xử lý để không bỏ sót khách quan tâm.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="proof-flow-row">
+                                    <div class="proof-flow-node">Comment / Inbox</div>
+                                    <div class="proof-flow-arrow">→</div>
+                                    <div class="proof-flow-node">AI phân loại</div>
+                                    <div class="proof-flow-arrow">→</div>
+                                    <div class="proof-flow-node">Phản hồi + điều hướng</div>
                                 </div>
                             </div>
-                            <div class="proof-signal-card">
-                                <p class="proof-signal-label">Hành động hệ thống</p>
-                                <div class="proof-action-list">
-                                    <div class="proof-action-item"><strong>Public reply</strong> Giữ nhịp tương tác tự nhiên ngay dưới bài đăng.</div>
-                                    <div class="proof-action-item"><strong>Private message</strong> Gửi hướng dẫn hoặc kịch bản tư vấn phù hợp.</div>
-                                    <div class="proof-action-item"><strong>Lead routing</strong> Chuyển đúng đầu mối xử lý để không bỏ sót khách quan tâm.</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="proof-flow-row">
-                            <div class="proof-flow-node">Comment / Inbox</div>
-                            <div class="proof-flow-arrow">→</div>
-                            <div class="proof-flow-node">AI phân loại</div>
-                            <div class="proof-flow-arrow">→</div>
-                            <div class="proof-flow-node">Phản hồi + điều hướng</div>
                         </div>
                     </div>
                 </div>
@@ -2396,39 +3350,44 @@
                     <p class="paragraph-16 uppercase opacity-50">03 — OpenClaw trên VPS</p>
                     <h4 class="heading-40 tamnhintitle">Thực hành setup OpenClaw trên VPS để làm chủ hạ tầng và chi phí</h4>
                     <p class="paragraph-18">Người học sẽ đi qua từng lớp hạ tầng quan trọng khi setup OpenClaw trên VPS: môi trường chạy bot, proxy, dữ liệu và cách giữ quyền kiểm soát khi mở rộng sang nhiều nền tảng.</p>
-                    <div class="proof-visual-board">
-                        <div class="proof-visual-head">
-                            <p class="proof-visual-title">Infrastructure &amp; Cost Board</p>
-                            <div class="proof-visual-pill">OpenClaw VPS setup</div>
-                        </div>
-                        <div class="proof-signal-grid">
-                            <div class="proof-signal-card">
-                                <p class="proof-signal-label">Lớp hạ tầng chính</p>
-                                <div class="proof-vps-list">
-                                    <div class="proof-vps-item"><strong>VPS riêng</strong> Chủ động tài nguyên, lịch chạy bot và khả năng mở rộng khi có nhiều kênh.</div>
-                                    <div class="proof-vps-item"><strong>Proxy sạch</strong> Giảm rủi ro checkpoint và giữ độ ổn định khi vận hành social automation.</div>
-                                    <div class="proof-vps-item"><strong>Data ownership</strong> Dữ liệu nội dung và lead không đi qua nền tảng trung gian.</div>
+                    <button class="collapsible-mobile-trigger" onclick="toggleMobileCollapse(this)">Xem sơ đồ hạ tầng &amp; bảo mật ▼</button>
+                    <div class="collapsible-mobile-content">
+                        <div class="collapsible-mobile-inner">
+                            <div class="proof-visual-board">
+                                <div class="proof-visual-head">
+                                    <p class="proof-visual-title">Infrastructure &amp; Cost Board</p>
+                                    <div class="proof-visual-pill">OpenClaw VPS setup</div>
+                                </div>
+                                <div class="proof-signal-grid">
+                                    <div class="proof-signal-card">
+                                        <p class="proof-signal-label">Lớp hạ tầng chính</p>
+                                        <div class="proof-vps-list">
+                                            <div class="proof-vps-item"><strong>VPS riêng</strong> Chủ động tài nguyên, lịch chạy bot và khả năng mở rộng khi có nhiều kênh.</div>
+                                            <div class="proof-vps-item"><strong>Proxy sạch</strong> Giảm rủi ro checkpoint và giữ độ ổn định khi vận hành social automation.</div>
+                                            <div class="proof-vps-item"><strong>Data ownership</strong> Dữ liệu nội dung và lead không đi qua nền tảng trung gian.</div>
+                                        </div>
+                                    </div>
+                                    <div class="proof-signal-card">
+                                        <p class="proof-signal-label">Tư duy tối ưu chi phí</p>
+                                        <div class="proof-cost-list">
+                                            <div class="proof-cost-item"><strong>Không lệ thuộc tool thuê bao</strong> Tránh mô hình đội chi phí theo lượt chạy.</div>
+                                            <div class="proof-cost-item"><strong>Chi phí dễ dự đoán</strong> Tập trung vào hạ tầng cố định và logic vận hành rõ ràng.</div>
+                                            <div class="proof-cost-item"><strong>Kiểm soát dài hạn</strong> Khi quy mô tăng, vẫn làm chủ được code, dữ liệu và workflow.</div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="proof-signal-card">
-                                <p class="proof-signal-label">Tư duy tối ưu chi phí</p>
-                                <div class="proof-cost-list">
-                                    <div class="proof-cost-item"><strong>Không lệ thuộc tool thuê bao</strong> Tránh mô hình đội chi phí theo lượt chạy.</div>
-                                    <div class="proof-cost-item"><strong>Chi phí dễ dự đoán</strong> Tập trung vào hạ tầng cố định và logic vận hành rõ ràng.</div>
-                                    <div class="proof-cost-item"><strong>Kiểm soát dài hạn</strong> Khi quy mô tăng, vẫn làm chủ được code, dữ liệu và workflow.</div>
+                            <div class="security-note">
+                                <div class="security-note-title">
+                                    <span class="security-note-badge">✦</span>
+                                    <span>Giải đáp về bảo mật &amp; an toàn tài khoản mạng xã hội</span>
                                 </div>
+                                <ul class="security-note-list">
+                                    <li><strong>100% bảo mật thông tin:</strong> Nội dung và dữ liệu tương tác được vận hành trực tiếp trên VPS của riêng doanh nghiệp.</li>
+                                    <li><strong>Sử dụng proxy riêng sạch:</strong> Mỗi tài khoản có lớp vận hành riêng để hạn chế checkpoint IP và giảm rủi ro spam.</li>
+                                </ul>
                             </div>
                         </div>
-                    </div>
-                    <div class="security-note">
-                        <div class="security-note-title">
-                            <span class="security-note-badge">✦</span>
-                            <span>Giải đáp về bảo mật &amp; an toàn tài khoản mạng xã hội</span>
-                        </div>
-                        <ul class="security-note-list">
-                            <li><strong>100% bảo mật thông tin:</strong> Nội dung và dữ liệu tương tác được vận hành trực tiếp trên VPS của riêng doanh nghiệp.</li>
-                            <li><strong>Sử dụng proxy riêng sạch:</strong> Mỗi tài khoản có lớp vận hành riêng để hạn chế checkpoint IP và giảm rủi ro spam.</li>
-                        </ul>
                     </div>
                 </div>
             </div>
@@ -2484,15 +3443,61 @@
 <!-- ========== MENTOR ========== -->
 <section id="giangvien" class="section-body padding-top-bottom-120">
     <div class="w-layout-blockcontainer container-padding-50 w-container">
-        <div class="columns-4 w-row">
-            <div class="column-14 w-col w-col-6 w-col-stack" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px 0;">
+        <div class="columns-4 w-row" style="display:flex; flex-wrap:wrap; align-items:center; row-gap:40px;">
+            <div class="column-14 w-col w-col-6 w-col-stack" style="display:flex; flex-direction:column; align-items:center; justify-content:center; padding:20px 0;">
                 <img src="vythienhung.jpg" alt="Vy Thiên Hùng" class="mentor-portrait"/>
                 <div class="mentor-caption">
                     <div class="mentor-name">Vy Thiên Hùng</div>
                     <div class="mentor-role">CEO &amp; Founder Mercy Tech Global</div>
                 </div>
+
+                <div style="width:100%; max-width:580px; margin-top:22px; display:flex; gap:18px; align-items:stretch; justify-content:center; flex-wrap:wrap;">
+                    <div style="flex:1 1 320px; min-width:280px; padding:12px; border-radius:24px; background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03)); border:1px solid rgba(255,255,255,0.08); box-shadow:0 18px 42px rgba(0,0,0,0.26); backdrop-filter:blur(14px);" class="motion-surface motion-reveal reveal-up">
+                        <img src="mercytech_pitching.jpg" alt="Vy Thiên Hùng đang pitching và trình bày về MercyTech" loading="lazy" style="width:100%; height:100%; min-height:240px; display:block; border-radius:18px; object-fit:cover; box-shadow:0 12px 28px rgba(0,0,0,0.22);"/>
+                        <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:12px; padding:0 4px; flex-wrap:wrap;">
+                            <div>
+                                <div style="font-family:'Outfit',sans-serif; font-size:16px; font-weight:700; letter-spacing:-0.02em; color:rgba(255,255,255,0.96);">Pitching MercyTech thực tế</div>
+                                <div style="font-size:13px; line-height:1.6; color:rgba(231,235,244,0.68);">Thể hiện rõ vai trò dẫn dắt, trình bày giải pháp và tư duy triển khai thực chiến.</div>
+                            </div>
+                            <div style="flex:0 0 auto; padding:8px 12px; border-radius:999px; background:rgba(214,185,140,0.14); border:1px solid rgba(214,185,140,0.24); color:rgba(255,245,228,0.92); font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase;">MercyTech</div>
+                        </div>
+                    </div>
+
+                    <div class="motion-surface motion-reveal reveal-up" id="mentor-video-card" style="flex:0 0 220px; width:220px; padding:12px; border-radius:28px; background:linear-gradient(180deg, rgba(214,185,140,0.16), rgba(255,255,255,0.05)); border:1px solid rgba(214,185,140,0.18); box-shadow:0 22px 44px rgba(0,0,0,0.24); color:inherit; align-self:stretch;">
+                        <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:10px; margin-bottom:10px;">
+                            <div>
+                                <div style="font-family:'Outfit',sans-serif; font-size:17px; line-height:1.1; letter-spacing:-0.03em; color:rgba(255,255,255,0.96);">Reels: Ứng dụng AI</div>
+                                <div style="margin-top:5px; font-size:11px; line-height:1.55; color:rgba(231,235,244,0.68);">Đặt cạnh ảnh pitching để bố cục gọn hơn và đúng chất video dọc.</div>
+                            </div>
+                            <div style="display:flex; align-items:center; gap:7px; color:rgba(255,245,228,0.88); font-size:9px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; white-space:nowrap;">
+                                <span style="display:inline-flex; width:7px; height:7px; border-radius:999px; background:#d6b98c; box-shadow:0 0 0 5px rgba(214,185,140,0.12);"></span>
+                                Reel
+                            </div>
+                        </div>
+                        <div class="mentor-video-embed" data-embed-src="vythienhung_reel.mp4" data-fallback-url="https://www.facebook.com/vythienhung/videos/n%E1%BA%BFu-doanh-nghi%E1%BB%87p-c%E1%BB%A7a-b%E1%BA%A1n-%C4%91ang-copy-paste-t%E1%BB%ABng-d%C3%B2ng-d%E1%BB%AF-li%E1%BB%87u-t%E1%BB%A9c-l%C3%A0-b%E1%BA%A1n-%C4%91ang-tr%E1%BA%A3-l/1501022804728077/" style="position:relative; width:100%; aspect-ratio:9/16; overflow:hidden; border-radius:22px; background:radial-gradient(circle at top, rgba(214,185,140,0.18), rgba(8,10,16,0.94)); border:1px solid rgba(255,255,255,0.08); box-shadow:inset 0 1px 0 rgba(255,255,255,0.08);">
+                            <div class="mentor-video-placeholder" style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; padding:24px 18px; text-align:center; background:linear-gradient(180deg, rgba(7,9,15,0.18), rgba(7,9,15,0.48));">
+                                <div style="display:flex; align-items:center; justify-content:center; width:72px; height:72px; border-radius:22px; background:linear-gradient(180deg, rgba(214,185,140,0.4), rgba(214,185,140,0.18)); border:1px solid rgba(214,185,140,0.26); box-shadow:0 16px 34px rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,255,255,0.22);">
+                                    <span style="font-size:26px; color:#fff7e7; margin-left:4px;">▶</span>
+                                </div>
+                                <div>
+                                    <div style="font-family:'Outfit',sans-serif; font-size:18px; line-height:1.1; letter-spacing:-0.03em; color:rgba(255,255,255,0.96);">Tự chạy khi lướt tới</div>
+                                    <div style="margin-top:6px; font-size:12px; line-height:1.6; color:rgba(231,235,244,0.68);">Em đã set ưu tiên sound-on, nhưng trình duyệt vẫn có thể chặn autoplay có tiếng nếu chưa có tương tác.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; margin-top:12px;">
+                            <div style="font-size:10px; line-height:1.6; color:rgba(231,235,244,0.58);">Ưu tiên sound-on nếu browser cho phép.</div>
+                            <a href="https://www.facebook.com/vythienhung/videos/n%E1%BA%BFu-doanh-nghi%E1%BB%87p-c%E1%BB%A7a-b%E1%BA%A1n-%C4%91ang-copy-paste-t%E1%BB%ABng-d%C3%B2ng-d%E1%BB%AF-li%E1%BB%87u-t%E1%BB%A9c-l%C3%A0-b%E1%BA%A1n-%C4%91ang-tr%E1%BA%A3-l/1501022804728077/" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; gap:8px; padding:9px 12px; border-radius:999px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.08); color:rgba(255,255,255,0.9); font-size:11px; font-weight:600; text-decoration:none;">
+                                Mở FB
+                                <span style="font-size:13px;">↗</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
+
             <div class="column-trong w-col w-col-1 w-col-stack"></div>
+
             <div class="column-13 w-col w-col-5 w-col-stack">
                 <div class="w-layout-hflex title-bllock-with-paragraph-chi-phi">
                     <div class="title-block">
@@ -2517,7 +3522,7 @@
                             </div>
                             <div class="w-layout-vflex number-block">
                                 <p class="heading-60">0đ</p>
-                                <p class="paragraph-16 uppercase opacity-50">Chi phí Tool ẩn</p>
+                                <p class="paragraph-16 uppercase opacity-50">Chi Phí Tool Ẩn</p>
                             </div>
                         </div>
                         <div style="margin-top: 24px;">
@@ -2612,50 +3617,55 @@
                             </div>
                         </aside>
                     </div>
-                    <div class="case-unified-panel">
-                        <div class="proof-visual-head">
-                            <p class="proof-visual-title">OpenClaw Practice Workflow</p>
-                            <div class="proof-visual-pill">Step-by-step practice</div>
-                        </div>
-                        <div class="case-board-grid">
-                            <div class="case-board-column">
-                                <div class="case-board-feature">
-                                    <p class="proof-signal-label">Phần thực hành trọng tâm</p>
-                                    <h4>Workshop không dừng ở việc giải thích mô hình, mà đi vào từng bước thiết lập workflow thật.</h4>
-                                    <p>Người học sẽ nhìn được cách workflow được ghép lại từ lớp nội dung đầu vào, lớp AI xử lý, lớp phân phối đa nền tảng và lớp phản hồi tín hiệu khách hàng. Đây là phần giúp biến kiến thức lý thuyết thành hình dung thao tác cụ thể.</p>
+                    <button class="collapsible-mobile-trigger" onclick="toggleMobileCollapse(this)">Xem sơ đồ thực hành chi tiết ▼</button>
+                    <div class="collapsible-mobile-content">
+                        <div class="collapsible-mobile-inner">
+                            <div class="case-unified-panel">
+                                <div class="proof-visual-head">
+                                    <p class="proof-visual-title">OpenClaw Practice Workflow</p>
+                                    <div class="proof-visual-pill">Step-by-step practice</div>
                                 </div>
-                                <div class="proof-signal-grid">
-                                    <div class="proof-signal-card">
-                                        <p class="proof-signal-label">Tín hiệu vào</p>
-                                        <div class="proof-comment-list">
-                                            <div class="proof-comment-item"><strong>Nội dung marketing</strong> Video, asset hoặc ý tưởng được đưa vào flow đúng định dạng.</div>
-                                            <div class="proof-comment-item"><strong>Tương tác khách hàng</strong> Comment và inbox được gom thành tín hiệu để AI xử lý.</div>
-                                            <div class="proof-comment-item"><strong>Mục tiêu kinh doanh</strong> Workflow luôn gắn với mục tiêu lead, sale hoặc điều hướng khách.</div>
+                                <div class="case-board-grid">
+                                    <div class="case-board-column">
+                                        <div class="case-board-feature">
+                                            <p class="proof-signal-label">Phần thực hành trọng tâm</p>
+                                            <h4>Workshop không dừng ở việc giải thích mô hình, mà đi vào từng bước thiết lập workflow thật.</h4>
+                                            <p>Người học sẽ nhìn được cách workflow được ghép lại từ lớp nội dung đầu vào, lớp AI xử lý, lớp phân phối đa nền tảng và lớp phản hồi tín hiệu khách hàng. Đây là phần giúp biến kiến thức lý thuyết thành hình dung thao tác cụ thể.</p>
+                                        </div>
+                                        <div class="proof-signal-grid">
+                                            <div class="proof-signal-card">
+                                                <p class="proof-signal-label">Tín hiệu vào</p>
+                                                <div class="proof-comment-list">
+                                                    <div class="proof-comment-item"><strong>Nội dung marketing</strong> Video, asset hoặc ý tưởng được đưa vào flow đúng định dạng.</div>
+                                                    <div class="proof-comment-item"><strong>Tương tác khách hàng</strong> Comment và inbox được gom thành tín hiệu để AI xử lý.</div>
+                                                    <div class="proof-comment-item"><strong>Mục tiêu kinh doanh</strong> Workflow luôn gắn với mục tiêu lead, sale hoặc điều hướng khách.</div>
+                                                </div>
+                                            </div>
+                                            <div class="proof-signal-card">
+                                                <p class="proof-signal-label">Hành động hệ thống</p>
+                                                <div class="proof-action-list">
+                                                    <div class="proof-action-item"><strong>AI content layer</strong> Sinh caption, hashtag và quy tắc xử lý theo từng case.</div>
+                                                    <div class="proof-action-item"><strong>Publishing layer</strong> Đăng bài theo lịch trên nhiều nền tảng trong cùng một flow.</div>
+                                                    <div class="proof-action-item"><strong>Lead response layer</strong> Nhận diện khách quan tâm và điều hướng tiếp sang kênh xử lý phù hợp.</div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="proof-signal-card">
-                                        <p class="proof-signal-label">Hành động hệ thống</p>
-                                        <div class="proof-action-list">
-                                            <div class="proof-action-item"><strong>AI content layer</strong> Sinh caption, hashtag và quy tắc xử lý theo từng case.</div>
-                                            <div class="proof-action-item"><strong>Publishing layer</strong> Đăng bài theo lịch trên nhiều nền tảng trong cùng một flow.</div>
-                                            <div class="proof-action-item"><strong>Lead response layer</strong> Nhận diện khách quan tâm và điều hướng tiếp sang kênh xử lý phù hợp.</div>
+                                    <div class="case-board-column">
+                                        <div class="case-board-points">
+                                            <div class="case-board-point">
+                                                <strong>Business use</strong>
+                                                Dùng cho bài toán AI Marketing, đăng bài đa nền tảng, phản hồi comment/inbox và nuôi lead.
+                                            </div>
+                                            <div class="case-board-point">
+                                                <strong>System thinking</strong>
+                                                Người học nhìn được logic workflow trước khi tự áp dụng hoặc mở rộng cho doanh nghiệp của mình.
+                                            </div>
+                                            <div class="case-board-point">
+                                                <strong>Practice readiness</strong>
+                                                Nội dung được viết theo hướng từng bước cụ thể để bám sát ca thực hành OpenClaw trên VPS.
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="case-board-column">
-                                <div class="case-board-points">
-                                    <div class="case-board-point">
-                                        <strong>Business use</strong>
-                                        Dùng cho bài toán AI Marketing, đăng bài đa nền tảng, phản hồi comment/inbox và nuôi lead.
-                                    </div>
-                                    <div class="case-board-point">
-                                        <strong>System thinking</strong>
-                                        Người học nhìn được logic workflow trước khi tự áp dụng hoặc mở rộng cho doanh nghiệp của mình.
-                                    </div>
-                                    <div class="case-board-point">
-                                        <strong>Practice readiness</strong>
-                                        Nội dung được viết theo hướng từng bước cụ thể để bám sát ca thực hành OpenClaw trên VPS.
                                     </div>
                                 </div>
                             </div>
@@ -2714,17 +3724,17 @@
                 </div>
                 <div class="w-layout-vflex flex-block-13">
                     <div class="w-layout-vflex">
-                        <p class="paragraph-14 uppercase">01 — Quản lý &amp; Leader</p>
+                        <p class="paragraph-14 uppercase" style="color:var(--accent); font-weight:700;">01</p>
                         <h6 class="heading-30 chandungsub">Quản lý &amp; Leader</h6>
                         <p class="paragraph-16">Muốn làm chủ tư duy thiết kế hệ thống AI Agent để tự triển khai cho phòng ban, không bị phụ thuộc vào bên kỹ thuật hay các vendor đắt đỏ.</p>
                     </div>
                     <div class="w-layout-vflex">
-                        <p class="paragraph-14 uppercase">02 — Chủ Shop &amp; Doanh nghiệp SME</p>
+                        <p class="paragraph-14 uppercase" style="color:var(--accent); font-weight:700;">02</p>
                         <h6 class="heading-30 chandungsub">Chủ Shop &amp; Doanh nghiệp SME</h6>
                         <p class="paragraph-16">Đang tìm kiếm giải pháp tự động hóa Zalo để chống sót đơn sỉ, giảm tải thời gian nhập dữ liệu thủ công và tối ưu chi phí vận hành tổng thể.</p>
                     </div>
                     <div class="w-layout-vflex">
-                        <p class="paragraph-14 uppercase">03 — Freelancer &amp; Dev</p>
+                        <p class="paragraph-14 uppercase" style="color:var(--accent); font-weight:700;">03</p>
                         <h6 class="heading-30 chandungsub">Freelancer &amp; Dev</h6>
                         <p class="paragraph-16">Muốn học cách dùng AI (Antigravity) sinh code nhanh để nhận thêm các job tự động hóa/custom bot Zalo-Telegram cho khách hàng doanh nghiệp.</p>
                     </div>
@@ -3132,6 +4142,21 @@
         if (btnElement) btnElement.classList.add('w--current');
     }
 
+    // Toggle collapsible elements on mobile
+    function toggleMobileCollapse(btn) {
+        const content = btn.nextElementSibling;
+        if (!content) return;
+        const isExpanded = content.classList.toggle('is-expanded');
+        btn.classList.toggle('is-active', isExpanded);
+        
+        let baseText = btn.textContent.replace(/[▼▲]/g, '').trim();
+        if (isExpanded) {
+            btn.textContent = baseText + ' ▲';
+        } else {
+            btn.textContent = baseText + ' ▼';
+        }
+    }
+
     const EARLY_BIRD_STORAGE_KEY = 'mercytech_earlybird_deadline';
     const EARLY_BIRD_DURATION_MS = 30 * 60 * 1000;
 
@@ -3358,11 +4383,205 @@
         setActive('#hero');
     }
 
+    function initMentorVideoAutoplay() {
+        const videoShell = document.querySelector('.mentor-video-embed');
+        if (!videoShell) return;
+
+        const embedSrc = videoShell.dataset.embedSrc;
+        const fallbackUrl = videoShell.dataset.fallbackUrl;
+        let video = null;
+        let soundBtn = null;
+        let hasUserInteracted = false;
+
+        // Listen for user interaction to mark active activation state
+        const recordInteraction = () => {
+            hasUserInteracted = true;
+            ['click', 'touchstart', 'mousedown', 'keydown'].forEach(evt => {
+                document.removeEventListener(evt, recordInteraction, { capture: true });
+            });
+        };
+        ['click', 'touchstart', 'mousedown', 'keydown'].forEach(evt => {
+            document.addEventListener(evt, recordInteraction, { passive: true, capture: true });
+        });
+
+        function createSoundButton() {
+            if (soundBtn) return;
+
+            soundBtn = document.createElement('button');
+            soundBtn.type = 'button';
+            soundBtn.innerHTML = 'Bật âm thanh 🔊';
+            soundBtn.style.position = 'absolute';
+            soundBtn.style.bottom = '24px';
+            soundBtn.style.left = '50%';
+            soundBtn.style.transform = 'translateX(-50%)';
+            soundBtn.style.padding = '10px 18px';
+            soundBtn.style.borderRadius = '999px';
+            soundBtn.style.background = 'rgba(214, 185, 140, 0.88)';
+            soundBtn.style.backdropFilter = 'blur(8px)';
+            soundBtn.style.webkitBackdropFilter = 'blur(8px)';
+            soundBtn.style.border = '1px solid rgba(255, 255, 255, 0.2)';
+            soundBtn.style.color = '#0e121a';
+            soundBtn.style.fontSize = '12px';
+            soundBtn.style.fontWeight = '700';
+            soundBtn.style.cursor = 'pointer';
+            soundBtn.style.zIndex = '10';
+            soundBtn.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.4)';
+            soundBtn.style.transition = 'all 0.3s ease';
+            soundBtn.style.animation = 'pulseSoundButton 2s infinite';
+
+            // Inject animation stylesheet if not present
+            if (!document.getElementById('pulse-glow-style')) {
+                const styleSheet = document.createElement('style');
+                styleSheet.id = 'pulse-glow-style';
+                styleSheet.innerHTML = `
+                    @keyframes pulseSoundButton {
+                        0% { box-shadow: 0 0 0 0 rgba(214, 185, 140, 0.6); transform: translateX(-50%) scale(1); }
+                        70% { box-shadow: 0 0 0 10px rgba(214, 185, 140, 0); transform: translateX(-50%) scale(1.04); }
+                        100% { box-shadow: 0 0 0 0 rgba(214, 185, 140, 0); transform: translateX(-50%) scale(1); }
+                    }
+                `;
+                document.head.appendChild(styleSheet);
+            }
+
+            soundBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                unmuteVideo();
+            });
+
+            videoShell.appendChild(soundBtn);
+        }
+
+        function unmuteVideo() {
+            if (video) {
+                video.muted = false;
+                video.play().catch(e => console.error('Play on unmute failed:', e));
+            }
+            if (soundBtn) {
+                soundBtn.remove();
+                soundBtn = null;
+            }
+        }
+
+        // Auto-unmute on first user interaction anywhere on the document while video is playing
+        const autoUnmuteOnInteraction = () => {
+            if (video && video.muted) {
+                video.muted = false;
+                video.play().then(() => {
+                    if (soundBtn) {
+                        soundBtn.remove();
+                        soundBtn = null;
+                    }
+                }).catch(err => {
+                    console.log('Interaction auto-unmute blocked:', err);
+                    video.muted = true; // Fallback
+                });
+            }
+        };
+
+        function mountVideo() {
+            if (video) return;
+
+            video = document.createElement('video');
+            // Resolve local video file relative to index.html path
+            video.src = 'vythienhung_reel.mp4';
+            video.style.position = 'absolute';
+            video.style.inset = '0';
+            video.style.width = '100%';
+            video.style.height = '100%';
+            video.style.objectFit = 'cover';
+            video.style.display = 'block';
+            video.style.borderRadius = '22px';
+            video.setAttribute('playsinline', 'true');
+            video.setAttribute('loop', 'true');
+            video.controls = true;
+
+            const placeholder = videoShell.querySelector('.mentor-video-placeholder');
+            if (placeholder) placeholder.style.display = 'none';
+
+            videoShell.appendChild(video);
+
+            // Listen for user manual unmute from native controls
+            video.addEventListener('volumechange', () => {
+                if (!video.muted && soundBtn) {
+                    soundBtn.remove();
+                    soundBtn = null;
+                }
+            });
+
+            // Listen for document touch/clicks to auto-unmute
+            ['click', 'touchstart', 'mousedown'].forEach(evt => {
+                document.addEventListener(evt, autoUnmuteOnInteraction, { once: true, capture: true });
+            });
+
+            // Attempt unmuted play
+            video.muted = false;
+            video.play()
+                .then(() => {
+                    console.log('Video autoplayed unmuted successfully');
+                })
+                .catch(err => {
+                    console.log('Browser blocked unmuted play. Playing muted:', err);
+                    video.muted = true;
+                    video.play()
+                        .then(() => {
+                            createSoundButton();
+                        })
+                        .catch(e => console.error('Muted autoplay failed:', e));
+                });
+        }
+
+        function unmountVideo() {
+            if (!video) return;
+            
+            // Clean up document event listeners
+            ['click', 'touchstart', 'mousedown'].forEach(evt => {
+                document.removeEventListener(evt, autoUnmuteOnInteraction, { capture: true });
+            });
+
+            if (soundBtn) {
+                soundBtn.remove();
+                soundBtn = null;
+            }
+
+            video.pause();
+            video.remove();
+            video = null;
+
+            const placeholder = videoShell.querySelector('.mentor-video-placeholder');
+            if (placeholder) placeholder.style.display = 'flex';
+        }
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && entry.intersectionRatio >= 0.45) {
+                    mountVideo();
+                } else {
+                    unmountVideo();
+                }
+            });
+        }, {
+            threshold: [0.2, 0.45, 0.7],
+            rootMargin: '0px 0px -8% 0px'
+        });
+
+        observer.observe(videoShell);
+
+        // Backup card click to trigger mount/unmute
+        videoShell.addEventListener('click', (e) => {
+            if (!video) {
+                mountVideo();
+            } else if (video.muted) {
+                unmuteVideo();
+            }
+        });
+    }
+
     startEarlyBirdCountdown();
     bindSmoothScroll();
     initMotionSystem();
     initInteractiveSurfaces();
     initActiveNav();
+    initMentorVideoAutoplay();
 
     // Form submission
     document.getElementById('wf-form-Contact-Form').addEventListener('submit', function(e) {
