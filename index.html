@@ -8,9 +8,9 @@
     <link rel="apple-touch-icon" href="favicon.png"/>
     <link href="https://cdn.prod.website-files.com" rel="preconnect" crossorigin="anonymous"/>
     <title>Workshop OpenClaw Thực Chiến | Xây hệ thống Clawbot AI Automation cho doanh nghiệp</title>
-    <meta content="Workshop OpenClaw Thực Chiến giúp bạn hiểu cách xây dựng hệ thống Clawbot AI Automation để đăng bài đa kênh, phản hồi comment và triển khai trên VPS riêng. Học online qua Google Meet ngày 28/06/2026." name="description"/>
+    <meta content="Workshop OpenClaw Thực Chiến giúp bạn hiểu cách xây dựng hệ thống Clawbot AI Automation để đăng bài đa kênh, phản hồi comment và triển khai trên máy chủ ảo (VPS) riêng. Học online qua Google Meet ngày 28/06/2026." name="description"/>
     <meta content="Workshop OpenClaw Thực Chiến | Xây hệ thống Clawbot AI Automation cho doanh nghiệp" property="og:title"/>
-    <meta content="Workshop OpenClaw Thực Chiến giúp bạn hiểu cách xây dựng hệ thống Clawbot AI Automation để đăng bài đa kênh, phản hồi comment và triển khai trên VPS riêng. Học online qua Google Meet ngày 28/06/2026." property="og:description"/>
+    <meta content="Workshop OpenClaw Thực Chiến giúp bạn hiểu cách xây dựng hệ thống Clawbot AI Automation để đăng bài đa kênh, phản hồi comment và triển khai trên máy chủ ảo (VPS) riêng. Học online qua Google Meet ngày 28/06/2026." property="og:description"/>
     <meta property="og:image" content="https://workshop.mercytechglobal.com/share_cover.png"/>
     <meta property="og:image:width" content="1200"/>
     <meta property="og:image:height" content="630"/>
@@ -883,6 +883,72 @@
             line-height: 1.8;
         }
         .deliverable-card.featured p { color: rgba(247,248,251,0.76); }
+
+        /* Special Gift Box (ChatGPT Plus) */
+        .special-gift-box {
+            margin-top: 36px;
+            padding: 28px;
+            border-radius: 28px;
+            background: linear-gradient(135deg, #121722 0%, #1e2638 100%);
+            border: 1px solid rgba(214,185,140,0.22);
+            box-shadow: 0 24px 48px rgba(12,16,24,0.24);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+        .special-gift-glow {
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 60%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(214,185,140,0.08) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .special-gift-icon {
+            flex: 0 0 auto;
+            width: 68px;
+            height: 68px;
+            border-radius: 20px;
+            background: rgba(214,185,140,0.14);
+            border: 1px solid rgba(214,185,140,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        .special-gift-content {
+            flex: 1 1 auto;
+            text-align: left;
+        }
+        .special-gift-tag {
+            color: #d6b98c;
+            font-weight: 700;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            display: block;
+            margin-bottom: 6px;
+            font-family: 'Outfit', sans-serif;
+        }
+        .special-gift-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0 0 8px;
+            font-family: 'Outfit', sans-serif;
+            line-height: 1.3;
+        }
+        .special-gift-desc {
+            color: rgba(255,255,255,0.76);
+            font-size: 14.5px;
+            line-height: 1.6;
+            margin: 0;
+        }
 
         .proof-visual-board {
             margin-top: 18px;
@@ -2248,6 +2314,31 @@
                 font-size: 12px;
                 line-height: 1.45;
             }
+            .special-gift-box {
+                flex-direction: column !important;
+                gap: 16px !important;
+                padding: 20px !important;
+                border-radius: 20px !important;
+                text-align: center !important;
+            }
+            .special-gift-icon {
+                width: 58px !important;
+                height: 58px !important;
+                font-size: 26px !important;
+                border-radius: 16px !important;
+            }
+            .special-gift-content {
+                text-align: center !important;
+            }
+            .special-gift-title {
+                font-size: 17px !important;
+                line-height: 1.25 !important;
+                margin-bottom: 6px !important;
+            }
+            .special-gift-desc {
+                font-size: 12.5px !important;
+                line-height: 1.5 !important;
+            }
 
             /* ========== MENTOR SECTION ========== */
             #giangvien .columns-4 {
@@ -2794,6 +2885,10 @@
             .deliverables-shell {
                 padding: 18px;
             }
+            .special-gift-box {
+                padding: 16px !important;
+                border-radius: 16px !important;
+            }
 
             /* Case study */
             .case-mini-stack,
@@ -3216,7 +3311,7 @@
                 </div>
                 <p class="hero-eyebrow">Clawbot AI Automation Workshop</p>
                 <h1 class="hero-title">OpenClaw <span class="hero-title-sub">AI Automation</span></h1>
-                <h3 class="heading-45-medium-80" style="visibility:visible!important; color:rgba(255,255,255,0.92); line-height:1.08; letter-spacing:-0.04em; font-weight:500; margin:0; font-family:'Inter',sans-serif;">Hiểu bối cảnh thị trường AI, biết cách setup workflow thực tế và thực hành từng bước OpenClaw trên VPS</h3>
+                <h3 class="heading-45-medium-80" style="visibility:visible!important; color:rgba(255,255,255,0.92); line-height:1.08; letter-spacing:-0.04em; font-weight:500; margin:0; font-family:'Inter',sans-serif;">Hiểu bối cảnh thị trường AI, biết cách setup workflow thực tế và thực hành từng bước OpenClaw trên máy chủ ảo (VPS) 24/7</h3>
                 <p class="hero-desc">Một buổi học tách rõ phần lý thuyết và phần thực hành: từ tư duy workflow AI đến thao tác setup OpenClaw, AI Marketing và đăng bài đa nền tảng.</p>
                 <div class="hero-actions">
                     <a href="#dang-ky" class="link-block w-inline-block">
@@ -3242,7 +3337,7 @@
                     </div>
                     <div class="hero-mini-card">
                         <p class="hero-mini-label">Trọng tâm</p>
-                        <p class="hero-mini-value">Workflow thực tế · OpenClaw VPS · AI Marketing đa nền tảng</p>
+                        <p class="hero-mini-value">Workflow thực tế · OpenClaw trên máy ảo VPS 24/7 · AI Marketing đa nền tảng</p>
                     </div>
                 </div>
             </div>
@@ -3268,7 +3363,7 @@
                         <div class="hero-stack-icon">③</div>
                         <div>
                             <h4>Thực hành từng bước</h4>
-                            <p>Đi từng bước setup OpenClaw trên VPS, AI Marketing và đăng bài đa nền tảng.</p>
+                            <p>Đi từng bước setup OpenClaw trên máy chủ ảo (VPS) chạy 24/7, AI Marketing và đăng bài đa nền tảng.</p>
                         </div>
                     </div>
                 </div>
@@ -3283,7 +3378,7 @@
     <div class="gradient-line bottom"></div>
     <div class="w-layout-blockcontainer container-padding-50 w-container">
         <div class="div-block-3">
-            <h2 class="heading-60 align-center">Chúng tôi không dạy bạn sử dụng công cụ kéo thả đắt đỏ. Chúng tôi chuyển giao giải pháp Custom Bot tự vận hành trên VPS của riêng bạn.</h2>
+            <h2 class="heading-60 align-center">Chúng tôi không dạy bạn sử dụng công cụ kéo thả đắt đỏ. Chúng tôi chuyển giao giải pháp Custom Bot tự vận hành trên máy chủ ảo (VPS) riêng chạy 24/7 của bạn.</h2>
         </div>
         <h1 class="back-heading">MERCYTECH</h1>
     </div>
@@ -3311,22 +3406,22 @@
                 </div>
 
                 <div class="w-layout-vflex tam-nhin-block">
-                    <p class="paragraph-16 uppercase opacity-50">02 — OpenClaw trên VPS</p>
-                    <h4 class="heading-40 tamnhintitle">Thực hành setup OpenClaw trên VPS để làm chủ hạ tầng và chi phí</h4>
-                    <p class="paragraph-18">Người học sẽ đi qua từng lớp hạ tầng quan trọng khi setup OpenClaw trên VPS: môi trường chạy bot, proxy, dữ liệu và cách giữ quyền kiểm soát khi mở rộng sang nhiều nền tảng.</p>
+                    <p class="paragraph-16 uppercase opacity-50">02 — OpenClaw trên máy chủ ảo (VPS)</p>
+                    <h4 class="heading-40 tamnhintitle">Thực hành setup OpenClaw trên máy chủ ảo (VPS) để làm chủ hạ tầng và chi phí</h4>
+                    <p class="paragraph-18">Người học sẽ đi qua từng lớp hạ tầng quan trọng khi setup OpenClaw trên máy chủ ảo (VPS) hoạt động 24/7: môi trường chạy bot, proxy, dữ liệu và cách giữ quyền kiểm soát khi mở rộng sang nhiều nền tảng.</p>
                     <button class="collapsible-mobile-trigger" onclick="toggleMobileCollapse(this)">Xem sơ đồ hạ tầng &amp; bảo mật ▼</button>
                     <div class="collapsible-mobile-content">
                         <div class="collapsible-mobile-inner">
                             <div class="proof-visual-board">
                                 <div class="proof-visual-head">
                                     <p class="proof-visual-title">Infrastructure &amp; Cost Board</p>
-                                    <div class="proof-visual-pill">OpenClaw VPS setup</div>
+                                    <div class="proof-visual-pill">Setup máy chủ ảo (VPS)</div>
                                 </div>
                                 <div class="proof-signal-grid">
                                     <div class="proof-signal-card">
                                         <p class="proof-signal-label">Lớp hạ tầng chính</p>
                                         <div class="proof-vps-list">
-                                            <div class="proof-vps-item"><strong>VPS riêng</strong> Chủ động tài nguyên, lịch chạy bot và khả năng mở rộng khi có nhiều kênh.</div>
+                                            <div class="proof-vps-item"><strong>Máy chủ ảo (VPS) riêng</strong> Chủ động tài nguyên, lịch chạy bot và khả năng mở rộng khi có nhiều kênh.</div>
                                             <div class="proof-vps-item"><strong>Proxy sạch</strong> Giảm rủi ro checkpoint và giữ độ ổn định khi vận hành social automation.</div>
                                             <div class="proof-vps-item"><strong>Data ownership</strong> Dữ liệu nội dung và lead không đi qua nền tảng trung gian.</div>
                                         </div>
@@ -3347,7 +3442,7 @@
                                     <span>Giải đáp về bảo mật &amp; an toàn tài khoản mạng xã hội</span>
                                 </div>
                                 <ul class="security-note-list">
-                                    <li><strong>100% bảo mật thông tin:</strong> Nội dung và dữ liệu tương tác được vận hành trực tiếp trên VPS của riêng doanh nghiệp.</li>
+                                    <li><strong>100% bảo mật thông tin:</strong> Nội dung và dữ liệu tương tác được vận hành trực tiếp trên máy chủ ảo (VPS) riêng hoạt động 24/7 của doanh nghiệp.</li>
                                     <li><strong>Sử dụng proxy riêng sạch:</strong> Mỗi tài khoản có lớp vận hành riêng để hạn chế checkpoint IP và giảm rủi ro spam.</li>
                                 </ul>
                             </div>
@@ -3386,11 +3481,11 @@
                         <h4 style="font-family:'Inter',sans-serif;">Tư duy setup workflow</h4>
                         <p>Biết cách chia một quy trình marketing thành đầu vào, xử lý AI, xuất bản và phản hồi.</p>
                     </article>
-                    <article class="deliverable-card">
+                    <article class="deliverable-card featured">
                         <div class="deliverable-tag" style="font-family:'Inter',sans-serif;">Hands-on</div>
                         <div class="deliverable-number">03</div>
-                        <h4 style="font-family:'Inter',sans-serif;">Thực hành OpenClaw trên VPS</h4>
-                        <p>Đi từng bước setup OpenClaw, AI Marketing và đăng bài đa nền tảng trong ca thực hành.</p>
+                        <h4 style="font-family:'Inter',sans-serif;">Thực hành OpenClaw trên VPS<br><span style="font-size: 13px; font-weight: 500; color: #d6b98c; display: block; margin-top: 6px; text-transform: none; letter-spacing: 0;">(Máy ảo chạy 24/7 giúp AI online liên tục)</span></h4>
+                        <p>Tự tay setup hệ thống trên máy chủ ảo (VPS) hoạt động 24/7 để AI có thể tự động chạy liên tục mà không cần bật nguồn máy tính cá nhân của bạn.</p>
                     </article>
                     <article class="deliverable-card">
                         <div class="deliverable-tag" style="font-family:'Inter',sans-serif;">Takeaway</div>
@@ -3398,6 +3493,27 @@
                         <h4 style="font-family:'Inter',sans-serif;">Tài liệu + hướng áp dụng</h4>
                         <p>Có tài liệu xem lại và biết nên áp dụng workflow nào trước cho doanh nghiệp của mình.</p>
                     </article>
+                </div>
+                
+                <!-- Special Gift Callout Box -->
+                <div class="special-gift-box motion-reveal" data-motion="float">
+                    <div class="special-gift-glow"></div>
+                    <div class="special-gift-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d6b98c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block;">
+                            <polyline points="20 12 20 22 4 22 4 12"></polyline>
+                            <rect x="2" y="7" width="20" height="5"></rect>
+                            <line x1="12" y1="22" x2="12" y2="7"></line>
+                            <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path>
+                            <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path>
+                        </svg>
+                    </div>
+                    <div class="special-gift-content">
+                        <span class="special-gift-tag">Đặc quyền duy nhất tại Workshop</span>
+                        <h4 class="special-gift-title">Cung cấp tài khoản ChatGPT Plus (Trị giá 525.000 VNĐ) miễn phí</h4>
+                        <p class="special-gift-desc">
+                            Học viên sẽ được cấp tài khoản ChatGPT Plus để thực hành và sử dụng <strong>miễn phí trong suốt thời gian diễn ra workshop</strong>. Sau khi hoàn thành buổi học, anh/chị có thể chủ động tự trang bị tài khoản cá nhân để tiếp tục vận hành.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -3646,7 +3762,7 @@
             <div class="timeline_item">
                 <div class="timeline_left">
                     <div class="paragraph-16 uppercase higtlight-color">Ca 02 · 13h30 - 15h00</div>
-                    <div class="heading-40">Thực hành từng bước OpenClaw<br/>&amp; AI Marketing trên VPS</div>
+                    <div class="heading-40">Thực hành từng bước OpenClaw<br/>&amp; AI Marketing trên máy ảo VPS 24/7</div>
                 </div>
                 <div class="timeline_centre">
                     <div class="timeline_circle" style="background-color:#d6b98c;box-shadow:0 0 12px rgba(214,185,140,0.32);"></div>
@@ -3657,7 +3773,7 @@
                         <div class="w-layout-vflex flex-block-12">
                             <p class="paragraph-16">Ca thực hành không chỉ là xem demo, mà đi theo từng bước cụ thể để người học hiểu cách workflow được thiết lập và vận hành trên môi trường thật.</p>
                             <ul role="list" class="list-2">
-                                <li><p class="paragraph-16">Đi qua các bước setup OpenClaw trên VPS và các lớp hạ tầng cần có.</p></li>
+                                <li><p class="paragraph-16">Đi qua các bước setup OpenClaw trên máy chủ ảo (VPS) và các lớp hạ tầng cần có.</p></li>
                                 <li><p class="paragraph-16">Thiết lập logic AI Marketing cho caption, hashtag và đăng bài đa nền tảng.</p></li>
                                 <li><p class="paragraph-16">Thực hành cách đăng bài đa nền tảng và điều hướng tín hiệu khách hàng về kênh xử lý phù hợp.</p></li>
                             </ul>
@@ -3704,7 +3820,7 @@
                 </div>
                 <div class="w-layout-vflex h-nh-th-c-h-c-t-p">
                     <h6 class="heading-30 hinhthuctitle">Online trực tiếp qua Google Meet</h6>
-                    <p class="paragraph-16">Workshop diễn ra online trong ngày 28/06/2026 với 2 ca học liên tục: ca 1 tập trung lý thuyết bối cảnh AI và workflow, ca 2 đi vào thực hành từng bước OpenClaw trên VPS.</p>
+                    <p class="paragraph-16">Workshop diễn ra online trong ngày 28/06/2026 với 2 ca học liên tục: ca 1 tập trung lý thuyết bối cảnh AI và workflow, ca 2 đi vào thực hành từng bước OpenClaw trên máy ảo VPS 24/7.</p>
                 </div>
                 <div class="w-layout-vflex h-nh-th-c-h-c-t-p">
                     <h6 class="heading-30 hinhthuctitle">Nhận tài liệu sau buổi học</h6>
@@ -3723,7 +3839,7 @@
                     </div>
                     <div class="w-layout-vflex flex-block-18">
                         <h6 class="heading-30 hinhthuctitle">Lịch học cố định trong ngày 28/06/2026</h6>
-                        <p class="paragraph-16 align-center">Ca 1: 10h30 - 11h30 (Lý thuyết bối cảnh AI & workflow) · Nghỉ trưa · Ca 2: 13h30 - 15h00 (Thực hành OpenClaw trên VPS, AI Marketing và đăng bài đa nền tảng). Link Google Meet sẽ được gửi sau khi đăng ký.</p>
+                        <p class="paragraph-16 align-center">Ca 1: 10h30 - 11h30 (Lý thuyết bối cảnh AI & workflow) · Nghỉ trưa · Ca 2: 13h30 - 15h00 (Thực hành OpenClaw trên máy chủ ảo VPS, AI Marketing và đăng bài đa nền tảng). Link Google Meet sẽ được gửi sau khi đăng ký.</p>
                     </div>
                 </div>
                 <div class="div-block-50">
@@ -3769,7 +3885,7 @@
                         </div>
                         <div class="cta-benefit-item">
                             <div class="cta-benefit-check">✓</div>
-                            <div><strong>Đi qua từng bước OpenClaw trên VPS</strong> thay vì chỉ xem mô tả chung.</div>
+                            <div><strong>Đi qua từng bước OpenClaw trên máy ảo VPS 24/7</strong> thay vì chỉ xem mô tả chung.</div>
                         </div>
                         <div class="cta-benefit-item">
                             <div class="cta-benefit-check">✓</div>
@@ -3830,6 +3946,11 @@
                                 <option value="referral">Bạn bè giới thiệu</option>
                                 <option value="group-other">Khác</option>
                             </select>
+                        </div>
+                        <div class="field-block">
+                            <label for="Referral" class="field-label-name">Mã người giới thiệu (Nếu có để giảm thêm 100.000đ)</label>
+                            <input class="field-text w-input" maxlength="256" name="Referral" placeholder="Ví dụ: INTRO100" type="text" id="Referral" style="text-transform: uppercase;"/>
+                            <div id="referral-status-msg" style="margin-top: 6px; font-size: 13px; font-weight: 600; display: none;"></div>
                         </div>
                         <label class="w-checkbox" style="margin-top:16px;">
                             <input type="checkbox" name="newsletter" id="newsletter" class="w-checkbox-input"/>
@@ -3993,9 +4114,13 @@
     }
 
     const EARLY_BIRD_STORAGE_KEY = 'mercytech_earlybird_deadline';
+    const EARLY_BIRD_EXPIRED_KEY = 'mercytech_earlybird_expired';
     const EARLY_BIRD_DURATION_MS = 30 * 60 * 1000;
 
     function getEarlyBirdDeadline() {
+        if (window.localStorage.getItem(EARLY_BIRD_EXPIRED_KEY) === 'true') {
+            return 0;
+        }
         const stored = window.localStorage.getItem(EARLY_BIRD_STORAGE_KEY);
         const parsed = stored ? Number(stored) : NaN;
         if (!Number.isNaN(parsed) && parsed > Date.now()) {
@@ -4014,27 +4139,136 @@
         return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
     }
 
+    function updatePricing() {
+        const referralInput = document.getElementById('Referral');
+        const referralStatus = document.getElementById('referral-status-msg');
+        
+        const deadline = getEarlyBirdDeadline();
+        const isEarlyBirdActive = deadline > Date.now();
+        
+        const referralCode = referralInput ? referralInput.value.trim().toUpperCase() : '';
+        const isReferralValid = referralCode.length >= 3;
+        
+        let basePrice = 1990000;
+        let earlyBirdDiscount = isEarlyBirdActive ? 500000 : 0;
+        let referralDiscount = isReferralValid ? 100000 : 0;
+        
+        let finalPrice = basePrice - earlyBirdDiscount - referralDiscount;
+        
+        const formatPrice = (num) => num.toLocaleString('vi-VN') + ' VNĐ';
+        const formatPriceRaw = (num) => num.toLocaleString('vi-VN');
+        
+        const priceOldEl = document.querySelector('.cta-price-card .price-old');
+        const priceNowEl = document.querySelector('.cta-price-card .price-now');
+        const priceTagEl = document.querySelector('.cta-price-card .price-tag');
+        const successPayButton = document.querySelector('#cta-success-wrapper a[href*="zalo.me"] + a') || document.querySelector('#cta-success-wrapper a:last-child');
+        
+        if (priceNowEl) {
+            priceNowEl.textContent = formatPriceRaw(finalPrice);
+        }
+        
+        if (priceOldEl) {
+            if (earlyBirdDiscount > 0 || referralDiscount > 0) {
+                priceOldEl.style.display = 'block';
+                priceOldEl.textContent = formatPrice(basePrice);
+                priceOldEl.style.textDecoration = 'line-through';
+            } else {
+                priceOldEl.style.display = 'none';
+            }
+        }
+        
+        if (priceTagEl) {
+            let tags = [];
+            if (isEarlyBirdActive) tags.push('Early Bird');
+            if (isReferralValid) tags.push('Mã giới thiệu');
+            priceTagEl.textContent = tags.length > 0 ? tags.join(' + ') : 'Vé chính thức';
+        }
+        
+        const countdownBox = document.getElementById('cta-earlybird-box');
+        if (countdownBox) {
+            if (isEarlyBirdActive) {
+                countdownBox.style.display = 'block';
+                const noteEl = countdownBox.querySelector('.cta-countdown-note');
+                if (noteEl) {
+                    noteEl.innerHTML = `Ưu đãi early bird sẽ kết thúc sau 30 phút. Sau đó giá quay về <strong>${formatPrice(basePrice - referralDiscount)}</strong>.`;
+                }
+            } else {
+                countdownBox.style.display = 'none';
+            }
+        }
+        
+        const navOfferEl = document.querySelector('.nav-register-offer');
+        if (navOfferEl) {
+            if (isEarlyBirdActive) {
+                if (isReferralValid) {
+                    navOfferEl.innerHTML = `<strong>Đã áp dụng mã: ${formatPriceRaw(finalPrice)}đ</strong> · gốc 1.990.000đ`;
+                } else {
+                    navOfferEl.innerHTML = `<strong>Early bird ${formatPriceRaw(finalPrice)}đ</strong> · gốc 1.990.000đ`;
+                }
+            } else {
+                if (isReferralValid) {
+                    navOfferEl.innerHTML = `<strong>Đã áp dụng mã: ${formatPriceRaw(finalPrice)}đ</strong> · gốc 1.990.000đ`;
+                } else {
+                    navOfferEl.innerHTML = `<strong>Đăng ký ngay: ${formatPriceRaw(finalPrice)}đ</strong>`;
+                }
+            }
+        }
+        
+        if (successPayButton) {
+            successPayButton.textContent = `Thanh Toán Học Phí (${formatPriceRaw(finalPrice)} VNĐ)`;
+        }
+        
+        if (referralStatus) {
+            if (isReferralValid) {
+                referralStatus.style.display = 'block';
+                referralStatus.style.color = '#10b981';
+                referralStatus.innerHTML = `✓ Áp dụng mã giới thiệu thành công! Giảm thêm <strong>100.000đ</strong>.`;
+            } else if (referralCode.length > 0) {
+                referralStatus.style.display = 'block';
+                referralStatus.style.color = '#ef4444';
+                referralStatus.innerHTML = `Mã giới thiệu phải có ít nhất 3 ký tự.`;
+            } else {
+                referralStatus.style.display = 'none';
+            }
+        }
+    }
+
     function startEarlyBirdCountdown() {
         const navCountdown = document.getElementById('nav-earlybird-countdown');
         const ctaCountdown = document.getElementById('cta-earlybird-countdown');
         const deadline = getEarlyBirdDeadline();
 
         function renderCountdown() {
+            if (window.localStorage.getItem(EARLY_BIRD_EXPIRED_KEY) === 'true') {
+                if (navCountdown) navCountdown.textContent = 'Đã hết';
+                if (ctaCountdown) ctaCountdown.textContent = '00:00';
+                updatePricing();
+                return;
+            }
+
             const remaining = deadline - Date.now();
             const display = remaining <= 0 ? '00:00' : formatCountdown(remaining);
             if (navCountdown) navCountdown.textContent = display;
             if (ctaCountdown) ctaCountdown.textContent = display;
 
+            updatePricing();
+
             if (remaining <= 0) {
                 if (navCountdown) navCountdown.textContent = 'Đã hết';
                 if (ctaCountdown) ctaCountdown.textContent = '00:00';
+                window.localStorage.setItem(EARLY_BIRD_EXPIRED_KEY, 'true');
                 window.localStorage.removeItem(EARLY_BIRD_STORAGE_KEY);
                 clearInterval(timer);
+                updatePricing();
             }
         }
 
-        renderCountdown();
-        const timer = window.setInterval(renderCountdown, 1000);
+        if (window.localStorage.getItem(EARLY_BIRD_EXPIRED_KEY) !== 'true') {
+            renderCountdown();
+            const timer = window.setInterval(renderCountdown, 1000);
+        } else {
+            renderCountdown();
+        }
     }
 
     function getHeaderOffset() {
@@ -4134,7 +4368,7 @@
             '.hero-panel',
             '.hero-mini-card',
             '.tam-nhin-block',
-
+            '.special-gift-box',
             '.cta-price-card',
             '.timeline_right',
             '.chan-dung-hoc-vien-block',
@@ -4415,6 +4649,14 @@
     initActiveNav();
     initMentorVideoAutoplay();
 
+    // Bind Referral field listeners and run initial check
+    const referralInput = document.getElementById('Referral');
+    if (referralInput) {
+        referralInput.addEventListener('input', updatePricing);
+        referralInput.addEventListener('change', updatePricing);
+    }
+    updatePricing();
+
     // Form submission
     document.getElementById('wf-form-Contact-Form').addEventListener('submit', function(e) {
         e.preventDefault();
@@ -4427,6 +4669,7 @@
             role:   document.getElementById('Role').value,
             ques:   document.getElementById('Ques').value,
             source: document.getElementById('Source').value,
+            referral: document.getElementById('Referral').value,
             newsletter: document.getElementById('newsletter').checked,
             timestamp: new Date().toLocaleString('vi-VN')
         };
