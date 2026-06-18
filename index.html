@@ -61,7 +61,6 @@
         /* Alternating section tint so page isn't one flat color */
         #vande, #giatri, #loitrinha { background: radial-gradient(ellipse 80% 40% at 50% 0%, rgba(214,185,140,0.05) 0%, transparent 70%); }
         #giangvien { background: radial-gradient(ellipse 70% 50% at 30% 50%, rgba(143,199,174,0.05) 0%, transparent 60%); }
-        #chiphi { background: radial-gradient(ellipse 80% 40% at 70% 0%, rgba(214,185,140,0.07) 0%, transparent 65%); }
         #dang-ky { background: radial-gradient(ellipse 90% 50% at 50% 100%, rgba(214,185,140,0.08) 0%, transparent 70%); }
 
         /* Hero title gets a faint gold glow */
@@ -2748,8 +2747,8 @@
                 min-width: 0 !important;
                 margin-left: 0 !important;
                 margin-right: 0 !important;
-                padding-left: 14px !important;
-                padding-right: 14px !important;
+                padding-left: 18px !important;
+                padding-right: 18px !important;
                 box-sizing: border-box !important;
             }
             .section-2 {
@@ -2819,7 +2818,7 @@
 
             /* CTA adjustments */
             .cta-shell {
-                padding: 18px;
+                padding: 24px;
             }
             .cta-copy h3 {
                 font-size: 22px;
@@ -2921,11 +2920,6 @@
                 transform .85s cubic-bezier(.22,1,.36,1),
                 filter .85s cubic-bezier(.22,1,.36,1);
         }
-        .motion-reveal.motion-in {
-            opacity: 1;
-            transform: translate3d(0, 0, 0) scale(1);
-            filter: blur(0);
-        }
         .motion-reveal[data-motion="left"] {
             transform: translate3d(-52px, 22px, 0) scale(0.98);
         }
@@ -2937,6 +2931,11 @@
         }
         .motion-reveal[data-motion="float"] {
             transform: translate3d(0, 36px, 0) scale(0.97) rotateX(8deg);
+        }
+        .motion-reveal.motion-in {
+            opacity: 1;
+            transform: translate3d(0, 0, 0) scale(1);
+            filter: blur(0);
         }
         .motion-reveal[data-stagger="1"] { transition-delay: .06s; }
         .motion-reveal[data-stagger="2"] { transition-delay: .12s; }
@@ -3184,7 +3183,6 @@
                 <a href="#vande" class="navigation-text">Vấn đề &amp; Giải pháp</a>
                 <a href="#giatri" class="navigation-text">Giá trị cốt lõi</a>
                 <a href="#giangvien" class="navigation-text">Người dẫn dắt</a>
-                <a href="#chiphi" class="navigation-text">Chi phí</a>
                 <a href="#loitrinha" class="navigation-text">Lộ trình</a>
             </div>
         </div>
@@ -3231,11 +3229,7 @@
                             </div>
                         </div>
                     </a>
-                    <a href="#chiphi" class="link-block-2 w-inline-block">
-                        <div class="w-layout-hflex button-arrow-fill stroke-white">
-                            <p class="link no-margin-p white-text">Xem giá & ưu đãi</p>
-                        </div>
-                    </a>
+
                 </div>
                 <div class="hero-mini-grid">
                     <div class="hero-mini-card">
@@ -3513,6 +3507,43 @@
     <div class="gradient-line bottom"></div>
 </section>
 
+<!-- ========== SHOWCASE IMAGES ========== -->
+<section class="section-body padding-top-bottom-120 cac-du-an">
+    <div class="w-layout-blockcontainer container-padding-50 w-container">
+        <div class="showcase-shell">
+            <div class="showcase-head">
+                <div class="showcase-head-copy">
+                    <p class="showcase-kicker">Hình ảnh minh hoạ workshop</p>
+                    <h2 class="showcase-title">Hình ảnh minh hoạ</h2>
+                </div>
+            </div>
+            <div class="showcase-grid">
+                <div class="showcase-column">
+                    <article class="showcase-card tall">
+                        <img src="mercy_tech_showcase_01.jpg" loading="lazy" alt="Hình minh hoạ workshop OpenClaw tổng quan hệ thống"/>
+                    </article>
+                </div>
+                <div class="showcase-stack">
+                    <article class="showcase-card medium">
+                        <img src="mercy_tech_showcase_02.jpg" loading="lazy" alt="Hình minh hoạ workshop OpenClaw marketing đa kênh"/>
+                    </article>
+                    <article class="showcase-card medium">
+                        <img src="mercy_tech_showcase_05.jpg" loading="lazy" alt="Hình minh hoạ workshop OpenClaw ứng dụng doanh nghiệp"/>
+                    </article>
+                </div>
+            </div>
+            <div class="showcase-bottom-row">
+                <article class="showcase-card medium">
+                    <img src="mercy_tech_showcase_03.jpg" loading="lazy" alt="Hình minh hoạ workshop OpenClaw điều phối hệ thống"/>
+                </article>
+                <article class="showcase-card medium">
+                    <img src="mercy_tech_showcase_04.jpg" loading="lazy" alt="Hình minh hoạ workshop OpenClaw phản hồi lead"/>
+                </article>
+            </div>
+        </div>
+    </div>
+    <div class="gradient-line bottom"></div>
+</section>
 
 <!-- ========== STUDENT PROFILE ========== -->
 <section class="section-body padding-top-bottom-120 chandung-section">
@@ -3569,47 +3600,6 @@
     <div class="gradient-line bottom"></div>
 </section>
 
-<!-- ========== INVESTMENT / COST ========== -->
-<section id="chiphi" class="section-body padding-top-bottom-120">
-    <div class="w-layout-blockcontainer container-padding-50 w-container">
-        <div class="pricing-shell">
-            <div class="pricing-main-card">
-                <p class="pricing-kicker">Workshop pricing</p>
-                <h2 class="heading-40">Học phí workshop &amp; ưu đãi chốt nhanh</h2>
-                <div class="pricing-price-row">
-                    <p class="pricing-price-now">1.49M</p>
-                    <p class="pricing-price-old">1.99M</p>
-                    <div class="pricing-badge">Early bird</div>
-                </div>
-                <p class="pricing-note">Đây là vé tham gia <strong style="color:#ffffff;">Workshop OpenClaw Thực Chiến</strong> để anh/chị hiểu mô hình Clawbot vận hành như thế nào, phù hợp với bài toán nào và nên đi tiếp theo hướng nào sau buổi học.</p>
-                <div class="pricing-highlight">
-                    <strong>Ưu đãi quan trọng:</strong> Nếu sau workshop anh/chị muốn triển khai nhanh cho doanh nghiệp, toàn bộ tiền vé <strong>1.490.000</strong> sẽ được trừ trực tiếp vào <strong>gói setup 9 triệu</strong> nếu chốt trong vòng <strong>48 giờ</strong>.
-                </div>
-                <a href="#dang-ky" class="button-arrow-fill stroke-white inline-btn w-inline-block" style="margin-top:24px;">
-                    <div class="link">Đăng ký giữ suất ngay</div>
-                </a>
-            </div>
-            <div class="pricing-side-card">
-                <p class="pricing-kicker">Sau khi tham gia</p>
-                <h3 class="heading-40">Anh/chị sẽ rõ 3 điều</h3>
-                <div class="pricing-side-list">
-                    <div class="pricing-side-item">
-                        <strong>1. Thị trường AI nên nhìn theo hướng nào?</strong>
-                        Hiểu đâu là lớp bối cảnh, đâu là lớp workflow và vì sao doanh nghiệp không nên chỉ chạy theo công cụ mới.
-                    </div>
-                    <div class="pricing-side-item">
-                        <strong>2. Workflow nào phù hợp với bài toán của mình?</strong>
-                        Có đủ góc nhìn để xác định nên bắt đầu từ AI Marketing, đăng bài đa nền tảng hay setup OpenClaw trên VPS.
-                    </div>
-                    <div class="pricing-side-item">
-                        <strong>3. Cách triển khai OpenClaw thực tế ra sao?</strong>
-                        Nắm được các bước setup chính trên VPS để không còn mơ hồ khi muốn tự triển khai hoặc giao đội ngũ thực hiện.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 <!-- ========== TIMELINE ========== -->
 <section id="loitrinha" class="section-body padding-top-bottom-120 small-padding-bottom">
@@ -3845,6 +3835,34 @@
                             <input type="checkbox" name="newsletter" id="newsletter" class="w-checkbox-input"/>
                             <span class="paragraph-14 black w-form-label" for="newsletter">Tôi muốn nhận thông tin cập nhật từ MERCY TECH</span>
                         </label>
+                        <!-- Payment Warning Note -->
+                        <div class="payment-warning-note" style="margin-top: 20px; padding: 16px; border-radius: 16px; background-color: rgba(214,185,140,0.07); border: 1px solid rgba(214,185,140,0.25); color: #4b5666; font-size: 13px; line-height: 1.6; text-align: left;">
+                            <span style="color: #cda873; font-weight: 700; display: block; margin-bottom: 6px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;">Thông tin chuyển khoản chính thức</span>
+                            Để đảm bảo an toàn giao dịch, quý anh/chị vui lòng chỉ chuyển khoản đến tài khoản chính thức duy nhất dưới đây của Ban tổ chức. Chúng tôi <strong>không sử dụng bất kỳ số tài khoản nào khác</strong>:
+                            <div style="margin-top: 10px; color: #121722; font-size: 13px; background: rgba(255,255,255,0.70); padding: 12px 14px; border-radius: 10px; border: 1px solid rgba(214,185,140,0.18); display: flex; flex-direction: column; gap: 8px;">
+                                <div style="display: flex; align-items: center; justify-content: space-between;">
+                                    <div><strong>Số tài khoản:</strong> <span style="font-family: monospace; font-size: 14.5px; letter-spacing: 0.02em;">1072118888</span></div>
+                                    <button type="button" onclick="copyToClipboard('1072118888', this)" style="background:none; border:none; padding:4px; cursor:pointer; display:inline-flex; align-items:center;" title="Sao chép số tài khoản">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #4b5666; vertical-align: middle;"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    </button>
+                                </div>
+                                <div style="display: flex; align-items: center; justify-content: space-between;">
+                                    <div><strong>Ngân hàng:</strong> Vietcombank</div>
+                                </div>
+                                <div style="display: flex; align-items: center; justify-content: space-between;">
+                                    <div><strong>Chủ tài khoản:</strong> <strong>VY THIEN HUNG</strong></div>
+                                    <button type="button" onclick="copyToClipboard('VY THIEN HUNG', this)" style="background:none; border:none; padding:4px; cursor:pointer; display:inline-flex; align-items:center;" title="Sao chép tên chủ tài khoản">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #4b5666; vertical-align: middle;"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    </button>
+                                </div>
+                                <div style="margin-top: 4px; padding-top: 8px; border-top: 1px dashed rgba(214,185,140,0.3); display: flex; align-items: center; justify-content: space-between;">
+                                    <div><strong>Cú pháp CK:</strong> <span style="font-family: monospace; font-size: 13.5px; font-weight: 700; color: #cda873;">Họ và Tên + SĐT</span></div>
+                                    <button type="button" onclick="copyToClipboard('Họ và Tên + SĐT', this)" style="background:none; border:none; padding:4px; cursor:pointer; display:inline-flex; align-items:center;" title="Sao chép cú pháp chuyển khoản">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #4b5666; vertical-align: middle;"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                         <div class="div-block-14" style="margin-top:24px;">
                             <input type="submit" class="button-arrow-fill stroke-white stroke-black w-button" style="background-color:#07070a;color:#ffffff;border-color:#07070a;" value="Xác nhận đăng ký giữ suất"/>
                         </div>
@@ -3924,6 +3942,18 @@
 <script type="text/javascript">
     // Add w-mod-js class (Webflow standard)
     !function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js";("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);
+
+    function copyToClipboard(text, element) {
+        navigator.clipboard.writeText(text).then(() => {
+            const original = element.innerHTML;
+            element.innerHTML = '<span style="font-size: 11px; color: #10b981; font-weight: 700; display: inline-block; min-width: 50px;">Đã chép</span>';
+            setTimeout(() => {
+                element.innerHTML = original;
+            }, 1200);
+        }).catch(err => {
+            console.error('Failed to copy: ', err);
+        });
+    }
 
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) {
@@ -4055,9 +4085,7 @@
             { selector: '.tam-nhin-block', motion: 'float', stagger: true },
             { selector: '.proof-signal-card', motion: 'zoom', stagger: true },
             { selector: '.proof-flow-node', motion: 'zoom', stagger: true },
-            { selector: '.pricing-main-card', motion: 'left' },
-            { selector: '.pricing-side-card', motion: 'right' },
-            { selector: '.pricing-side-item', motion: 'zoom', stagger: true },
+
             { selector: '.timeline_item', motion: 'float', stagger: true },
             { selector: '.cta-summary-card', motion: 'zoom', stagger: true },
             { selector: '.cta-price-card', motion: 'right' },
@@ -4076,7 +4104,7 @@
             });
         });
 
-        document.querySelectorAll('#hero, #vande, #giatri, #giangvien, #chiphi, #loitrinha, #dang-ky, .section-4').forEach(section => {
+        document.querySelectorAll('#hero, #vande, #giatri, #giangvien, #loitrinha, #dang-ky, .section-4').forEach(section => {
             section.classList.add('section-focus', 'motion-reveal');
             section.dataset.motion = section.id === 'hero' ? 'zoom' : 'float';
         });
@@ -4106,8 +4134,7 @@
             '.hero-panel',
             '.hero-mini-card',
             '.tam-nhin-block',
-            '.pricing-main-card',
-            '.pricing-side-card',
+
             '.cta-price-card',
             '.timeline_right',
             '.chan-dung-hoc-vien-block',
@@ -4155,7 +4182,7 @@
     }
 
     function initActiveNav() {
-        const sectionIds = ['hero', 'vande', 'giatri', 'giangvien', 'chiphi', 'loitrinha', 'dang-ky'];
+        const sectionIds = ['hero', 'vande', 'giatri', 'giangvien', 'loitrinha', 'dang-ky'];
         const navLinks = Array.from(document.querySelectorAll('.navigation-text[href^="#"]'));
         const sectionMap = navLinks
             .map(link => ({
