@@ -3286,7 +3286,7 @@
             <a href="#dang-ky" class="button-arrow w-inline-block nav-register-cta" id="top-register-cta">
                 <div class="nav-register-copy">
                     <div class="nav-register-label">Đăng ký</div>
-                    <div class="nav-register-offer"><strong>Early bird 1.490.000</strong> · gốc 1.990.000</div>
+                    <div class="nav-register-offer"><strong>Early bird 1.990.000</strong> · gốc 2.490.000</div>
                 </div>
                 <div class="nav-countdown-chip" id="nav-earlybird-countdown">30:00</div>
                 <div class="arrow">
@@ -3900,13 +3900,13 @@
                 </div>
                 <div class="cta-price-card">
                     <div class="small">Vé workshop</div>
-                    <div class="price-old">1.990.000 VNĐ</div>
-                    <div class="price-now">1.490.000</div>
+                    <div class="price-old">2.490.000 VNĐ</div>
+                    <div class="price-now">1.990.000</div>
                     <div class="price-tag">Early bird</div>
                     <div class="cta-countdown-box" id="cta-earlybird-box">
                         <span class="cta-countdown-label">Giá ưu đãi còn</span>
                         <span class="cta-countdown-time" id="cta-earlybird-countdown">30:00</span>
-                        <div class="cta-countdown-note">Ưu đãi early bird sẽ kết thúc sau 30 phút. Sau đó giá quay về <strong>1.990.000 VNĐ</strong>.</div>
+                        <div class="cta-countdown-note">Ưu đãi early bird sẽ kết thúc sau 30 phút. Sau đó giá quay về <strong>2.490.000 VNĐ</strong>.</div>
                     </div>
                     <div class="price-note">Link Google Meet sẽ được gửi sau khi đăng ký workshop ngày 28/06/2026.</div>
                 </div>
@@ -4001,7 +4001,7 @@
                         Tham Gia Nhóm Zalo Nhận Link Meet
                     </a>
                     <a href="#" target="_blank" class="button-arrow-fill stroke-black w-button" style="background-color:#ffffff;color:#07070a;border:2px solid #07070a;display:inline-flex;align-items:center;gap:10px;">
-                        Thanh Toán Học Phí (1.490.000 VNĐ)
+                        Thanh Toán Học Phí (1.990.000 VNĐ)
                     </a>
                 </div>
             </div>
@@ -4150,7 +4150,7 @@
         const referralCode = referralInput ? referralInput.value.trim().toUpperCase() : '';
         const isReferralValid = referralCode.length >= 3;
         
-        let basePrice = 1990000;
+        let basePrice = 2490000;
         let earlyBirdDiscount = isEarlyBirdActive ? 500000 : 0;
         let referralDiscount = isReferralValid ? 100000 : 0;
         
@@ -4202,13 +4202,13 @@
         if (navOfferEl) {
             if (isEarlyBirdActive) {
                 if (isReferralValid) {
-                    navOfferEl.innerHTML = `<strong>Đã áp dụng mã: ${formatPriceRaw(finalPrice)}đ</strong> · gốc 1.990.000đ`;
+                    navOfferEl.innerHTML = `<strong>Đã áp dụng mã: ${formatPriceRaw(finalPrice)}đ</strong> · gốc 2.490.000đ`;
                 } else {
-                    navOfferEl.innerHTML = `<strong>Early bird ${formatPriceRaw(finalPrice)}đ</strong> · gốc 1.990.000đ`;
+                    navOfferEl.innerHTML = `<strong>Early bird ${formatPriceRaw(finalPrice)}đ</strong> · gốc 2.490.000đ`;
                 }
             } else {
                 if (isReferralValid) {
-                    navOfferEl.innerHTML = `<strong>Đã áp dụng mã: ${formatPriceRaw(finalPrice)}đ</strong> · gốc 1.990.000đ`;
+                    navOfferEl.innerHTML = `<strong>Đã áp dụng mã: ${formatPriceRaw(finalPrice)}đ</strong> · gốc 2.490.000đ`;
                 } else {
                     navOfferEl.innerHTML = `<strong>Đăng ký ngay: ${formatPriceRaw(finalPrice)}đ</strong>`;
                 }
