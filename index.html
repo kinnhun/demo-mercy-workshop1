@@ -139,13 +139,15 @@
         }
 
         a:-webkit-any-link { text-decoration: unset; }
-        body {
-            background: radial-gradient(circle at top, rgba(255,255,255,0.04), transparent 28%), var(--bg);
+        body, .body {
+            background: radial-gradient(circle at top, rgba(255,255,255,0.04), transparent 28%) !important;
+            background-color: transparent !important;
             color: var(--text);
             font-family: 'Inter', sans-serif;
             overflow-x: clip;
         }
         html {
+            background-color: var(--bg) !important;
             overflow-x: clip;
         }
 
@@ -220,6 +222,8 @@
         .section-body,
         .section-2 {
             position: relative;
+            z-index: 1;
+            background-color: transparent !important;
         }
         .section-2 {
             padding-top: 74px;
@@ -319,6 +323,38 @@
         .navigation-text:hover {
             background: rgba(255,255,255,0.04);
         }
+        
+        /* Safely remove the vertical line in the middle of the hero section */
+        .container-hero-section,
+        body::before, body::after,
+        .page-wrapper::before, .page-wrapper::after,
+        .w-container::before, .w-container::after,
+        .section::before, .section::after,
+        .section-2::before, .section-2::after,
+        .columns::before, .columns::after, 
+        .column-3::before, .column-3::after, 
+        .column-2::before, .column-2::after,
+        .container-hero-section::before, .container-hero-section::after,
+        .hero-shell::before, .hero-shell::after {
+            background-color: transparent !important;
+            background-image: none !important;
+            border: none !important;
+            box-shadow: none !important;
+        }
+        
+        /* Remove any border lines from grid columns that could create the vertical line */
+        .w-col, .columns, .w-row, .column-3, .column-2, .column, .hero-shell, .hero-copy {
+            border-left: none !important;
+            border-right: none !important;
+        }
+
+        /* Hide the broken fixed timeline progress bar */
+        .timeline_progress, .timeline_progress-bar {
+            display: none !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+        }
+        
         .gradient-line.top,
         .gradient-line.bottom {
             opacity: 0.28;
@@ -3265,6 +3301,10 @@
     </style>
 </head>
 <body class="body">
+    <!-- Ambient Background Video -->
+    <video autoplay loop muted playsinline id="bg-video" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: 0; opacity: 0.25; filter: blur(12px) brightness(0.6); transform: scale(1.05); pointer-events: none;">
+        <source src="videobackground.mp4" type="video/mp4">
+    </video>
 
 <!-- ========== NAVBAR ========== -->
 <section class="section">
@@ -3377,14 +3417,26 @@
 </section>
 
 <!-- ========== STATEMENT ========== -->
-<section class="section-body padding-top-bottom-large">
-    <div class="gradient-line top"></div>
-    <div class="gradient-line bottom"></div>
-    <div class="w-layout-blockcontainer container-padding-50 w-container">
-        <div class="div-block-3">
-            <h2 class="heading-60 align-center">Chúng tôi không dạy bạn sử dụng công cụ kéo thả đắt đỏ. Chúng tôi chuyển giao giải pháp Custom Bot tự vận hành trên máy chủ ảo (VPS) riêng chạy 24/7 của bạn.</h2>
+<section class="section-body padding-top-bottom-large" style="position: relative; display: flex; align-items: center; justify-content: center; min-height: 40vh; background: transparent !important;">
+    <!-- Soft background glow replacing the aggressive gradient lines -->
+    <div style="position: absolute; inset: 0; background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(214,185,140,0.05) 0%, transparent 100%); pointer-events: none;"></div>
+    
+    <div class="w-layout-blockcontainer container-padding-50 w-container" style="display: flex; justify-content: center; position: relative; z-index: 2;">
+        
+        <!-- Premium Minimalist Typographic Layout -->
+        <div style="max-width: 900px; width: 100%; text-align: center; padding: 40px 20px;">
+            
+            <!-- Bot Icon (Floating, no border) -->
+            <div style="display: inline-flex; margin-bottom: 24px; opacity: 0.8;">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#d6b98c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>
+            </div>
+            
+            <h2 style="font-size: clamp(22px, 3.5vw, 38px); line-height: 1.5; font-weight: 300; color: rgba(255,255,255,0.9); letter-spacing: -0.01em; margin: 0; text-wrap: balance;">
+                Chúng tôi không dạy bạn sử dụng <span style="opacity: 0.4;">công cụ kéo thả đắt đỏ</span>. Chúng tôi chuyển giao giải pháp <span style="color: #d6b98c; font-weight: 500;">Custom Bot tự vận hành</span> trên máy chủ ảo (VPS) riêng chạy 24/7 của bạn.
+            </h2>
+            
         </div>
-        <h1 class="back-heading">MERCYTECH</h1>
+        
     </div>
 </section>
 
