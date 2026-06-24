@@ -18,6 +18,10 @@
     {
       "src": "/referral/(.*)",
       "dest": "/referral.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
     }
   ]
 }
