@@ -1,7 +1,7 @@
 node_modules/
-package-lock.json
-package.json
 *.log
 test_*.js
 test_*.png
 trace_*.js
+workshop-data/.git/
+workshop-data/

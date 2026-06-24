@@ -1,0 +1,16 @@
+{
+  "name": "workshop-registration-system",
+  "version": "1.0.0",
+  "description": "Independent Workshop Registration System with Git Database and Admin Dashboard",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2",
+    "xlsx": "^0.18.5"
+  }
+}
