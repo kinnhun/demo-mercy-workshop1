@@ -38,6 +38,60 @@ function checkAdminAuth(req, res, next) {
 // PUBLIC APIs
 // -------------------------------------------------------------------
 
+// 0. Diagnose GitHub connection
+app.get('/api/diagnose', async (req, res) => {
+  const token = process.env.GITHUB_TOKEN;
+  const owner = process.env.GITHUB_REPO_OWNER;
+  const repo = process.env.GITHUB_REPO_NAME;
+  const branch = process.env.GITHUB_BRANCH || 'main';
+
+  const status = {
+    env: {
+      GITHUB_TOKEN_DEFINED: !!token,
+      GITHUB_TOKEN_LENGTH: token ? token.length : 0,
+      GITHUB_REPO_OWNER: owner || 'undefined',
+      GITHUB_REPO_NAME: repo || 'undefined',
+      GITHUB_BRANCH: branch
+    },
+    githubConnection: null,
+    error: null
+  };
+
+  if (!token || !owner || !repo) {
+    status.error = 'Thiếu một hoặc nhiều biến môi trường GITHUB_TOKEN, GITHUB_REPO_OWNER, hoặc GITHUB_REPO_NAME.';
+    return res.json(status);
+  }
+
+  try {
+    const url = `https://api.github.com/repos/${owner}/${repo}/contents/workshop-data/registrations.json?ref=${branch}`;
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Accept': 'application/vnd.github.v3+json',
+        'User-Agent': 'Vercel-Express-App'
+      }
+    });
+
+    status.githubConnection = {
+      status: response.status,
+      statusText: response.statusText,
+      ok: response.ok
+    };
+
+    if (!response.ok) {
+      const errText = await response.text();
+      status.error = `GitHub API returned error: ${response.status} - ${errText}`;
+    } else {
+      status.message = 'Kết nối GitHub API thành công! Có thể đọc ghi dữ liệu.';
+    }
+  } catch (err) {
+    status.error = `Lỗi mạng khi kết nối GitHub: ${err.message}`;
+  }
+
+  res.json(status);
+});
+
 // 1. Submit registration
 app.post('/api/register', async (req, res) => {
   try {
