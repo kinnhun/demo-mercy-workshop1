@@ -449,6 +449,11 @@ app.get('/api/admin/export', checkAdminAuth, async (req, res) => {
 // PAGE ROUTING & STATIC FILE FALLBACK
 // -------------------------------------------------------------------
 
+// Serve Homepage UI
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'index.html'));
+});
+
 // Serve Admin UI
 app.get('/admin', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'admin.html'));
