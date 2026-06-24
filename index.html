@@ -3983,6 +3983,20 @@
                                 <input class="field-text w-input" maxlength="256" name="Tel" pattern="[0-9]{10}" placeholder="09xxxxxxxx" type="tel" id="Tel" required=""/>
                             </div>
                         </div>
+                        <div class="w-layout-vflex flex-block-28">
+                            <div class="field-block">
+                                <label for="workshop_date" class="field-label-name">Ngày diễn ra Workshop<span class="red-color"> *</span></label>
+                                <select id="workshop_date" name="workshop_date" class="field-text w-input" required="" style="height:50px;">
+                                    <option value="Chủ Nhật, 28/06/2026" selected>Chủ Nhật, 28/06/2026 (10h30 - 15h00)</option>
+                                </select>
+                            </div>
+                            <div class="field-block">
+                                <label for="workshop_type" class="field-label-name">Chủ đề Workshop<span class="red-color"> *</span></label>
+                                <select id="workshop_type" name="workshop_type" class="field-text w-input" required="" style="height:50px;">
+                                    <option value="Clawbot AI Automation" selected>Clawbot AI Automation</option>
+                                </select>
+                            </div>
+                        </div>
                         <div class="field-block">
                             <label for="Role" class="field-label-name">Chức vụ / Ngành nghề kinh doanh *</label>
                             <textarea id="Role" name="Role" maxlength="5000" placeholder="Chủ shop bán sỉ / Trưởng phòng vận hành / Freelancer Dev" class="field-text note-field-text w-input" required="" style="height:60px;"></textarea>
@@ -4041,7 +4055,7 @@
                             </div>
                         </div>
                         <div class="div-block-14" style="margin-top:24px;">
-                            <input type="submit" class="button-arrow-fill stroke-white stroke-black w-button" style="background-color:#07070a;color:#ffffff;border-color:#07070a;" value="Xác nhận đăng ký giữ suất"/>
+                            <input type="submit" class="button-arrow-fill stroke-black w-button" style="background-color:#07070a;color:#ffffff;border-color:#07070a;" value="Xác nhận đăng ký giữ suất"/>
                         </div>
                     </form>
                 </div>
@@ -4203,7 +4217,7 @@
         const isEarlyBirdActive = deadline > Date.now();
         
         const referralCode = referralInput ? referralInput.value.trim().toUpperCase() : '';
-        const isReferralValid = referralCode.length >= 3;
+        const isReferralValid = (referralCode === 'MERCY');
         
         let basePrice = 2490000;
         let earlyBirdDiscount = isEarlyBirdActive ? 500000 : 0;
@@ -4282,7 +4296,7 @@
             } else if (referralCode.length > 0) {
                 referralStatus.style.display = 'block';
                 referralStatus.style.color = '#ef4444';
-                referralStatus.innerHTML = `Mã giới thiệu phải có ít nhất 3 ký tự.`;
+                referralStatus.innerHTML = `Mã giới thiệu không hợp lệ.`;
             } else {
                 referralStatus.style.display = 'none';
             }
@@ -4698,6 +4712,37 @@
         });
     }
 
+    // Cookie helpers
+    function setCookie(name, value, days) {
+        const d = new Date();
+        d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+        const expires = "expires=" + d.toUTCString();
+        document.cookie = name + "=" + value + ";" + expires + ";path=/;SameSite=Strict";
+    }
+
+    function getCookie(name) {
+        const nameEQ = name + "=";
+        const ca = document.cookie.split(';');
+        for (let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+    }
+
+    // Process referral code
+    const urlParams = new URLSearchParams(window.location.search);
+    const refParam = urlParams.get('ref');
+    if (refParam) {
+        setCookie('referral_code', refParam.trim().toUpperCase(), 7);
+    }
+    const savedRef = getCookie('referral_code') || '';
+    const referralInput = document.getElementById('Referral');
+    if (referralInput) {
+        referralInput.value = savedRef;
+    }
+
     startEarlyBirdCountdown();
     bindSmoothScroll();
     initMotionSystem();
@@ -4706,7 +4751,6 @@
     initMentorVideoAutoplay();
 
     // Bind Referral field listeners and run initial check
-    const referralInput = document.getElementById('Referral');
     if (referralInput) {
         referralInput.addEventListener('input', updatePricing);
         referralInput.addEventListener('change', updatePricing);
@@ -4717,73 +4761,53 @@
     document.getElementById('wf-form-Contact-Form').addEventListener('submit', function(e) {
         e.preventDefault();
 
+        const nameVal = document.getElementById('name').value;
+        const emailVal = document.getElementById('Email').value;
+        const telVal = document.getElementById('Tel').value;
+        const roleVal = document.getElementById('Role').value;
+        const quesVal = document.getElementById('Ques').value;
+        const sourceVal = document.getElementById('Source').value;
+        const referralVal = document.getElementById('Referral').value;
+        const newsletterVal = document.getElementById('newsletter').checked;
+        const dateVal = document.getElementById('workshop_date').value;
+        const typeVal = document.getElementById('workshop_type').value;
+
+        // Combine metadata fields into Note
+        const noteVal = `Chức vụ: ${roleVal} | Nguồn: ${sourceVal} | Bài toán: ${quesVal || 'Không'} | Tin tức: ${newsletterVal ? 'Có' : 'Không'}`;
+
         const payload = {
-            type: 'workshop_registration',
-            name:   document.getElementById('name').value,
-            email:  document.getElementById('Email').value,
-            tel:    document.getElementById('Tel').value,
-            role:   document.getElementById('Role').value,
-            ques:   document.getElementById('Ques').value,
-            source: document.getElementById('Source').value,
-            referral: document.getElementById('Referral').value,
-            newsletter: document.getElementById('newsletter').checked,
-            timestamp: new Date().toLocaleString('vi-VN')
+            full_name: nameVal,
+            email: emailVal,
+            phone: telVal,
+            workshop_date: dateVal,
+            workshop_type: typeVal,
+            note: noteVal,
+            referral_code: referralVal
         };
 
-        console.log('[MERCY TECH] Workshop registration:', payload);
+        console.log('[MERCY TECH] Workshop registration submitting to API:', payload);
 
-        // 1. Gửi trực tiếp lên Google Sheets qua Apps Script
-        const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbzf07iN0u4mV1TGGtuGQ1t7Ey9HVecScILUZURbWb_tt_GHL2EkFKS_hjwv1rlHhNh-4A/exec';
-        
-        fetch(GOOGLE_SHEET_URL, {
+        fetch('/api/register', {
             method: 'POST',
-            mode: 'no-cors',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
         })
-        .then(() => {
-            console.log('[MERCY TECH] Sent to Google Sheets successfully.');
+        .then(res => {
+            if (!res.ok) {
+                return res.json().then(data => { throw new Error(data.error); });
+            }
+            return res.json();
+        })
+        .then(data => {
+            console.log('[MERCY TECH] Registration saved successfully:', data);
+            // Show success state
+            document.getElementById('cta-form-wrapper').style.display = 'none';
+            document.getElementById('cta-success-wrapper').style.display = 'block';
         })
         .catch(err => {
-            console.error('[MERCY TECH] Google Sheets submit error:', err);
+            console.error('[MERCY TECH] Registration error:', err);
+            alert(err.message || 'Có lỗi xảy ra khi lưu đăng ký. Vui lòng thử lại.');
         });
-
-        // 2. Gửi sang Google Forms (https://forms.gle/kNUsSPknaZvG3T5e7)
-        const GOOGLE_FORM_ACTION_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfPMt9g9kOBFclw3U0Cdn_yoJ_3of95czeZM9xGFp7mZFTlIQ/formResponse';
-        
-        const sourceSelect = document.getElementById('Source');
-        const sourceText = sourceSelect.options[sourceSelect.selectedIndex].text;
-        
-        const googleFormData = new URLSearchParams();
-        googleFormData.append('entry.758205017', payload.name);
-        googleFormData.append('entry.1317464237', payload.email);
-        googleFormData.append('entry.1723274113', payload.tel);
-        googleFormData.append('entry.1943911455', payload.role);
-        googleFormData.append('entry.652271284', payload.ques);
-        googleFormData.append('entry.266646349', sourceText);
-        
-        if (payload.newsletter) {
-            googleFormData.append('entry.1509250044', 'True');
-        }
-
-        fetch(GOOGLE_FORM_ACTION_URL, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: googleFormData.toString()
-        })
-        .then(() => {
-            console.log('[MERCY TECH] Sent to Google Forms successfully.');
-        })
-        .catch(err => {
-            console.error('[MERCY TECH] Google Forms submit error:', err);
-        });
-
-        // Show success state
-        document.getElementById('cta-form-wrapper').style.display = 'none';
-        document.getElementById('cta-success-wrapper').style.display = 'block';
     });
 </script>
 </body>

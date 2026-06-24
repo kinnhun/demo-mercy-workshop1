@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Thống kê người giới thiệu | MERCY TECH Workshop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+    <link rel="icon" type="image/png" href="../favicon.png"/>
+    <style>
+        :root {
+            --bg: #07090f;
+            --panel: #0f131b;
+            --panel-soft: #131925;
+            --panel-muted: rgba(255,255,255,0.04);
+            --line: rgba(255,255,255,0.08);
+            --text: #f7f8fb;
+            --muted: rgba(231,235,244,0.72);
+            --subtle: rgba(231,235,244,0.48);
+            --accent: #d6b98c;
+            --accent-soft: rgba(214,185,140,0.12);
+            --radius-lg: 26px;
+            --radius-md: 18px;
+            --radius-sm: 10px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-image: radial-gradient(circle at top, rgba(214,185,140,0.05), transparent 45%);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 48px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .header {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            border-bottom: 1px solid var(--line);
+            padding-bottom: 24px;
+        }
+
+        .logo-text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--subtle);
+        }
+
+        .title {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(28px, 4vw, 40px);
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.1;
+        }
+
+        .ref-badge {
+            display: inline-block;
+            align-self: flex-start;
+            padding: 6px 14px;
+            background: var(--accent-soft);
+            color: var(--accent);
+            border: 1px solid rgba(214,185,140,0.25);
+            border-radius: 99px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            margin-top: 6px;
+        }
+
+        /* Overview Stat */
+        .overview-panel {
+            background: linear-gradient(145deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015));
+            border: 1px solid var(--line);
+            border-radius: var(--radius-md);
+            padding: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .stat-group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--subtle);
+            font-weight: 600;
+        }
+
+        .stat-value {
+            font-family: 'Outfit', sans-serif;
+            font-size: 48px;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1;
+        }
+
+        .export-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: #ffffff;
+            color: var(--bg);
+            border: none;
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .export-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 24px rgba(255, 255, 255, 0.18);
+        }
+
+        /* List Panel */
+        .list-panel {
+            background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+            border: 1px solid var(--line);
+            border-radius: var(--radius-md);
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .panel-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            border-radius: 8px;
+            border: 1px solid var(--line);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 13px;
+        }
+
+        th {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 12px 16px;
+            font-weight: 600;
+            color: #ffffff;
+            border-bottom: 1px solid var(--line);
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 0.05em;
+        }
+
+        td {
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--line);
+            color: var(--muted);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 48px;
+            color: var(--subtle);
+            font-style: italic;
+        }
+
+        .note-privacy {
+            font-size: 12px;
+            color: var(--subtle);
+            text-align: center;
+            line-height: 1.5;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header class="header">
+            <span class="logo-text">MERCY TECH WORKSHOP</span>
+            <h1 class="title">Báo Cáo Người Giới Thiệu</h1>
+            <span class="ref-badge" id="ref-code-badge">MÃ: -</span>
+        </header>
+
+        <!-- STATS OVERVIEW -->
+        <section class="overview-panel">
+            <div class="stat-group">
+                <span class="stat-label">Tổng số người đã giới thiệu</span>
+                <span class="stat-value" id="total-count">0</span>
+            </div>
+            <a href="#" class="export-btn" id="export-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                Tải Báo Cáo Excel
+            </a>
+        </section>
+
+        <!-- TABLE OF USERS -->
+        <main class="list-panel">
+            <h2 class="panel-title">Danh Sách Người Được Giới Thiệu</h2>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 60px;">STT</th>
+                            <th>Thời gian đăng ký</th>
+                            <th>Họ và tên</th>
+                            <th>Số điện thoại</th>
+                            <th>Email</th>
+                            <th>Ngày Workshop</th>
+                        </tr>
+                    </thead>
+                    <tbody id="referral-table-body">
+                        <tr>
+                            <td colspan="6" class="empty-state">Đang tải danh sách...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="note-privacy">
+                * Vì lý do bảo mật thông tin cá nhân của học viên, số điện thoại và email hiển thị đã được ẩn đi một phần.
+            </p>
+        </main>
+    </div>
+
+    <script type="text/javascript">
+        window.addEventListener('DOMContentLoaded', () => {
+            // Extract code from URL path
+            // Path is like: /referral/ABC123
+            const pathParts = window.location.pathname.split('/');
+            const refCode = pathParts[pathParts.length - 1].trim().toUpperCase();
+
+            if (!refCode) {
+                showError('Không tìm thấy mã giới thiệu hợp lệ trong đường dẫn.');
+                return;
+            }
+
+            document.getElementById('ref-code-badge').textContent = `MÃ: ${refCode}`;
+            document.getElementById('export-link').setAttribute('href', `/api/referral/${refCode}/export`);
+
+            fetchReferrals(refCode);
+        });
+
+        function fetchReferrals(code) {
+            fetch(`/api/referral/${code}`)
+                .then(res => {
+                    if (!res.ok) {
+                        return res.json().then(data => { throw new Error(data.error); });
+                    }
+                    return res.json();
+                })
+                .then(data => {
+                    document.getElementById('total-count').textContent = data.total;
+                    
+                    const tbody = document.getElementById('referral-table-body');
+                    tbody.innerHTML = '';
+
+                    if (data.list && data.list.length > 0) {
+                        data.list.forEach((item, index) => {
+                            const tr = document.createElement('tr');
+                            tr.innerHTML = `
+                                <td style="font-weight: 600; color: #ffffff;">${index + 1}</td>
+                                <td>${item.created_at}</td>
+                                <td style="font-weight: 500; color: #ffffff; white-space: nowrap;">${escapeHtml(item.full_name)}</td>
+                                <td style="white-space: nowrap; font-family: monospace;">${escapeHtml(item.phone)}</td>
+                                <td style="font-family: monospace;">${escapeHtml(item.email)}</td>
+                                <td style="white-space: nowrap;">${escapeHtml(item.workshop_date)}</td>
+                            `;
+                            tbody.appendChild(tr);
+                        });
+                    } else {
+                        tbody.innerHTML = '<tr><td colspan="6" class="empty-state">Bạn chưa giới thiệu được lượt đăng ký nào.</td></tr>';
+                    }
+                })
+                .catch(err => {
+                    showError(err.message || 'Lỗi khi tải báo cáo.');
+                });
+        }
+
+        function showError(msg) {
+            const container = document.querySelector('.container');
+            container.innerHTML = `
+                <div class="list-panel" style="text-align: center; padding: 48px; border-color: rgba(229,115,115,0.3);">
+                    <div style="font-size: 48px; margin-bottom: 16px;">⚠️</div>
+                    <h2 class="panel-title" style="color: var(--error); margin-bottom: 8px;">Đã xảy ra lỗi</h2>
+                    <p style="color: var(--muted);">${escapeHtml(msg)}</p>
+                </div>
+            `;
+        }
+
+        function escapeHtml(text) {
+            if (!text) return '';
+            return text
+                .toString()
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+    </script>
+</body>
+</html>

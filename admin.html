@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Admin Dashboard | MERCY TECH Workshop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+    <link rel="icon" type="image/png" href="favicon.png"/>
+    <style>
+        :root {
+            --bg: #07090f;
+            --panel: #0f131b;
+            --panel-soft: #131925;
+            --panel-muted: rgba(255,255,255,0.04);
+            --line: rgba(255,255,255,0.08);
+            --line-strong: rgba(255,255,255,0.14);
+            --text: #f7f8fb;
+            --muted: rgba(231,235,244,0.72);
+            --subtle: rgba(231,235,244,0.48);
+            --accent: #d6b98c;
+            --accent-soft: rgba(214,185,140,0.12);
+            --success: #8fc7ae;
+            --error: #e57373;
+            --radius-lg: 26px;
+            --radius-md: 18px;
+            --radius-sm: 10px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-image: radial-gradient(circle at top right, rgba(214,185,140,0.06), transparent 35%);
+            overflow-x: hidden;
+        }
+
+        /* Login Layout */
+        #login-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+            padding: 24px;
+        }
+
+        .login-card {
+            background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+            border: 1px solid var(--line);
+            border-radius: var(--radius-lg);
+            padding: 42px;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 32px 64px rgba(0,0,0,0.4);
+            backdrop-filter: blur(20px);
+            text-align: center;
+        }
+
+        .login-logo {
+            font-family: 'Outfit', sans-serif;
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            color: #ffffff;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .login-subtitle {
+            font-size: 14px;
+            color: var(--muted);
+            margin-bottom: 32px;
+        }
+
+        /* Form Controls */
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--subtle);
+            margin-bottom: 8px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-sm);
+            color: #ffffff;
+            font-size: 14px;
+            transition: all 0.24s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 0 0 3px var(--accent-soft);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background: #ffffff;
+            color: var(--bg);
+            border: none;
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            margin-top: 12px;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15);
+        }
+
+        .error-msg {
+            color: var(--error);
+            font-size: 13px;
+            margin-top: 14px;
+            display: none;
+        }
+
+        /* Dashboard Layout */
+        #dashboard-container {
+            display: none;
+            flex-direction: column;
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 34px 24px;
+            gap: 28px;
+        }
+
+        .dash-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .dash-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .dash-logo-text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .dash-logo-badge {
+            font-size: 10px;
+            font-weight: 700;
+            padding: 4px 8px;
+            background: var(--accent-soft);
+            color: var(--accent);
+            border: 1px solid rgba(214,185,140,0.3);
+            border-radius: 99px;
+            letter-spacing: 0.05em;
+        }
+
+        .logout-btn {
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-sm);
+            color: var(--muted);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.24s ease;
+        }
+
+        .logout-btn:hover {
+            background: rgba(229, 115, 115, 0.1);
+            color: var(--error);
+            border-color: rgba(229, 115, 115, 0.3);
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015));
+            border: 1px solid var(--line);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--subtle);
+        }
+
+        .stat-value {
+            font-family: 'Outfit', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .stat-sub {
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        /* Data Section */
+        .data-section {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        @media (min-width: 992px) {
+            .data-section {
+                grid-template-columns: 1fr 340px;
+            }
+        }
+
+        .table-panel {
+            background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+            border: 1px solid var(--line);
+            border-radius: var(--radius-md);
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .panel-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        /* Filter Controls */
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .search-wrapper {
+            flex-grow: 1;
+            min-width: 200px;
+        }
+
+        .select-filter {
+            min-width: 140px;
+            padding: 10px 14px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 13px;
+        }
+
+        .select-filter option {
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: var(--accent-soft);
+            border: 1px solid rgba(214,185,140,0.25);
+            border-radius: 8px;
+            color: var(--accent);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .action-btn:hover {
+            background: var(--accent);
+            color: var(--bg);
+        }
+
+        /* Table Responsive */
+        .table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            border-radius: 8px;
+            border: 1px solid var(--line);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 13px;
+        }
+
+        th {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 12px 16px;
+            font-weight: 600;
+            color: #ffffff;
+            border-bottom: 1px solid var(--line);
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 0.05em;
+        }
+
+        td {
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--line);
+            color: var(--muted);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background: rgba(255, 255, 255, 0.01);
+            color: #ffffff;
+        }
+
+        .badge-ref {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 700;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--muted);
+            border: 1px solid var(--line);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        
+        .badge-ref:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: var(--accent-soft);
+        }
+
+        /* Pagination */
+        .pagination-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 10px;
+        }
+
+        .page-info {
+            font-size: 13px;
+            color: var(--subtle);
+        }
+
+        .page-btns {
+            display: flex;
+            gap: 8px;
+        }
+
+        .page-btn {
+            padding: 8px 14px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            color: var(--muted);
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .page-btn:hover:not(:disabled) {
+            background: rgba(255,255,255,0.08);
+            color: #ffffff;
+        }
+
+        .page-btn:disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
+        }
+
+        /* Sidebar stats */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .side-panel {
+            background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.005));
+            border: 1px solid var(--line);
+            border-radius: var(--radius-md);
+            padding: 24px;
+        }
+
+        .top-ref-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 18px;
+        }
+
+        .top-ref-item {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .top-ref-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+        }
+
+        .top-ref-code {
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        .top-ref-code:hover {
+            text-decoration: underline;
+        }
+
+        .top-ref-count {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .progress-bar-bg {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), #e8d0aa);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- LOGIN CONTAINER -->
+    <div id="login-container">
+        <div class="login-card">
+            <div class="login-logo">MERCY TECH</div>
+            <div class="login-subtitle">Hệ Thống Đăng Ký Workshop</div>
+            <form id="login-form">
+                <div class="form-group">
+                    <label class="form-label" for="username">Tên Đăng Nhập</label>
+                    <input class="form-input" type="text" id="username" placeholder="Nhập tên đăng nhập" required autocomplete="username"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="password">Mật Khẩu</label>
+                    <input class="form-input" type="password" id="password" placeholder="Nhập mật khẩu" required autocomplete="current-password"/>
+                </div>
+                <button class="login-btn" type="submit">Đăng Nhập</button>
+                <div class="error-msg" id="login-error">Mật khẩu hoặc tài khoản sai!</div>
+            </form>
+        </div>
+    </div>
+
+    <!-- DASHBOARD CONTAINER -->
+    <div id="dashboard-container">
+        <header class="dash-header">
+            <div class="dash-brand">
+                <span class="dash-logo-text">MERCY TECH</span>
+                <span class="dash-logo-badge">ADMIN PORTAL</span>
+            </div>
+            <button class="logout-btn" id="logout-btn">Đăng xuất</button>
+        </header>
+
+        <!-- STATS PANEL -->
+        <section class="stats-grid">
+            <div class="stat-card">
+                <span class="stat-label">Tổng số đăng ký</span>
+                <span class="stat-value" id="stat-total">-</span>
+                <span class="stat-sub">Được ghi nhận</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-label">Mã giới thiệu hoạt động</span>
+                <span class="stat-value" id="stat-refs">-</span>
+                <span class="stat-sub">Mã đem lại lượt đăng ký</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-label">Đăng ký hôm nay</span>
+                <span class="stat-value" style="color: var(--accent);" id="stat-today">-</span>
+                <span class="stat-sub">Lượt đăng ký mới</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-label">Đăng ký tuần này</span>
+                <span class="stat-value" id="stat-week">-</span>
+                <span class="stat-sub">Từ thứ Hai</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-label">Đăng ký tháng này</span>
+                <span class="stat-value" id="stat-month">-</span>
+                <span class="stat-sub">Từ đầu tháng</span>
+            </div>
+        </section>
+
+        <!-- DATA PANELS -->
+        <div class="data-section">
+            
+            <!-- MAIN TABLE -->
+            <div class="table-panel">
+                <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px;">
+                    <h2 class="panel-title">Danh Sách Người Đăng Ký</h2>
+                    <a href="/api/admin/export" class="action-btn" id="btn-export">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        Xuất Excel
+                    </a>
+                </div>
+
+                <!-- FILTER BAR -->
+                <div class="filter-bar">
+                    <div class="search-wrapper">
+                        <input type="text" class="form-input" id="search-input" placeholder="Tìm kiếm tên, SĐT, email, mã ref..."/>
+                    </div>
+                    <div>
+                        <input type="text" class="form-input" style="max-width: 140px;" id="filter-ref" placeholder="Mã Ref..."/>
+                    </div>
+                    <div>
+                        <select class="select-filter" id="sort-by">
+                            <option value="created_at">Thời gian đăng ký</option>
+                            <option value="id">ID đăng ký</option>
+                            <option value="full_name">Họ và tên</option>
+                        </select>
+                    </div>
+                    <div>
+                        <select class="select-filter" style="min-width: 90px;" id="sort-order">
+                            <option value="desc">Mới nhất</option>
+                            <option value="asc">Cũ nhất</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- TABLE -->
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 60px;">ID</th>
+                                <th>Ngày đăng ký</th>
+                                <th>Họ và tên</th>
+                                <th>Số điện thoại</th>
+                                <th>Email</th>
+                                <th>Ngày Workshop</th>
+                                <th>Loại</th>
+                                <th>Mã Ref</th>
+                                <th>Ghi chú</th>
+                            </tr>
+                        </thead>
+                        <tbody id="registrations-body">
+                            <tr>
+                                <td colspan="9" style="text-align: center; padding: 32px; color: var(--subtle);">Đang tải dữ liệu...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- PAGINATION -->
+                <div class="pagination-bar">
+                    <div class="page-info" id="page-info">
+                        Hiển thị 0 - 0 của 0 đăng ký
+                    </div>
+                    <div class="page-btns">
+                        <button class="page-btn" id="btn-prev" disabled>Trước</button>
+                        <button class="page-btn" id="btn-next" disabled>Sau</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SIDEBAR -->
+            <div class="sidebar">
+                <div class="side-panel">
+                    <h3 class="panel-title">Top Mã Giới Thiệu</h3>
+                    <div class="top-ref-list" id="top-ref-list">
+                        <p style="font-size: 13px; color: var(--subtle);">Chưa có dữ liệu thống kê.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        let currentPage = 1;
+        const pageLimit = 10;
+
+        // Dynamic checks
+        window.addEventListener('DOMContentLoaded', () => {
+            checkSession();
+        });
+
+        // 1. Check Session
+        function checkSession() {
+            fetch('/api/admin/check-session')
+                .then(res => res.json())
+                .then(data => {
+                    if (data.authenticated) {
+                        showDashboard();
+                    } else {
+                        showLogin();
+                    }
+                })
+                .catch(() => showLogin());
+        }
+
+        function showLogin() {
+            document.getElementById('login-container').style.display = 'flex';
+            document.getElementById('dashboard-container').style.display = 'none';
+        }
+
+        function showDashboard() {
+            document.getElementById('login-container').style.display = 'none';
+            document.getElementById('dashboard-container').style.display = 'flex';
+            loadStats();
+            loadRegistrations();
+        }
+
+        // 2. Login submit
+        document.getElementById('login-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const usernameInput = document.getElementById('username').value;
+            const passwordInput = document.getElementById('password').value;
+            const errorMsg = document.getElementById('login-error');
+
+            fetch('/api/admin/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username: usernameInput, password: passwordInput })
+            })
+            .then(res => {
+                if (res.ok) {
+                    errorMsg.style.display = 'none';
+                    showDashboard();
+                } else {
+                    return res.json().then(data => { throw new Error(data.error); });
+                }
+            })
+            .catch(err => {
+                errorMsg.style.display = 'block';
+                errorMsg.textContent = err.message || 'Mật khẩu hoặc tài khoản không chính xác.';
+            });
+        });
+
+        // 3. Logout
+        document.getElementById('logout-btn').addEventListener('click', () => {
+            fetch('/api/admin/logout', { method: 'POST' })
+                .then(() => showLogin());
+        });
+
+        // 4. Load Stats
+        function loadStats() {
+            fetch('/api/admin/stats')
+                .then(res => {
+                    if (!res.ok) throw new Error();
+                    return res.json();
+                })
+                .then(data => {
+                    document.getElementById('stat-total').textContent = data.totalRegistrations.toLocaleString();
+                    document.getElementById('stat-refs').textContent = data.totalReferrals.toLocaleString();
+                    document.getElementById('stat-today').textContent = data.countToday.toLocaleString();
+                    document.getElementById('stat-week').textContent = data.countThisWeek.toLocaleString();
+                    document.getElementById('stat-month').textContent = data.countThisMonth.toLocaleString();
+
+                    // Render Top Referrals List
+                    const topRefList = document.getElementById('top-ref-list');
+                    if (data.topReferrals && data.topReferrals.length > 0) {
+                        topRefList.innerHTML = '';
+                        const maxCount = Math.max(...data.topReferrals.map(r => r.count));
+                        
+                        data.topReferrals.forEach(ref => {
+                            const percent = maxCount > 0 ? (ref.count / maxCount) * 100 : 0;
+                            const item = document.createElement('div');
+                            item.className = 'top-ref-item';
+                            item.innerHTML = `
+                                <div class="top-ref-meta">
+                                    <a href="#" class="top-ref-code" onclick="filterByRefCode('${ref.code}'); return false;">${ref.code}</a>
+                                    <span class="top-ref-count">${ref.count} lượt</span>
+                                </div>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill" style="width: ${percent}%;"></div>
+                                </div>
+                            `;
+                            topRefList.appendChild(item);
+                        });
+                    } else {
+                        topRefList.innerHTML = '<p style="font-size: 13px; color: var(--subtle);">Chưa có dữ liệu thống kê.</p>';
+                    }
+                })
+                .catch(err => console.log('Error fetching stats:', err));
+        }
+
+        // 5. Load registrations
+        function loadRegistrations() {
+            const search = document.getElementById('search-input').value;
+            const refCode = document.getElementById('filter-ref').value;
+            const sortBy = document.getElementById('sort-by').value;
+            const sortOrder = document.getElementById('sort-order').value;
+
+            // Update export link
+            let exportUrl = '/api/admin/export';
+            const params = [];
+            if (refCode) params.push(`referral_code=${encodeURIComponent(refCode)}`);
+            if (params.length > 0) exportUrl += `?${params.join('&')}`;
+            document.getElementById('btn-export').setAttribute('href', exportUrl);
+
+            // Fetch list
+            let url = `/api/admin/registrations?page=${currentPage}&limit=${pageLimit}&sort_by=${sortBy}&sort_order=${sortOrder}`;
+            if (search) url += `&search=${encodeURIComponent(search)}`;
+            if (refCode) url += `&referral_code=${encodeURIComponent(refCode)}`;
+
+            fetch(url)
+                .then(res => {
+                    if (res.status === 401) {
+                        showLogin();
+                        throw new Error('Session expired');
+                    }
+                    return res.json();
+                })
+                .then(data => {
+                    const tbody = document.getElementById('registrations-body');
+                    tbody.innerHTML = '';
+
+                    if (data.registrations && data.registrations.length > 0) {
+                        data.registrations.forEach(r => {
+                            const tr = document.createElement('tr');
+                            tr.innerHTML = `
+                                <td style="font-weight: 600; color: #ffffff;">${r.id}</td>
+                                <td style="white-space: nowrap;">${r.created_at}</td>
+                                <td style="font-weight: 500; color: #ffffff; white-space: nowrap;">${escapeHtml(r.full_name)}</td>
+                                <td style="white-space: nowrap;">${escapeHtml(r.phone)}</td>
+                                <td>${escapeHtml(r.email)}</td>
+                                <td style="white-space: nowrap;">${escapeHtml(r.workshop_date)}</td>
+                                <td>${escapeHtml(r.workshop_type)}</td>
+                                <td>
+                                    ${r.referral_code ? `<a href="#" class="badge-ref" onclick="filterByRefCode('${r.referral_code}'); return false;">${escapeHtml(r.referral_code)}</a>` : '<span style="color: var(--subtle); font-style: italic;">Không có</span>'}
+                                </td>
+                                <td style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${escapeHtml(r.note || '')}">${escapeHtml(r.note || '')}</td>
+                            `;
+                            tbody.appendChild(tr);
+                        });
+
+                        // Pagination updates
+                        const startNum = (data.page - 1) * data.limit + 1;
+                        const endNum = Math.min(data.page * data.limit, data.total);
+                        document.getElementById('page-info').textContent = `Hiển thị ${startNum} - ${endNum} của ${data.total} đăng ký`;
+                        
+                        document.getElementById('btn-prev').disabled = data.page <= 1;
+                        document.getElementById('btn-next').disabled = data.page >= data.pages;
+                    } else {
+                        tbody.innerHTML = '<tr><td colspan="9" style="text-align: center; padding: 48px; color: var(--subtle);">Không tìm thấy lượt đăng ký nào.</td></tr>';
+                        document.getElementById('page-info').textContent = 'Hiển thị 0 - 0 của 0 đăng ký';
+                        document.getElementById('btn-prev').disabled = true;
+                        document.getElementById('btn-next').disabled = true;
+                    }
+                })
+                .catch(err => console.log('Error loading registrations:', err));
+        }
+
+        // Helper filter ref code from top refs or table link click
+        function filterByRefCode(code) {
+            document.getElementById('filter-ref').value = code;
+            currentPage = 1;
+            loadRegistrations();
+        }
+
+        // HTML escaping
+        function escapeHtml(text) {
+            if (!text) return '';
+            return text
+                .toString()
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        // Event Listeners for Filters
+        document.getElementById('search-input').addEventListener('input', () => {
+            currentPage = 1;
+            loadRegistrations();
+        });
+
+        document.getElementById('filter-ref').addEventListener('input', () => {
+            currentPage = 1;
+            loadRegistrations();
+        });
+
+        document.getElementById('sort-by').addEventListener('change', () => {
+            loadRegistrations();
+        });
+
+        document.getElementById('sort-order').addEventListener('change', () => {
+            loadRegistrations();
+        });
+
+        document.getElementById('btn-prev').addEventListener('click', () => {
+            if (currentPage > 1) {
+                currentPage--;
+                loadRegistrations();
+            }
+        });
+
+        document.getElementById('btn-next').addEventListener('click', () => {
+            currentPage++;
+            loadRegistrations();
+        });
+    </script>
+</body>
+</html>
