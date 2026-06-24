@@ -5,7 +5,7 @@ const path = require('path');
 const xlsx = require('xlsx');
 const fs = require('fs');
 
-const { initDatabase, getRegistrations, addRegistration } = require('./database');
+const { initDatabase, getRegistrations, addRegistration } = require('../database');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -451,16 +451,16 @@ app.get('/api/admin/export', checkAdminAuth, async (req, res) => {
 
 // Serve Admin UI
 app.get('/admin', (req, res) => {
-  res.sendFile(path.join(__dirname, 'admin.html'));
+  res.sendFile(path.join(__dirname, '..', 'admin.html'));
 });
 
 // Serve Referral portal UI (matching path like /referral/ABC123)
 app.get('/referral/:code', (req, res) => {
-  res.sendFile(path.join(__dirname, 'referral.html'));
+  res.sendFile(path.join(__dirname, '..', 'referral.html'));
 });
 
 // Serve all other static content
-app.use(express.static(__dirname, { dotfiles: 'ignore' }));
+app.use(express.static(path.join(__dirname, '..'), { dotfiles: 'ignore' }));
 
 // Start Server Wrapper
 const startServer = async () => {
