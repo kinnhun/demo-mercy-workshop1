@@ -4217,7 +4217,8 @@
         const isEarlyBirdActive = deadline > Date.now();
         
         const referralCode = referralInput ? referralInput.value.trim().toUpperCase() : '';
-        const isReferralValid = (referralCode === 'MERCY' || referralCode === 'MANHDORA');
+        const validCodes = ['MERCY', 'MANHDORA', 'MRDANH', 'VYTHIENHUNG'];
+        const isReferralValid = validCodes.includes(referralCode);
         
         let basePrice = 2490000;
         let earlyBirdDiscount = isEarlyBirdActive ? 500000 : 0;
