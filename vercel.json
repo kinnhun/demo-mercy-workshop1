@@ -1,26 +1,17 @@
 {
   "version": 2,
-  "builds": [
+  "rewrites": [
     {
-      "src": "api/index.js",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "api/index.js"
+      "source": "/api/:path*",
+      "destination": "/api/index.js"
     },
     {
-      "src": "/referral/(.*)",
-      "dest": "/referral.html"
+      "source": "/referral/:code",
+      "destination": "/referral.html"
     },
     {
-      "src": "/admin",
-      "dest": "/admin.html"
-    },
-    {
-      "handle": "filesystem"
+      "source": "/admin",
+      "destination": "/admin.html"
     }
   ]
 }
